@@ -1,0 +1,12 @@
+@HttpApiAdapter_HostAddress = http://localhost:5232
+
+### Register Motorcycle
+POST {{HttpApiAdapter_HostAddress}}/api/v1/motorcycles
+Content-Type: application/json
+Accept: application/json
+
+{
+  "year": 2021,
+  "model": "Model X",
+  "licensePlate": "ABC1D27"
+}
