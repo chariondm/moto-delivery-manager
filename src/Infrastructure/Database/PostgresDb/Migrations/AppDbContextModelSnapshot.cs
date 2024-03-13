@@ -45,7 +45,7 @@ namespace PostgresDb.Migrations
 
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("timestamp with time zone")
-                        .HasColumnName("update_at");
+                        .HasColumnName("updated_at");
 
                     b.Property<int>("Year")
                         .HasColumnType("integer")

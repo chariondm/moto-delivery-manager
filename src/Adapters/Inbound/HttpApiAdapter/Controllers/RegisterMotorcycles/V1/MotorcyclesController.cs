@@ -19,16 +19,22 @@ public sealed class MotorcyclesController(ILogger<MotorcyclesController> logger)
 
     private IResult? _viewModel;
 
-    void IMotorcycleRegistrationOutcomeHandler.Duplicated()
+    void IMotorcycleRegistrationOutcomeHandler.Duplicated(string licensePlate)
     {
-        var problemDetails = new ValidationProblemDetails()
+        var motorcycleDetailsUrl = Url.Link("FilterMotorcyclesByLicensePlate", new { licensePlate });
+
+        var problemDetails = new ProblemDetails()
         {
-            Type = "https://tools.ietf.org/html/rfc9110#section-15.5.10",
-            Title = "One or more model validation errors occurred.",
-            Status = StatusCodes.Status400BadRequest,
-            Detail = "See the errors property for details.",
+            Title = "Duplicate Motorcycle Registration",
+            Status = StatusCodes.Status409Conflict,
+            Detail = "The motorcycle registration could not be completed because the provided plate number already exists in our database.",
             Instance = HttpContext.Request.Path
         };
+
+        if (motorcycleDetailsUrl != null)
+        {
+            problemDetails.Extensions.Add("motorcycleDetailsUrl", motorcycleDetailsUrl);
+        }
 
         problemDetails.Extensions.Add("traceId", HttpContext.TraceIdentifier);
 
@@ -39,7 +45,6 @@ public sealed class MotorcyclesController(ILogger<MotorcyclesController> logger)
     {
         var problemDetails = new ValidationProblemDetails(errors)
         {
-            Type = "https://tools.ietf.org/html/rfc9110#section-15.5.1",
             Title = "One or more model validation errors occurred.",
             Status = StatusCodes.Status400BadRequest,
             Detail = "See the errors property for details.",
@@ -68,12 +73,12 @@ public sealed class MotorcyclesController(ILogger<MotorcyclesController> logger)
     /// <response code="201">Indicates that the motorcycle was successfully registered.</response>
     /// <response code="400">Indicates that the request was invalid, such as missing required fields or invalid data format.</response>
     /// <response code="409">Indicates a conflict, such as when a motorcycle with the same license plate already exists.</response>
-    [HttpPost]
+    [HttpPost(Name = "RegisterMotorcycle")]
     [ProducesResponseType(StatusCodes.Status201Created)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status409Conflict)]
-    public async Task<IResult> RegisterMotorcycle(
-        [FromKeyedServices(UseCaseType.Validation)] IMotorcycleRegistrationProcessor useCase,
+    public async Task<IResult> RegisterMotorcycleAsync(
+        [FromKeyedServices(UseCaseType.Validation)] IMotorcycleRegistrationUseCase useCase,
         [FromBody] MotorcycleRegistrationRequest request)
     {
         useCase.SetOutcomeHandler(this);

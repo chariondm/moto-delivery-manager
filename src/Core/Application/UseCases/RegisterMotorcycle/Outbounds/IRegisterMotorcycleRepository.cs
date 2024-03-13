@@ -5,7 +5,7 @@ namespace Core.Application.UseCases.RegisterMotorcycle.Outbounds;
 /// <summary>
 /// Provides an interface for accessing and manipulating motorcycle records.
 /// </summary>
-public interface IMotorcycleRepository
+public interface IRegisterMotorcycleRepository
 {
     /// <summary>
     /// Checks if a motorcycle with the specified license plate already exists.

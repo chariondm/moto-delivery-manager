@@ -2,6 +2,7 @@ using Core.Application.Common;
 using Core.Application.UseCases.RegisterMotorcycle.Inbounds;
 
 using FluentValidation;
+
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Core.Application.UseCases.RegisterMotorcycle;
@@ -14,8 +15,8 @@ public static class MotorcycleRegistrationSetup
             .AddScoped<IValidator<MotorcycleRegistrationInbound>, MotorcycleRegistrationInboundValidator>();
 
         services
-            .AddKeyedScoped<IMotorcycleRegistrationProcessor, MotorcycleRegistrationProcessor>(UseCaseType.UseCase)
-            .AddKeyedScoped<IMotorcycleRegistrationProcessor, MotorcycleRegistrationValidation>(UseCaseType.Validation);
+            .AddKeyedScoped<IMotorcycleRegistrationUseCase, MotorcycleRegistrationUseCase>(UseCaseType.UseCase)
+            .AddKeyedScoped<IMotorcycleRegistrationUseCase, MotorcycleRegistrationValidation>(UseCaseType.Validation);
 
         return services;
     }

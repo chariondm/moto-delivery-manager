@@ -18,18 +18,18 @@ namespace UnitTests.Core.Application.UseCases.RegisterMotorcycle;
 
 public class MotorcycleRegistrationValidationTests : TestBase
 {
-    private readonly Mock<IMotorcycleRepository> _repository;
+    private readonly Mock<IRegisterMotorcycleRepository> _repository;
     private readonly Mock<IValidator<MotorcycleRegistrationInbound>> _validator;
     private readonly Mock<IMotorcycleRegistrationOutcomeHandler> _outcomeHandler;
-    private readonly Mock<IMotorcycleRegistrationProcessor> _processor;
+    private readonly Mock<IMotorcycleRegistrationUseCase> _useCase;
     private readonly MotorcycleRegistrationValidation _sut;
 
     public MotorcycleRegistrationValidationTests() : base()
     {
-        _repository = Fixture.Freeze<Mock<IMotorcycleRepository>>();
+        _repository = Fixture.Freeze<Mock<IRegisterMotorcycleRepository>>();
         _validator = Fixture.Freeze<Mock<IValidator<MotorcycleRegistrationInbound>>>();
         _outcomeHandler = Fixture.Freeze<Mock<IMotorcycleRegistrationOutcomeHandler>>();
-        _processor = Fixture.Freeze<Mock<IMotorcycleRegistrationProcessor>>();
+        _useCase = Fixture.Freeze<Mock<IMotorcycleRegistrationUseCase>>();
 
         InitializeTestServices();
 
@@ -44,7 +44,7 @@ public class MotorcycleRegistrationValidationTests : TestBase
         services.AddSingleton(_outcomeHandler.Object);
 
         services
-            .AddKeyedSingleton<IMotorcycleRegistrationProcessor, IMotorcycleRegistrationProcessor>(UseCaseType.UseCase, (_, _) => _processor.Object);
+            .AddKeyedSingleton<IMotorcycleRegistrationUseCase, IMotorcycleRegistrationUseCase>(UseCaseType.UseCase, (_, _) => _useCase.Object);
 
         services.AddSingleton(provider => provider);
     }
@@ -87,20 +87,20 @@ public class MotorcycleRegistrationValidationTests : TestBase
 
         _repository.Setup(x => x.ExistsByLicensePlateAsync(inbound.LicensePlate)).ReturnsAsync(true);
 
-        _outcomeHandler.Setup(x => x.Duplicated()).Verifiable();
+        _outcomeHandler.Setup(x => x.Duplicated(It.IsAny<string>())).Verifiable();
 
         // Act
         await _sut.ExecuteAsync(inbound);
 
         // Assert
-        _outcomeHandler.Verify(x => x.Duplicated(), Times.Once);
+        _outcomeHandler.Verify(x => x.Duplicated(It.IsAny<string>()), Times.Once);
     }
 
-    [Fact(DisplayName = "Calls Processor ExecuteAsync on Successful Validation and Non-Existent License Plate")]
+    [Fact(DisplayName = "Calls UseCase ExecuteAsync on Successful Validation and Non-Existent License Plate")]
     [Trait("Category", "Unit Test")]
     [Trait("UseCase", "RegisterMotorcycle")]
-    [Trait("Description", "Verifies that the ExecuteAsync method of the processor is called when the inbound motorcycle registration passes validation checks and the license plate does not exist in the repository, indicating a new motorcycle registration can proceed.")]
-    public async Task MustCallProcessorExecuteAsync_WhenValidationSucceedsAndLicensePlateDoesNotExist()
+    [Trait("Description", "Verifies that the ExecuteAsync method of the use case is called when the inbound motorcycle registration passes validation checks and the license plate does not exist in the repository, indicating a new motorcycle registration can proceed.")]
+    public async Task MustCallUseCaseExecuteAsync_WhenValidationSucceedsAndLicensePlateDoesNotExist()
     {
         // Arrange
         var inbound = Fixture.Create<MotorcycleRegistrationInbound>();
@@ -109,12 +109,12 @@ public class MotorcycleRegistrationValidationTests : TestBase
 
         _repository.Setup(x => x.ExistsByLicensePlateAsync(inbound.LicensePlate)).ReturnsAsync(false);
 
-        _processor.Setup(p => p.ExecuteAsync(inbound)).Verifiable();
+        _useCase.Setup(p => p.ExecuteAsync(inbound)).Verifiable();
 
         // Act
         await _sut.ExecuteAsync(inbound);
 
         // Assert
-        _processor.Verify(p => p.ExecuteAsync(inbound), Times.Once);
+        _useCase.Verify(p => p.ExecuteAsync(inbound), Times.Once);
     }
 }

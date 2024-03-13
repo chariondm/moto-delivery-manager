@@ -10,21 +10,21 @@ using Moq;
 
 namespace UnitTests.Core.Application.UseCases.RegisterMotorcycle;
 
-public class MotorcycleRegistrationProcessorTests
+public class MotorcycleRegistrationUseCaseTests
 {
     private readonly IFixture _fixture;
-    private readonly Mock<IMotorcycleRepository> _repository;
+    private readonly Mock<IRegisterMotorcycleRepository> _repository;
     private readonly Mock<IMotorcycleRegistrationOutcomeHandler> _outcomeHandler;
-    private readonly MotorcycleRegistrationProcessor _sut;
+    private readonly MotorcycleRegistrationUseCase _sut;
 
-    public MotorcycleRegistrationProcessorTests()
+    public MotorcycleRegistrationUseCaseTests()
     {
         _fixture = new Fixture().Customize(new AutoMoqCustomization());
 
-        _repository = _fixture.Freeze<Mock<IMotorcycleRepository>>();
+        _repository = _fixture.Freeze<Mock<IRegisterMotorcycleRepository>>();
         _outcomeHandler = _fixture.Freeze<Mock<IMotorcycleRegistrationOutcomeHandler>>();
 
-        _sut = _fixture.Create<MotorcycleRegistrationProcessor>();
+        _sut = _fixture.Create<MotorcycleRegistrationUseCase>();
         _sut.SetOutcomeHandler(_fixture.Freeze<Mock<IMotorcycleRegistrationOutcomeHandler>>().Object);
     }
 
