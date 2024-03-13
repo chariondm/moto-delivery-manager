@@ -8,12 +8,12 @@ using Microsoft.Extensions.DependencyInjection;
 namespace Core.Application.UseCases.FilterMotorcyclesByLicensePlate;
 
 public sealed class FilterMotorcyclesByLicensePlateValidation(IServiceProvider serviceProvider) 
-    : IFilterMotorcyclesByLicensePlateProcessor
+    : IFilterMotorcyclesByLicensePlateUseCase
 {
     private IFilterMotorcyclesByLicensePlateOutcomeHandler? _outcomeHandler;
 
-    private readonly IFilterMotorcyclesByLicensePlateProcessor _processor = serviceProvider
-        .GetRequiredKeyedService<FilterMotorcyclesByLicensePlateProcessor>(UseCaseType.UseCase);
+    private readonly IFilterMotorcyclesByLicensePlateUseCase _useCase = serviceProvider
+        .GetRequiredKeyedService<IFilterMotorcyclesByLicensePlateUseCase>(UseCaseType.UseCase);
 
     public async Task ExecuteAsync(string? licensePlate)
     {
@@ -23,7 +23,7 @@ public sealed class FilterMotorcyclesByLicensePlateValidation(IServiceProvider s
             .SetValidator(new LicensePlateValidator())
             .When(x => !string.IsNullOrWhiteSpace(x));
 
-        var validationResult = await validator.ValidateAsync(licensePlate);
+        var validationResult = await validator.ValidateAsync(licensePlate ?? string.Empty);
 
         if (!validationResult.IsValid)
         {
@@ -32,12 +32,12 @@ public sealed class FilterMotorcyclesByLicensePlateValidation(IServiceProvider s
             return;
         }
 
-        await _processor.ExecuteAsync(licensePlate);
+        await _useCase.ExecuteAsync(licensePlate);
     }
 
     public void SetOutcomeHandler(IFilterMotorcyclesByLicensePlateOutcomeHandler outcomeHandler)
     {
         _outcomeHandler = outcomeHandler;
-        _processor.SetOutcomeHandler(outcomeHandler);
+        _useCase.SetOutcomeHandler(outcomeHandler);
     }
 }

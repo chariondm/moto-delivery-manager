@@ -3,10 +3,10 @@ using Core.Application.UseCases.FilterMotorcyclesByLicensePlate.Outbounds;
 
 namespace Core.Application.UseCases.FilterMotorcyclesByLicensePlate;
 
-public sealed class FilterMotorcyclesByLicensePlateProcessor(IMotorcycleRepository repository) : IFilterMotorcyclesByLicensePlateProcessor
+public sealed class FilterMotorcyclesByLicensePlateUseCase(IFilterMotorcyclesByLicensePlateRepository repository) : IFilterMotorcyclesByLicensePlateUseCase
 {
     private IFilterMotorcyclesByLicensePlateOutcomeHandler? _outcomeHandler;
-    private readonly IMotorcycleRepository _repository = repository;
+    private readonly IFilterMotorcyclesByLicensePlateRepository _repository = repository;
 
     public async Task ExecuteAsync(string? licensePlate)
     {

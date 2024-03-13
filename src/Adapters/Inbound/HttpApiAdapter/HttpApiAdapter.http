@@ -10,3 +10,9 @@ Accept: application/json
   "model": "Model X",
   "licensePlate": "ABC1D27"
 }
+
+
+### Filter Motorcycles by License Plate
+GET {{HttpApiAdapter_HostAddress}}/api/v1/motorcycles?licensePlate=
+Content-Type: application/json
+Accept: application/json

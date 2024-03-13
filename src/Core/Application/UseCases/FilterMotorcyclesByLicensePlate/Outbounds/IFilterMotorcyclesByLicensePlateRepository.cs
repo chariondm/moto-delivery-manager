@@ -5,7 +5,7 @@ namespace Core.Application.UseCases.FilterMotorcyclesByLicensePlate.Outbounds;
 /// <summary>
 /// Provides an interface for accessing and manipulating motorcycle records, allowing for optional filtering by license plate.
 /// </summary>
-public interface IMotorcycleRepository
+public interface IFilterMotorcyclesByLicensePlateRepository
 {
     /// <summary>
     /// Retrieves motorcycles optionally filtered by license plate. If the license plate is null or empty, all motorcycles are retrieved.

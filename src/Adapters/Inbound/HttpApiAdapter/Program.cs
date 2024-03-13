@@ -4,6 +4,7 @@ using Core.Application.UseCases.RegisterMotorcycle;
 using System.Text.Json.Serialization;
 
 using Adapters.Inbound.HttpApiAdapter.Modules.Common.Swagger;
+using Core.Application.UseCases.FilterMotorcyclesByLicensePlate;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,7 +20,10 @@ builder
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddCustomSwagger();
-builder.Services.AddMotorcycleRepositoryRepository(builder.Configuration.GetConnectionString("DefaultConnection")!);
+
+builder.Services.AddPostgresDbAdapter(builder.Configuration.GetConnectionString("DefaultConnection")!);
+
+builder.Services.AddFilterMotorcyclesByLicensePlateUseCase();
 builder.Services.AddMotorcycleRegistrationUseCase();
 
 

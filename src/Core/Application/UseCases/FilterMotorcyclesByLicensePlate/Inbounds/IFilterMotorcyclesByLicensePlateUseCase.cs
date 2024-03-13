@@ -3,7 +3,7 @@ namespace Core.Application.UseCases.FilterMotorcyclesByLicensePlate.Inbounds;
 /// <summary>
 /// Processes the filtering of motorcycles by an optional license plate.
 /// </summary>
-public interface IFilterMotorcyclesByLicensePlateProcessor
+public interface IFilterMotorcyclesByLicensePlateUseCase
 {
     /// <summary>
     /// Executes the filtering operation.
