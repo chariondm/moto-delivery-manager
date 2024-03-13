@@ -1,9 +1,9 @@
 namespace Core.Application.UseCases.RegisterMotorcycle.Inbounds;
 
 /// <summary>
-/// Processes the registration of motorcycles.
+/// UseCase the registration of motorcycles.
 /// </summary>
-public interface IMotorcycleRegistrationProcessor
+public interface IMotorcycleRegistrationUseCase
 {
     /// <summary>
     /// Executes the motorcycle registration process using the provided inbound registration data.

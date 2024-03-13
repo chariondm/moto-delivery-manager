@@ -7,10 +7,10 @@ namespace Core.Application.UseCases.RegisterMotorcycle;
 /// <summary>
 /// A concrete processor for handling motorcycle registration.
 /// </summary>
-public sealed class MotorcycleRegistrationProcessor(IMotorcycleRepository repository) : IMotorcycleRegistrationProcessor
+public sealed class MotorcycleRegistrationUseCase(IRegisterMotorcycleRepository repository) : IMotorcycleRegistrationUseCase
 {
     private IMotorcycleRegistrationOutcomeHandler? _outcomeHandler;
-    private readonly IMotorcycleRepository _repository = repository;
+    private readonly IRegisterMotorcycleRepository _repository = repository;
 
     public async Task ExecuteAsync(MotorcycleRegistrationInbound inbound)
     {

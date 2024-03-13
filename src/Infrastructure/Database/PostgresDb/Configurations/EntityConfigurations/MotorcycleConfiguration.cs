@@ -41,7 +41,7 @@ public class MotorcycleConfiguration : IEntityTypeConfiguration<Motorcycle>
 
         builder
             .Property(prop => prop.UpdatedAt)
-            .HasColumnName("update_at")
+            .HasColumnName("updated_at")
             .IsRequired();
 
         builder

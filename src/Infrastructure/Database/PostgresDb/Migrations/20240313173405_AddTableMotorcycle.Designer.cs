@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace PostgresDb.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240312142119_AddTableMotorcycle")]
+    [Migration("20240313173405_AddTableMotorcycle")]
     partial class AddTableMotorcycle
     {
         /// <inheritdoc />
@@ -48,7 +48,7 @@ namespace PostgresDb.Migrations
 
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("timestamp with time zone")
-                        .HasColumnName("update_at");
+                        .HasColumnName("updated_at");
 
                     b.Property<int>("Year")
                         .HasColumnType("integer")

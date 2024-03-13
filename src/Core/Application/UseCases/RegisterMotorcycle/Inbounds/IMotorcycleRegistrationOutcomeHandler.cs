@@ -8,7 +8,8 @@ public interface IMotorcycleRegistrationOutcomeHandler
     /// <summary>
     /// Handles the scenario where a motorcycle with the same license plate already exists.
     /// </summary>
-    void Duplicated();
+    /// <param name="licensePlate">The existing motorcycle license plate.</param>
+    void Duplicated(string licensePlate);
 
     /// <summary>
     /// Handles the scenario where the motorcycle registration data is invalid.

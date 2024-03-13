@@ -9,18 +9,18 @@ using Microsoft.Extensions.DependencyInjection;
 namespace Core.Application.UseCases.RegisterMotorcycle;
 
 public sealed class MotorcycleRegistrationValidation(IServiceProvider serviceProvider) 
-    : IMotorcycleRegistrationProcessor
+    : IMotorcycleRegistrationUseCase
 {
     private IMotorcycleRegistrationOutcomeHandler? _outcomeHandler;
 
     private readonly IValidator<MotorcycleRegistrationInbound> _validator = serviceProvider
         .GetRequiredService<IValidator<MotorcycleRegistrationInbound>>();
 
-    private readonly IMotorcycleRepository _repository = serviceProvider
-        .GetRequiredService<IMotorcycleRepository>();
+    private readonly IRegisterMotorcycleRepository _repository = serviceProvider
+        .GetRequiredService<IRegisterMotorcycleRepository>();
 
-    private readonly IMotorcycleRegistrationProcessor _processor = serviceProvider
-        .GetRequiredKeyedService<IMotorcycleRegistrationProcessor>(UseCaseType.UseCase);
+    private readonly IMotorcycleRegistrationUseCase _useCase = serviceProvider
+        .GetRequiredKeyedService<IMotorcycleRegistrationUseCase>(UseCaseType.UseCase);
 
     public async Task ExecuteAsync(MotorcycleRegistrationInbound inbound)
     {
@@ -36,17 +36,17 @@ public sealed class MotorcycleRegistrationValidation(IServiceProvider servicePro
 
         if(exists)
         {
-            _outcomeHandler!.Duplicated();
+            _outcomeHandler!.Duplicated(inbound.LicensePlate);
 
             return;
         }
 
-        await _processor.ExecuteAsync(inbound);
+        await _useCase.ExecuteAsync(inbound);
     }
 
     public void SetOutcomeHandler(IMotorcycleRegistrationOutcomeHandler outcomeHandler)
     {
         _outcomeHandler = outcomeHandler;
-        _processor.SetOutcomeHandler(outcomeHandler);
+        _useCase.SetOutcomeHandler(outcomeHandler);
     }
 }
