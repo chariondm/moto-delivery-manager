@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace Adapters.Inbound.HttpApiAdapter.Controllers.UpdateMotorcycleLicensePlates.V1;
+namespace Adapters.Inbound.MotorcycleHttpApiAdapter.Controllers.UpdateMotorcycleLicensePlates.V1;
 
 /// <summary>
 /// Request DTO for motorcycle license plate update.

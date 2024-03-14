@@ -1,0 +1,6 @@
+@DeliveryDriverHttpApiAdapter_HostAddress = http://localhost:5236
+
+GET {{DeliveryDriverHttpApiAdapter_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

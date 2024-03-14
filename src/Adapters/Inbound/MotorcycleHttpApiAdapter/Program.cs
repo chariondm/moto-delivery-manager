@@ -1,4 +1,4 @@
-using Adapters.Inbound.HttpApiAdapter.Modules.Common.Swagger;
+using Adapters.Inbound.MotorcycleHttpApiAdapter.Modules.Common.Swagger;
 using Adapters.Outbounds.PostgresDbAdapter;
 using Core.Application.UseCases.FilterMotorcyclesByLicensePlate;
 using Core.Application.UseCases.RegisterMotorcycle;

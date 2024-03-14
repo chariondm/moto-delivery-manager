@@ -1,11 +1,11 @@
-using Adapters.Inbound.HttpApiAdapter.Modules.Common;
+using Adapters.Inbound.MotorcycleHttpApiAdapter.Modules.Common;
 
 using Core.Application.Common;
 using Core.Application.UseCases.RegisterMotorcycle.Inbounds;
 
 using Microsoft.AspNetCore.Mvc;
 
-namespace Adapters.Inbound.HttpApiAdapter.Controllers.RegisterMotorcycles.V1;
+namespace Adapters.Inbound.MotorcycleHttpApiAdapter.Controllers.RegisterMotorcycles.V1;
 
 
 /// <summary>
