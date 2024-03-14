@@ -10,14 +10,14 @@ using Moq;
 
 namespace UnitTests.Core.Application.UseCases.FilterMotorcyclesByLicensePlate;
 
-public class FilterMotorcyclesByLicensePlateUseCaseTests
+public class UpdateMotorcycleLicensePlateUseCaseTests
 {
     private readonly IFixture _fixture;
     private readonly Mock<IFilterMotorcyclesByLicensePlateRepository> _repository;
     private readonly Mock<IFilterMotorcyclesByLicensePlateOutcomeHandler> _outcomeHandler;
     private readonly FilterMotorcyclesByLicensePlateUseCase _sut;
 
-    public FilterMotorcyclesByLicensePlateUseCaseTests()
+    public UpdateMotorcycleLicensePlateUseCaseTests()
     {
         _fixture = new Fixture().Customize(new AutoMoqCustomization());
 

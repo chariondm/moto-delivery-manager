@@ -1,3 +1,5 @@
+using Adapters.Inbound.HttpApiAdapter.Modules.Common;
+
 using Core.Application.Common;
 using Core.Application.UseCases.RegisterMotorcycle.Inbounds;
 
@@ -21,39 +23,17 @@ public sealed class MotorcyclesController(ILogger<MotorcyclesController> logger)
 
     void IMotorcycleRegistrationOutcomeHandler.Duplicated(string licensePlate)
     {
-        var motorcycleDetailsUrl = Url.Link("FilterMotorcyclesByLicensePlate", new { licensePlate });
-
-        var problemDetails = new ProblemDetails()
-        {
-            Title = "Duplicate Motorcycle Registration",
-            Status = StatusCodes.Status409Conflict,
-            Detail = "The motorcycle registration could not be completed because the provided plate number already exists in our database.",
-            Instance = HttpContext.Request.Path
-        };
-
-        if (motorcycleDetailsUrl != null)
-        {
-            problemDetails.Extensions.Add("motorcycleDetailsUrl", motorcycleDetailsUrl);
-        }
-
-        problemDetails.Extensions.Add("traceId", HttpContext.TraceIdentifier);
-
-        _viewModel = Results.Conflict(problemDetails);
+        var url = Url.Link("FilterMotorcyclesByLicensePlate", new { licensePlate }) ?? string.Empty;
+        var message = "The motorcycle registration could not be completed because the provided license plate already exists in our database.";
+        var response = ApiResponse<ProblemDetails>.CreateDuplicateResourceError(HttpContext, message, url);
+        _viewModel = Results.Conflict(response);
     }
 
     void IMotorcycleRegistrationOutcomeHandler.Invalid(IDictionary<string, string[]> errors)
-    {
-        var problemDetails = new ValidationProblemDetails(errors)
-        {
-            Title = "One or more model validation errors occurred.",
-            Status = StatusCodes.Status400BadRequest,
-            Detail = "See the errors property for details.",
-            Instance = HttpContext.Request.Path
-        };
-
-        problemDetails.Extensions.Add("traceId", HttpContext.TraceIdentifier);
-
-        _viewModel = Results.BadRequest(problemDetails);
+    {   
+        var message = "Validation failed for the motorcycle data provided.";
+        var response = ApiResponse<ValidationProblemDetails>.CreateValidationError(errors, HttpContext, message);
+        _viewModel = Results.BadRequest(response);
     }
 
     void IMotorcycleRegistrationOutcomeHandler.Registered(Guid motorcycleId)
@@ -75,8 +55,8 @@ public sealed class MotorcyclesController(ILogger<MotorcyclesController> logger)
     /// <response code="409">Indicates a conflict, such as when a motorcycle with the same license plate already exists.</response>
     [HttpPost(Name = "RegisterMotorcycle")]
     [ProducesResponseType(StatusCodes.Status201Created)]
-    [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    [ProducesResponseType(StatusCodes.Status409Conflict)]
+    [ProducesResponseType(typeof(ApiResponse<ValidationProblemDetails>), StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(typeof(ApiResponse<ProblemDetails>), StatusCodes.Status409Conflict)]
     public async Task<IResult> RegisterMotorcycleAsync(
         [FromKeyedServices(UseCaseType.Validation)] IMotorcycleRegistrationUseCase useCase,
         [FromBody] MotorcycleRegistrationRequest request)

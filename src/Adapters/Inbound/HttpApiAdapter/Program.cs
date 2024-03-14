@@ -1,10 +1,10 @@
+using Adapters.Inbound.HttpApiAdapter.Modules.Common.Swagger;
 using Adapters.Outbounds.PostgresDbAdapter;
+using Core.Application.UseCases.FilterMotorcyclesByLicensePlate;
 using Core.Application.UseCases.RegisterMotorcycle;
+using Core.Application.UseCases.UpdateMotorcycleLicensePlate;
 
 using System.Text.Json.Serialization;
-
-using Adapters.Inbound.HttpApiAdapter.Modules.Common.Swagger;
-using Core.Application.UseCases.FilterMotorcyclesByLicensePlate;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,9 +23,10 @@ builder.Services.AddCustomSwagger();
 
 builder.Services.AddPostgresDbAdapter(builder.Configuration.GetConnectionString("DefaultConnection")!);
 
-builder.Services.AddFilterMotorcyclesByLicensePlateUseCase();
-builder.Services.AddMotorcycleRegistrationUseCase();
-
+builder.Services
+    .AddFilterMotorcyclesByLicensePlateUseCase()
+    .AddMotorcycleRegistrationUseCase()
+    .AddUpdateMotorcycleLicensePlateUseCase();
 
 var app = builder.Build();
 
