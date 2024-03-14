@@ -29,7 +29,7 @@ public sealed class MotorcyclesController(ILogger<MotorcyclesController> logger)
 
     void IUpdateMotorcycleLicensePlateOutcomeHandler.DuplicateLicensePlate(string licensePlate)
     {
-        var url = Url.Link("FilterMotorcyclesByLicensePlate", new { licensePlate });
+        var url = Url.Link("FilterMotorcyclesByLicensePlate", new { licensePlate }) ?? string.Empty;
         var message = "The provided license plate already exists. Please use a different license plate.";
         var response = ApiResponse<ProblemDetails>.CreateDuplicateResourceError(HttpContext, message, url);
         _viewModel = Results.Conflict(response);

@@ -23,7 +23,7 @@ public sealed class MotorcyclesController(ILogger<MotorcyclesController> logger)
 
     void IMotorcycleRegistrationOutcomeHandler.Duplicated(string licensePlate)
     {
-        var url = Url.Link("FilterMotorcyclesByLicensePlate", new { licensePlate });
+        var url = Url.Link("FilterMotorcyclesByLicensePlate", new { licensePlate }) ?? string.Empty;
         var message = "The motorcycle registration could not be completed because the provided license plate already exists in our database.";
         var response = ApiResponse<ProblemDetails>.CreateDuplicateResourceError(HttpContext, message, url);
         _viewModel = Results.Conflict(response);
