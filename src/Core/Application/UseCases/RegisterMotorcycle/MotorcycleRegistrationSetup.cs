@@ -12,7 +12,7 @@ public static class MotorcycleRegistrationSetup
     public static IServiceCollection AddMotorcycleRegistrationUseCase(this IServiceCollection services)
     {
         services
-            .AddScoped<IValidator<MotorcycleRegistrationInbound>, MotorcycleRegistrationInboundValidator>();
+            .AddScoped<IValidator<MotorcycleRegistrationInbound>, UpdateMotorcycleLicensePlateInboundValidator>();
 
         services
             .AddKeyedScoped<IMotorcycleRegistrationUseCase, MotorcycleRegistrationUseCase>(UseCaseType.UseCase)

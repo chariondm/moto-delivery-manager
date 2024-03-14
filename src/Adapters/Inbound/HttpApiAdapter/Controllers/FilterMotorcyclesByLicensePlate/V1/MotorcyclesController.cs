@@ -27,28 +27,19 @@ public sealed class MotorcyclesController(ILogger<MotorcyclesController> logger)
 
     void IFilterMotorcyclesByLicensePlateOutcomeHandler.Invalid(IDictionary<string, string[]> errors)
     {
-        var problemDetails = new ValidationProblemDetails(errors)
-        {
-            Type = "https://tools.ietf.org/html/rfc9110#section-15.5.1",
-            Title = "One or more model validation errors occurred.",
-            Status = StatusCodes.Status400BadRequest,
-            Detail = "See the errors property for details.",
-            Instance = HttpContext.Request.Path
-        };
-
-        problemDetails.Extensions.Add("traceId", HttpContext.TraceIdentifier);
-
-        _viewModel = Results.BadRequest(problemDetails);
+        _viewModel = Results.BadRequest(ApiResponse<ValidationProblemDetails>.CreateValidationError(errors, HttpContext));
     }
 
     void IFilterMotorcyclesByLicensePlateOutcomeHandler.OnMotorcyclesFound(IEnumerable<Motorcycle> motorcycles)
     {
-        _viewModel = Results.Ok(new ApiResponse<IEnumerable<Motorcycle>>(motorcycles, "Motorcycles found successfully."));
+        var response = ApiResponse<IEnumerable<Motorcycle>>.CreateSuccess(motorcycles, "Motorcycles found successfully.");
+        _viewModel = Results.Ok(response);
     }
 
     void IFilterMotorcyclesByLicensePlateOutcomeHandler.OnMotorcyclesNotFound()
     {
-        _viewModel = Results.Ok(new ApiResponse<IEnumerable<Motorcycle>>(Enumerable.Empty<Motorcycle>(), "No motorcycles found."));
+        var response = ApiResponse<IEnumerable<Motorcycle>>.CreateSuccess([], "No motorcycles found.");
+        _viewModel = Results.Ok(response);
     }
 
     /// <summary>
@@ -62,7 +53,7 @@ public sealed class MotorcyclesController(ILogger<MotorcyclesController> logger)
     [HttpGet(Name = "FilterMotorcyclesByLicensePlate")]
     [SwaggerOperation(Summary = "Filters motorcycles by license plate", Description = "Returns all motorcycles if no license plate is specified.")]
     [ProducesResponseType(typeof(ApiResponse<IEnumerable<Motorcycle>>), StatusCodes.Status200OK)]
-    [ProducesResponseType(typeof(ValidationProblemDetails), StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(typeof(ApiResponse<ValidationProblemDetails>), StatusCodes.Status400BadRequest)]
     public async Task<IResult> FilterMotorcyclesByLicensePlate(
         [FromKeyedServices(UseCaseType.Validation)] IFilterMotorcyclesByLicensePlateUseCase useCase,
         [FromQuery(Name = "licensePlate")] string? licensePlate)
