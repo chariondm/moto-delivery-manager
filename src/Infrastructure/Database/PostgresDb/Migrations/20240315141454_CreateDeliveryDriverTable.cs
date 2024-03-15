@@ -20,7 +20,7 @@ namespace PostgresDb.Migrations
                     cnpj = table.Column<string>(type: "character varying(14)", maxLength: 14, nullable: false),
                     date_of_birth = table.Column<DateOnly>(type: "date", nullable: false),
                     driver_license_number = table.Column<string>(type: "text", nullable: false),
-                    driver_license_type = table.Column<string>(type: "text", nullable: false),
+                    driver_license_category = table.Column<string>(type: "text", nullable: false),
                     driver_license_photo_path = table.Column<string>(type: "text", nullable: true),
                     created_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     updated_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)

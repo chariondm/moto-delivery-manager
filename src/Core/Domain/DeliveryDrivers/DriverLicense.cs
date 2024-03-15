@@ -11,6 +11,6 @@ namespace Core.Domain.DeliveryDrivers;
 /// the driver's license type, and the path to the driver's license photo. The driver's license number and type are required
 /// fields, but the photo path is optional.
 /// </remarks>
-/// <seealso cref="DriverLicenseType"/>
+/// <seealso cref="DriverLicenseCategory"/>
 /// <seealso cref="DeliveryDriver"/>
-public record DriverLicense(string Number, DriverLicenseType Type, string? PhotoPath);
+public record DriverLicense(string Number, DriverLicenseCategory Category, string? PhotoPath);

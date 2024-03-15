@@ -7,7 +7,7 @@ namespace Core.Domain.DeliveryDrivers;
 /// This enumeration represents the type of driver's license. It is used to indicate the type of driver's license
 /// that a delivery driver has.
 /// </remarks>
-public enum DriverLicenseType
+public enum DriverLicenseCategory
 {
     A,
     B,

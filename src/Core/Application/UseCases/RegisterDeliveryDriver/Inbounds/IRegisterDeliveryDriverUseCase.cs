@@ -9,12 +9,13 @@ public interface IRegisterDeliveryDriverUseCase
     /// Executes the registration of a delivery driver with the given inbound data.
     /// </summary>
     /// <param name="inbound">The inbound data for the registration.</param>
+    /// <param name="cancellationToken">The token to monitor for cancellation requests.</param>
     /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
     /// <remarks>
     /// This method is responsible for executing the registration of a delivery driver with the given inbound data.
     /// </remarks>
     /// <seealso cref="RegisterDeliveryDriverInbound"/>
-    Task ExecuteAsync(RegisterDeliveryDriverInbound inbound);
+    Task ExecuteAsync(RegisterDeliveryDriverInbound inbound, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Sets the outcome handler for the use case.

@@ -41,7 +41,7 @@ public record DeliveryDriver(
     /// This constructor is used by Entity Framework Core to create an instance of the <see cref="DeliveryDriver"/> class.
     /// </remarks>
     private DeliveryDriver() : this(Guid.Empty, string.Empty, string.Empty, new DateOnly(),
-        new DriverLicense(string.Empty, DriverLicenseType.A, string.Empty), DateTime.UtcNow, DateTime.UtcNow)
+        new DriverLicense(string.Empty, DriverLicenseCategory.A, string.Empty), DateTime.UtcNow, DateTime.UtcNow)
     {
     }
 };

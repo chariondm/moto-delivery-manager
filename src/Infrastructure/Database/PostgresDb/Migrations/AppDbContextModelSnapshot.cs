@@ -108,6 +108,11 @@ namespace PostgresDb.Migrations
                             b1.Property<Guid>("DeliveryDriverId")
                                 .HasColumnType("uuid");
 
+                            b1.Property<string>("Category")
+                                .IsRequired()
+                                .HasColumnType("text")
+                                .HasColumnName("driver_license_category");
+
                             b1.Property<string>("Number")
                                 .IsRequired()
                                 .HasColumnType("text")
@@ -116,11 +121,6 @@ namespace PostgresDb.Migrations
                             b1.Property<string>("PhotoPath")
                                 .HasColumnType("text")
                                 .HasColumnName("driver_license_photo_path");
-
-                            b1.Property<string>("Type")
-                                .IsRequired()
-                                .HasColumnType("text")
-                                .HasColumnName("driver_license_type");
 
                             b1.HasKey("DeliveryDriverId");
 
