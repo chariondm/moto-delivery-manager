@@ -1,4 +1,4 @@
-using Adapters.Inbound.HttpApiAdapter.Modules.Common;
+using Adapters.Inbound.MotorcycleHttpApiAdapter.Modules.Common;
 
 using Core.Application.Common;
 using Core.Application.UseCases.UpdateMotorcycleLicensePlate.Inbounds;
@@ -6,7 +6,7 @@ using Core.Domain;
 
 using Microsoft.AspNetCore.Mvc;
 
-namespace Adapters.Inbound.HttpApiAdapter.Controllers.UpdateMotorcycleLicensePlates.V1;
+namespace Adapters.Inbound.MotorcycleHttpApiAdapter.Controllers.UpdateMotorcycleLicensePlates.V1;
 
 /// <summary>
 /// Controller for managing motorcycles.

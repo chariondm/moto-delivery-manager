@@ -1,4 +1,4 @@
-using Adapters.Inbound.HttpApiAdapter.Modules.Common;
+using Adapters.Inbound.MotorcycleHttpApiAdapter.Modules.Common;
 
 using Core.Application.Common;
 using Core.Application.UseCases.FilterMotorcyclesByLicensePlate.Inbounds;
@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 
 
-namespace Adapters.Inbound.HttpApiAdapter.Controllers.FilterMotorcyclesByLicensePlate.V1;
+namespace Adapters.Inbound.MotorcycleHttpApiAdapter.Controllers.FilterMotorcyclesByLicensePlate.V1;
 
 
 /// <summary>

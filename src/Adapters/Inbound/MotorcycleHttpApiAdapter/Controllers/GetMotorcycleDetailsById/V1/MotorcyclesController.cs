@@ -3,7 +3,7 @@ using Core.Application.UseCases.RegisterMotorcycle.Inbounds;
 
 using Microsoft.AspNetCore.Mvc;
 
-namespace Adapters.Inbound.HttpApiAdapter.Controllers.GetMotorcycleDetailsById.V1;
+namespace Adapters.Inbound.MotorcycleHttpApiAdapter.Controllers.GetMotorcycleDetailsById.V1;
 
 
 /// <summary>

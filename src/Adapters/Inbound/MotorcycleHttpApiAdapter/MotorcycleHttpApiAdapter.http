@@ -1,7 +1,7 @@
-@HttpApiAdapter_HostAddress = http://localhost:5232
+@MotorcycleHttpApiAdapter_HostAddress = http://localhost:5232
 
 ### Register Motorcycle
-POST {{HttpApiAdapter_HostAddress}}/api/v1/motorcycles
+POST {{MotorcycleHttpApiAdapter_HostAddress}}/api/v1/motorcycles
 Content-Type: application/json
 Accept: application/json
 
@@ -13,6 +13,6 @@ Accept: application/json
 
 
 ### Filter Motorcycles by License Plate
-GET {{HttpApiAdapter_HostAddress}}/api/v1/motorcycles?licensePlate=
+GET {{MotorcycleHttpApiAdapter_HostAddress}}/api/v1/motorcycles?licensePlate=
 Content-Type: application/json
 Accept: application/json
