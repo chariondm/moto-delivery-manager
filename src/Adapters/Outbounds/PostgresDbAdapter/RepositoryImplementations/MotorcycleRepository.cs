@@ -1,3 +1,5 @@
+using Adapters.Outbounds.PostgresDbAdapter.Infrastructure.ConnectionFactory;
+
 using Core.Application.UseCases.FilterMotorcyclesByLicensePlate.Outbounds;
 using Core.Application.UseCases.RegisterMotorcycle.Outbounds;
 using Core.Application.UseCases.UpdateMotorcycleLicensePlate.Outbounds;
@@ -5,7 +7,7 @@ using Core.Domain.Motorcycles;
 
 using Dapper;
 
-using Npgsql;
+using Microsoft.Extensions.Logging;
 
 namespace Adapters.Outbounds.PostgresDbAdapter.RepositoryImplementations;
 
@@ -32,14 +34,25 @@ namespace Adapters.Outbounds.PostgresDbAdapter.RepositoryImplementations;
 /// Should this class grow significantly in complexity or responsibilities, consider refactoring into smaller classes focused on specific areas of functionality.
 /// This could involve separating the repository into distinct classes for registration, updating, and filtering operations, following the Principle of Interface Segregation (ISP) for more tailored interfaces.
 /// </summary>
-public class MotorcycleRepository(string connectionString)
+public class MotorcycleRepository(
+    IDbConnectionFactory connectionFactory,
+    ILogger<MotorcycleRepository> logger)
     : IFilterMotorcyclesByLicensePlateRepository, IRegisterMotorcycleRepository, IUpdateMotorcycleLicensePlateRepository
 {
-    private readonly string _connectionString = connectionString;
+    private readonly IDbConnectionFactory _connectionFactory = connectionFactory;
+    private readonly ILogger<MotorcycleRepository> _logger = logger;
 
-    public async Task<bool> ExistsByLicensePlateAsync(string licensePlate)
+    public async Task<bool> ExistsByLicensePlateAsync(
+        string licensePlate,
+        CancellationToken cancellationToken = default)
     {
-        var sql = @"
+        try
+        {
+            _logger.LogDebug("Checking if a motorcycle with the specified license plate already exists.");
+
+            var parameters = new { LicensePlate = licensePlate };
+
+            var sql = @"
             SELECT EXISTS
                 (
                     SELECT
@@ -50,13 +63,28 @@ public class MotorcycleRepository(string connectionString)
                         license_plate = @LicensePlate
                 )";
 
-        using var connection = new NpgsqlConnection(_connectionString);
-        return await connection.QueryFirstOrDefaultAsync<bool>(sql, new { LicensePlate = licensePlate });
+            var command = new CommandDefinition(sql, parameters, cancellationToken: cancellationToken);
+
+            using var connection = await _connectionFactory.CreateConnectionAsync(cancellationToken);
+
+            return await connection.QueryFirstOrDefaultAsync<bool>(command);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "An error occurred while checking if a motorcycle with the specified license plate already exists.");
+            throw;
+        }
     }
 
-    public async Task<IEnumerable<Motorcycle>> FindByLicensePlateAsync(string? licensePlate)
+    public async Task<IEnumerable<Motorcycle>> FindByLicensePlateAsync(
+        string? licensePlate,
+        CancellationToken cancellationToken = default)
     {
-        var sql = @"
+        try
+        {
+            _logger.LogDebug("Retrieving motorcycles optionally filtered by license plate.");
+
+            var sql = @"
             SELECT
                  motorcycle_id AS MotorcycleId,
                  year AS Year,
@@ -67,58 +95,94 @@ public class MotorcycleRepository(string connectionString)
             FROM
                 motorcycle";
 
-        var parameters = new DynamicParameters();
+            var parameters = new DynamicParameters();
 
-        if (!string.IsNullOrWhiteSpace(licensePlate))
-        {
-            sql += " WHERE license_plate = @LicensePlate";
-            parameters.Add("LicensePlate", licensePlate);
+            if (!string.IsNullOrWhiteSpace(licensePlate))
+            {
+                sql += " WHERE license_plate = @LicensePlate";
+                parameters.Add("LicensePlate", licensePlate);
+            }
+
+            var command = new CommandDefinition(sql, parameters, cancellationToken: cancellationToken);
+
+            using var connection = await _connectionFactory.CreateConnectionAsync(cancellationToken);
+
+            return await connection.QueryAsync<Motorcycle>(sql, parameters);
         }
-
-        using var connection = new NpgsqlConnection(_connectionString);
-        return await connection.QueryAsync<Motorcycle>(sql, parameters);
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "An error occurred while retrieving motorcycles optionally filtered by license plate.");
+            throw;
+        }
     }
 
-    public async Task RegisterAsync(Motorcycle motorcycle)
+    public async Task RegisterAsync(Motorcycle motorcycle, CancellationToken cancellationToken = default)
     {
-        var sql = @"
-                INSERT INTO motorcycle
-                    (motorcycle_id, year, model, license_plate, created_at, updated_at)
-                VALUES
-                    (@MotorcycleId, @Year, @Model, @LicensePlate, @CreatedAt, @UpdatedAt)";
+        try
+        {
+            _logger.LogDebug("Registering a new motorcycle.");
 
-        using var connection = new NpgsqlConnection(_connectionString);
+            var sql = @"
+            INSERT INTO motorcycle
+                (motorcycle_id, year, model, license_plate, created_at, updated_at)
+            VALUES
+                (@MotorcycleId, @Year, @Model, @LicensePlate, @CreatedAt, @UpdatedAt)";
 
-        await connection.ExecuteAsync(sql, motorcycle);
+            var command = new CommandDefinition(sql, motorcycle, cancellationToken: cancellationToken);
+
+            using var connection = await _connectionFactory.CreateConnectionAsync(cancellationToken);
+
+            await connection.ExecuteAsync(command);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "An error occurred while registering a new motorcycle.");
+            throw;
+        }
     }
 
-    public async Task<Motorcycle?> UpdateAsync(Guid motorcycleId, string newLicensePlate)
+    public async Task<Motorcycle?> UpdateAsync(
+        Guid motorcycleId,
+        string newLicensePlate,
+        CancellationToken cancellationToken = default)
     {
-        var parameters = new { 
-            MotorcycleId = motorcycleId, 
-            NewLicensePlate = newLicensePlate ,
-            UpdatedAt = DateTime.UtcNow
-        };
+        try
+        {
+            _logger.LogDebug("Updating the license plate of a motorcycle.");
 
-        var sql = @"
-                UPDATE
-                    motorcycle
-                SET
-                    license_plate = @NewLicensePlate, 
-                    updated_at = @UpdatedAt
-                WHERE
-                    motorcycle_id = @MotorcycleId
-                RETURNING 
-                    motorcycle_id AS MotorcycleId,
-                    year AS Year,
-                    model AS Model,
-                    license_plate AS LicensePlate,
-                    created_at AS CreatedAt,
-                    updated_at AS UpdatedAt;";
+            var parameters = new
+            {
+                MotorcycleId = motorcycleId,
+                NewLicensePlate = newLicensePlate,
+                UpdatedAt = DateTime.UtcNow
+            };
 
-        using var connection = new NpgsqlConnection(_connectionString);
+            var sql = @"
+            UPDATE
+                motorcycle
+            SET
+                license_plate = @NewLicensePlate, 
+                updated_at = @UpdatedAt
+            WHERE
+                motorcycle_id = @MotorcycleId
+            RETURNING 
+                motorcycle_id AS MotorcycleId,
+                year AS Year,
+                model AS Model,
+                license_plate AS LicensePlate,
+                created_at AS CreatedAt,
+                updated_at AS UpdatedAt;";
 
-        return await connection
-            .QuerySingleOrDefaultAsync<Motorcycle>(sql, parameters);
+            var command = new CommandDefinition(sql, parameters, cancellationToken: cancellationToken);
+
+            using var connection = await _connectionFactory.CreateConnectionAsync(cancellationToken);
+
+            return await connection.QuerySingleOrDefaultAsync<Motorcycle>(command);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "An error occurred while updating the license plate of a motorcycle.");
+            throw;
+        }
     }
 }

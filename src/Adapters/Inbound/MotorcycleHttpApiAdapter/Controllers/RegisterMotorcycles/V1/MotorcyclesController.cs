@@ -49,6 +49,7 @@ public sealed class MotorcyclesController(ILogger<MotorcyclesController> logger)
     /// </summary>
     /// <param name="useCase"></param>
     /// <param name="request">The motorcycle registration request.</param>
+    /// <param name="cancellationToken">The cancellation token to observe while waiting for the task to complete.</param>
     /// <returns>A response indicating the result of the registration operation.</returns>
     /// <response code="201">Indicates that the motorcycle was successfully registered.</response>
     /// <response code="400">Indicates that the request was invalid, such as missing required fields or invalid data format.</response>
@@ -59,13 +60,14 @@ public sealed class MotorcyclesController(ILogger<MotorcyclesController> logger)
     [ProducesResponseType(typeof(ApiResponse<ProblemDetails>), StatusCodes.Status409Conflict)]
     public async Task<IResult> RegisterMotorcycleAsync(
         [FromKeyedServices(UseCaseType.Validation)] IMotorcycleRegistrationUseCase useCase,
-        [FromBody] MotorcycleRegistrationRequest request)
+        [FromBody] MotorcycleRegistrationRequest request,
+        CancellationToken cancellationToken = default)
     {
         useCase.SetOutcomeHandler(this);
 
         var inbound = new MotorcycleRegistrationInbound(Guid.NewGuid(), request.Year, request.Model, request.LicensePlate);
 
-        await useCase.ExecuteAsync(inbound);
+        await useCase.ExecuteAsync(inbound, cancellationToken);
 
         return _viewModel!;
     }

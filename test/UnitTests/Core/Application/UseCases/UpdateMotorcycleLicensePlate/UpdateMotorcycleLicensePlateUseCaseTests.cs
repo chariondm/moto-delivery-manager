@@ -38,7 +38,7 @@ public class UpdateMotorcycleLicensePlateUseCaseTests
         var inbound = _fixture.Create<UpdateMotorcycleLicensePlateInbound>();
         var motorcycle = _fixture.Create<Motorcycle>();
 
-        _repository.Setup(x => x.UpdateAsync(inbound.MotorcycleId, inbound.LicensePlate)).ReturnsAsync(motorcycle);
+        _repository.Setup(x => x.UpdateAsync(inbound.MotorcycleId, inbound.LicensePlate, default)).ReturnsAsync(motorcycle);
 
         _outcomeHandler.Setup(x => x.Success(motorcycle)).Verifiable();
 
@@ -59,7 +59,7 @@ public class UpdateMotorcycleLicensePlateUseCaseTests
         var inbound = _fixture.Create<UpdateMotorcycleLicensePlateInbound>();
         var motorcycle = default(Motorcycle);
 
-        _repository.Setup(x => x.UpdateAsync(inbound.MotorcycleId, inbound.LicensePlate)).ReturnsAsync(motorcycle);
+        _repository.Setup(x => x.UpdateAsync(inbound.MotorcycleId, inbound.LicensePlate, default)).ReturnsAsync(motorcycle);
 
         _outcomeHandler.Setup(x => x.MotorcycleNotFound()).Verifiable();
 

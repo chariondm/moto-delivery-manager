@@ -12,11 +12,11 @@ public sealed class MotorcycleRegistrationUseCase(IRegisterMotorcycleRepository 
     private IMotorcycleRegistrationOutcomeHandler? _outcomeHandler;
     private readonly IRegisterMotorcycleRepository _repository = repository;
 
-    public async Task ExecuteAsync(MotorcycleRegistrationInbound inbound)
+    public async Task ExecuteAsync(MotorcycleRegistrationInbound inbound, CancellationToken cancellationToken = default)
     {
         var motorcycle = new Motorcycle(inbound.MotorcycleId, inbound.Year, inbound.Model, inbound.LicensePlate);
 
-        await _repository.RegisterAsync(motorcycle);
+        await _repository.RegisterAsync(motorcycle, cancellationToken);
     
         _outcomeHandler!.Registered(motorcycle.MotorcycleId);
     }

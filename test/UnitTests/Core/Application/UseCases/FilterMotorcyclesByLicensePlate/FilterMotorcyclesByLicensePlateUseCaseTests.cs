@@ -38,7 +38,7 @@ public class UpdateMotorcycleLicensePlateUseCaseTests
         var inbound = _fixture.Create<string>();
         var motorcycles = _fixture.CreateMany<Motorcycle>();
 
-        _repository.Setup(x => x.FindByLicensePlateAsync(inbound)).ReturnsAsync(motorcycles);
+        _repository.Setup(x => x.FindByLicensePlateAsync(inbound, default)).ReturnsAsync(motorcycles);
 
         _outcomeHandler.Setup(x => x.OnMotorcyclesFound(motorcycles)).Verifiable();
 
@@ -60,7 +60,7 @@ public class UpdateMotorcycleLicensePlateUseCaseTests
         var inbound = _fixture.Create<string>();
         var motorcycles = Enumerable.Empty<Motorcycle>();
 
-        _repository.Setup(x => x.FindByLicensePlateAsync(inbound)).ReturnsAsync(motorcycles);
+        _repository.Setup(x => x.FindByLicensePlateAsync(inbound, default)).ReturnsAsync(motorcycles);
 
         _outcomeHandler.Setup(x => x.OnMotorcyclesNotFound()).Verifiable();
 

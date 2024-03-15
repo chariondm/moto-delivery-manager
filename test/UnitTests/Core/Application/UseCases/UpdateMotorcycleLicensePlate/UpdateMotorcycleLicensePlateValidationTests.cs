@@ -64,7 +64,7 @@ public class UpdateMotorcycleLicensePlateValidationTests : TestBase
 
         _validator.Setup(x => x.ValidateAsync(inbound, CancellationToken.None)).ReturnsAsync(new ValidationResult());
 
-        _repository.Setup(x => x.ExistsByLicensePlateAsync(inbound.LicensePlate)).ReturnsAsync(false);
+        _repository.Setup(x => x.ExistsByLicensePlateAsync(inbound.LicensePlate, default)).ReturnsAsync(false);
 
         _useCase.Setup(x => x.ExecuteAsync(inbound)).Verifiable();
 
@@ -110,7 +110,7 @@ public class UpdateMotorcycleLicensePlateValidationTests : TestBase
 
         _validator.Setup(x => x.ValidateAsync(inbound, CancellationToken.None)).ReturnsAsync(new ValidationResult());
 
-        _repository.Setup(x => x.ExistsByLicensePlateAsync(inbound.LicensePlate)).ReturnsAsync(true);
+        _repository.Setup(x => x.ExistsByLicensePlateAsync(inbound.LicensePlate, default)).ReturnsAsync(true);
 
         _outcomeHandler.Setup(x => x.DuplicateLicensePlate(inbound.LicensePlate)).Verifiable();
 

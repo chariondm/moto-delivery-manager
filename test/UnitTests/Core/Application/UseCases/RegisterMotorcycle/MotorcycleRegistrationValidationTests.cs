@@ -85,7 +85,7 @@ public class MotorcycleRegistrationValidationTests : TestBase
 
         _validator.Setup(v => v.ValidateAsync(inbound, It.IsAny<CancellationToken>())).ReturnsAsync(new ValidationResult());
 
-        _repository.Setup(x => x.ExistsByLicensePlateAsync(inbound.LicensePlate)).ReturnsAsync(true);
+        _repository.Setup(x => x.ExistsByLicensePlateAsync(inbound.LicensePlate, default)).ReturnsAsync(true);
 
         _outcomeHandler.Setup(x => x.Duplicated(It.IsAny<string>())).Verifiable();
 
@@ -107,14 +107,14 @@ public class MotorcycleRegistrationValidationTests : TestBase
     
         _validator.Setup(v => v.ValidateAsync(inbound, It.IsAny<CancellationToken>())).ReturnsAsync(new ValidationResult());
 
-        _repository.Setup(x => x.ExistsByLicensePlateAsync(inbound.LicensePlate)).ReturnsAsync(false);
+        _repository.Setup(x => x.ExistsByLicensePlateAsync(inbound.LicensePlate, default)).ReturnsAsync(false);
 
-        _useCase.Setup(p => p.ExecuteAsync(inbound)).Verifiable();
+        _useCase.Setup(p => p.ExecuteAsync(inbound, default)).Verifiable();
 
         // Act
         await _sut.ExecuteAsync(inbound);
 
         // Assert
-        _useCase.Verify(p => p.ExecuteAsync(inbound), Times.Once);
+        _useCase.Verify(p => p.ExecuteAsync(inbound, default), Times.Once);
     }
 }
