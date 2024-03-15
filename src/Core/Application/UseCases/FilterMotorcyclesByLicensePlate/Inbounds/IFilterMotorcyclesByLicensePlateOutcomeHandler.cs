@@ -1,4 +1,4 @@
-using Core.Domain;
+using Core.Domain.Motorcycles;
 
 namespace Core.Application.UseCases.FilterMotorcyclesByLicensePlate.Inbounds;
 

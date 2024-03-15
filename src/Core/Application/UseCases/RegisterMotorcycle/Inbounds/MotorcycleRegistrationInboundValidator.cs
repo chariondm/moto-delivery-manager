@@ -4,9 +4,9 @@ using FluentValidation;
 
 namespace Core.Application.UseCases.RegisterMotorcycle.Inbounds;
 
-public class UpdateMotorcycleLicensePlateInboundValidator : AbstractValidator<MotorcycleRegistrationInbound>
+public class MotorcycleRegistrationInboundValidator : AbstractValidator<MotorcycleRegistrationInbound>
 {
-    public UpdateMotorcycleLicensePlateInboundValidator()
+    public MotorcycleRegistrationInboundValidator()
     {
         RuleFor(x => x.MotorcycleId)
             .NotEmpty();

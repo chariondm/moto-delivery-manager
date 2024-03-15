@@ -1,4 +1,4 @@
-using Core.Domain;
+using Core.Domain.Motorcycles;
 
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;

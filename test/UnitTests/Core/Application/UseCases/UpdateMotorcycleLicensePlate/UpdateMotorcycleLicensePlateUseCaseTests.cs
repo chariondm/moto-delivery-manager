@@ -4,7 +4,7 @@ using AutoFixture.AutoMoq;
 using Core.Application.UseCases.UpdateMotorcycleLicensePlate;
 using Core.Application.UseCases.UpdateMotorcycleLicensePlate.Inbounds;
 using Core.Application.UseCases.UpdateMotorcycleLicensePlate.Outbounds;
-using Core.Domain;
+using Core.Domain.Motorcycles;
 
 using Moq;
 

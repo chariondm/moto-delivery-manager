@@ -1,7 +1,7 @@
 using Core.Application.UseCases.FilterMotorcyclesByLicensePlate.Outbounds;
 using Core.Application.UseCases.RegisterMotorcycle.Outbounds;
 using Core.Application.UseCases.UpdateMotorcycleLicensePlate.Outbounds;
-using Core.Domain;
+using Core.Domain.Motorcycles;
 
 using Dapper;
 

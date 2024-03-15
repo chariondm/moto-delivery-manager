@@ -2,7 +2,7 @@ using Adapters.Inbound.MotorcycleHttpApiAdapter.Modules.Common;
 
 using Core.Application.Common;
 using Core.Application.UseCases.UpdateMotorcycleLicensePlate.Inbounds;
-using Core.Domain;
+using Core.Domain.Motorcycles;
 
 using Microsoft.AspNetCore.Mvc;
 
