@@ -21,7 +21,8 @@ builder
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddCustomSwagger();
 
-builder.Services.AddPostgresDbAdapter(builder.Configuration.GetConnectionString("DefaultConnection")!);
+builder.Services
+    .AddPostgresDbAdapterMotorcycleRepository(builder.Configuration.GetConnectionString("DefaultConnection")!);
 
 builder.Services
     .AddFilterMotorcyclesByLicensePlateUseCase()

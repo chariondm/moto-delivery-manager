@@ -41,7 +41,7 @@ public class MotorcycleRegistrationUseCaseTests
         await _sut.ExecuteAsync(inbound);
 
         // Assert
-        _repository.Verify(repo => repo.RegisterAsync(It.IsAny<Motorcycle>()), Times.Once);
+        _repository.Verify(repo => repo.RegisterAsync(It.IsAny<Motorcycle>(), default), Times.Once);
     }
 
     [Fact(DisplayName = "OutcomeHandler Must Be Notified When Motorcycle Is Successfully Registered")]

@@ -22,7 +22,7 @@ public sealed class MotorcycleRegistrationValidation(IServiceProvider servicePro
     private readonly IMotorcycleRegistrationUseCase _useCase = serviceProvider
         .GetRequiredKeyedService<IMotorcycleRegistrationUseCase>(UseCaseType.UseCase);
 
-    public async Task ExecuteAsync(MotorcycleRegistrationInbound inbound)
+    public async Task ExecuteAsync(MotorcycleRegistrationInbound inbound, CancellationToken cancellationToken = default)
     {
         var validationResult = await _validator.ValidateAsync(inbound);
 
@@ -32,7 +32,7 @@ public sealed class MotorcycleRegistrationValidation(IServiceProvider servicePro
             return;
         }        
 
-        var exists = await _repository.ExistsByLicensePlateAsync(inbound.LicensePlate);
+        var exists = await _repository.ExistsByLicensePlateAsync(inbound.LicensePlate, cancellationToken);
 
         if(exists)
         {
@@ -41,7 +41,7 @@ public sealed class MotorcycleRegistrationValidation(IServiceProvider servicePro
             return;
         }
 
-        await _useCase.ExecuteAsync(inbound);
+        await _useCase.ExecuteAsync(inbound, cancellationToken);
     }
 
     public void SetOutcomeHandler(IMotorcycleRegistrationOutcomeHandler outcomeHandler)
