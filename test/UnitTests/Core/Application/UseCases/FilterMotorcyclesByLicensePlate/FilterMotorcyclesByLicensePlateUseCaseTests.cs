@@ -4,7 +4,7 @@ using AutoFixture.AutoMoq;
 using Core.Application.UseCases.FilterMotorcyclesByLicensePlate;
 using Core.Application.UseCases.FilterMotorcyclesByLicensePlate.Inbounds;
 using Core.Application.UseCases.FilterMotorcyclesByLicensePlate.Outbounds;
-using Core.Domain;
+using Core.Domain.Motorcycles;
 
 using Moq;
 

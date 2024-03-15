@@ -1,6 +1,6 @@
 using System.Reflection;
 
-using Core.Domain;
+using Core.Domain.Motorcycles;
 
 using Microsoft.EntityFrameworkCore;
 

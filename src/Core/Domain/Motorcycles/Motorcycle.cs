@@ -1,4 +1,4 @@
-namespace Core.Domain;
+namespace Core.Domain.Motorcycles;
 
 public record Motorcycle(Guid MotorcycleId, int Year, string Model, string LicensePlate)
 {
