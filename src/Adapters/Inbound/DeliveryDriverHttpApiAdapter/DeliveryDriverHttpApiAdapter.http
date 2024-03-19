@@ -1,6 +1,13 @@
 @DeliveryDriverHttpApiAdapter_HostAddress = http://localhost:5236
 
-GET {{DeliveryDriverHttpApiAdapter_HostAddress}}/weatherforecast/
-Accept: application/json
+# Create a delivery driver
+POST /api/v1/delivery-drivers
+Content-Type: application/json
 
-###
+{
+    "name": "John Doe",
+    "cnpj": "12345678901234",
+    "dateOfBirth": "1990-01-01",
+    "driverLicenseNumber": "1234567890",
+    "driverLicenseCategory": "AB"
+}

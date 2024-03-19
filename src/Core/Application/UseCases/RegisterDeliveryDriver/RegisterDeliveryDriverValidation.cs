@@ -22,7 +22,7 @@ public sealed class RegisterDeliveryDriverValidation(IServiceProvider servicePro
     private readonly IRegisterDeliveryDriverUseCase _useCase = serviceProvider
         .GetRequiredKeyedService<IRegisterDeliveryDriverUseCase>(UseCaseType.UseCase);
 
-    public async Task ExecuteAsync(RegisterDeliveryDriverInbound inbound)
+    public async Task ExecuteAsync(RegisterDeliveryDriverInbound inbound, CancellationToken cancellationToken = default)
     {
         var validationResult = await _validator.ValidateAsync(inbound);
 
@@ -32,16 +32,19 @@ public sealed class RegisterDeliveryDriverValidation(IServiceProvider servicePro
             return;
         }        
 
-        var exists = await _repository.IsCnpjOrDriverLicenseNumberInUseAsync(inbound.Cnpj, inbound.DriverLicenseNumber);
+        var exists = await _repository.IsCnpjOrDriverLicenseNumberInUseAsync(
+            inbound.Cnpj,
+            inbound.DriverLicenseNumber,
+            cancellationToken);
 
         if(exists)
         {
-            _outcomeHandler!.Duplicated(inbound.Cnpj, inbound.DriverLicenseNumber);
+            _outcomeHandler!.Duplicated();
 
             return;
         }
 
-        await _useCase.ExecuteAsync(inbound);
+        await _useCase.ExecuteAsync(inbound, cancellationToken);
     }
 
     public void SetOutcomeHandler(IRegisterDeliveryDriverOutcomeHandler outcomeHandler)

@@ -10,12 +10,12 @@ public sealed class RegisterDeliveryDriverUseCase(IRegisterDeliveryDriverReposit
     private IRegisterDeliveryDriverOutcomeHandler? _outcomeHandler;
     private readonly IRegisterDeliveryDriverRepository _repository = repository;
 
-    public async Task ExecuteAsync(RegisterDeliveryDriverInbound inbound)
+    public async Task ExecuteAsync(RegisterDeliveryDriverInbound inbound, CancellationToken cancellationToken = default)
     {
         var deliveryDriver = new DeliveryDriver(inbound.DeliveryDriverId, inbound.Name, inbound.Cnpj, inbound.DateOfBirth,
-            new DriverLicense(inbound.DriverLicenseNumber, inbound.DriverLicenseType, null));
+            new DriverLicense(inbound.DriverLicenseNumber, inbound.DriverLicenseCategory, null));
 
-        await _repository.RegisterDeliveryDriverAsync(deliveryDriver);
+        await _repository.RegisterDeliveryDriverAsync(deliveryDriver, cancellationToken);
     
         _outcomeHandler!.Registered(inbound.DeliveryDriverId);
     }

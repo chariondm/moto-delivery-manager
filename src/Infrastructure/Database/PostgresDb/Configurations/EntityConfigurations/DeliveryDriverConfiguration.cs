@@ -44,8 +44,8 @@ public class DeliveryDriverConfiguration : IEntityTypeConfiguration<DeliveryDriv
                     .IsRequired();
 
                 driverLicense
-                    .Property(prop => prop.Type)
-                    .HasColumnName("driver_license_type")
+                    .Property(prop => prop.Category)
+                    .HasColumnName("driver_license_category")
                     .IsRequired()
                     .HasConversion<string>();
 

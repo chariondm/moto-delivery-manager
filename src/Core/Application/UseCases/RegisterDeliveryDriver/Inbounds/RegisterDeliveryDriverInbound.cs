@@ -10,7 +10,7 @@ namespace Core.Application.UseCases.RegisterDeliveryDriver.Inbounds;
 /// <param name="Cnpj">The CNPJ of the delivery driver.</param>
 /// <param name="DateOfBirth">The date of birth of the delivery driver.</param>
 /// <param name="DriverLicenseNumber">The driver's license number of the delivery driver.</param>
-/// <param name="DriverLicenseType">The driver's license type of the delivery driver.</param>
+/// <param name="DriverLicenseCategory">The driver's license category of the delivery driver.</param>
 /// <remarks>
 /// This record represents the inbound data required for registering a delivery driver. It is used to pass the
 /// necessary data to the use case for the registration of a delivery driver.
@@ -20,4 +20,4 @@ public record RegisterDeliveryDriverInbound(Guid DeliveryDriverId,
     string Cnpj,
     DateOnly DateOfBirth,
     string DriverLicenseNumber,
-    DriverLicenseType DriverLicenseType);
+    DriverLicenseCategory DriverLicenseCategory);

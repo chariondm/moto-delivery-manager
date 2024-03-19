@@ -8,13 +8,11 @@ public interface IRegisterDeliveryDriverOutcomeHandler
     /// <summary>
     /// Handles the scenario where a CNPJ or driver's license number is already in use.
     /// </summary>
-    /// <param name="cnpj">The CNPJ that is already in use.</param>
-    /// <param name="driverLicenseNumber">The driver's license number that is already in use.</param>
     /// <remarks>
     /// This method is called when the use case detects that the CNPJ or driver's license number
     /// is already in use by another Delivery Driver.
     /// </remarks>
-    void Duplicated(string cnpj, string driverLicenseNumber);
+    void Duplicated();
 
     /// <summary>
     /// Handles the scenario where the use case detects that the inbound data is invalid.

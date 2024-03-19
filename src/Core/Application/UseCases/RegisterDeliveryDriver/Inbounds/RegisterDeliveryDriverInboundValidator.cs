@@ -19,7 +19,7 @@ public class RegisterDeliveryDriverInboundValidator : AbstractValidator<Register
         RuleFor(x => x.DriverLicenseNumber)
             .NotEmpty();
 
-        RuleFor(x => x.DriverLicenseType)
+        RuleFor(x => x.DriverLicenseCategory)
             .IsInEnum();
     }
 }
