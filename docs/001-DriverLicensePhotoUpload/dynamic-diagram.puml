@@ -1,0 +1,46 @@
+@startuml
+!if %variable_exists("RELATIVE_INCLUDE")
+  !include %get_variable_value("RELATIVE_INCLUDE")/C4_Container.puml
+  !include %get_variable_value("RELATIVE_INCLUDE")/C4_Dynamic.puml
+!else
+  !include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+  !include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Dynamic.puml
+!endif
+
+LAYOUT_TOP_DOWN()
+LAYOUT_WITH_LEGEND()
+
+AddElementTag("backendContainer", $fontColor=$ELEMENT_FONT_COLOR, $bgColor="#335DA5", $shape=EightSidedShape(), $legendText="backend container (eight sided)")
+
+title Driver's License Photo Upload Workflow
+
+Person(driver, "Delivery Driver", "A delivery driver uploading their driver's license photo.")
+System_Boundary(s3, "Amazon S3") {
+    Container(tempDir, "Temporary Directory", "S3 Bucket", "Holds temporarily uploaded driver's license photos.")
+    Container(finalDir, "Final Directory", "S3 Bucket", "Stores validated driver's license photos.")
+}
+System_Boundary(awsServices, "AWS Services") {
+    ContainerQueue(sqs, "Amazon SQS", "Message Queue", "Queues messages for processing photos.")
+    Container(lambda, "AWS Lambda", "Function", "Processes upload events and queues messages.")
+}
+System_Boundary(motoDeliveryManager, "Moto Delivery Manager") {
+    Container(worker, "Consumer (Worker Service)", ".NET Worker Service", "Processes SQS messages, moves photos to the final directory, and updates the driver's record.", $tags="backendContainer")
+    ContainerDb(db, "Database", "Stores delivery driver records and paths to their driver's license photos.")
+}
+
+Rel(driver, tempDir, "Uploads photo using pre-signed URL")
+Rel(tempDir, lambda, "Upload event")
+Rel(lambda, sqs, "Queues processing task")
+Rel(sqs, worker, "Triggers photo processing")
+Rel(worker, finalDir, "Moves photo upon validation")
+Rel(worker, db, "Updates driver's record with new photo path")
+
+note right of lambda
+  Due to LocalStack's limitations, S3 event-based triggers
+  for Lambda functions are not supported in the LocalStack Community Edition.
+  This necessitates manual simulation for the purposes of this POC.
+  For more details: https://docs.localstack.cloud/user-guide/aws/events/#supported-target-types
+end note
+
+SHOW_LEGEND()
+@enduml
