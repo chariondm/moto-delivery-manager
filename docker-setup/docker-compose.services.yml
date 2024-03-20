@@ -31,6 +31,37 @@ services:
       - moto-delivery-manager-network
     restart: unless-stopped
 
+  localstack:
+    image: localstack/localstack
+    container_name: localstack
+    ports:
+      - "4566:4566"
+    environment:
+      - SERVICES=s3
+      - DEBUG=1
+      - DATA_DIR=/tmp/localstack/data
+      - AWS_DEFAULT_REGION=us-east-1
+      - S3_SKIP_SIGNATURE_VALIDATION=1
+    volumes:
+      - "${LOCAL_STACK_VOLUME_DIR:-./localstack}:/var/lib/localstack"
+      - "/var/run/docker.sock:/var/run/docker.sock"
+
+  localstack-init:
+    image: amazon/aws-cli
+    depends_on:
+      - localstack
+    volumes:
+      - "./init-localstack.sh:/docker-entrypoint-initaws.d/init-localstack.sh"
+    entrypoint: ["/bin/sh", "-c"]
+    command: >
+      "chmod +x /docker-entrypoint-initaws.d/init-localstack.sh &&
+       /docker-entrypoint-initaws.d/init-localstack.sh"
+    environment:
+      - AWS_ACCESS_KEY_ID=localstack
+      - AWS_SECRET_ACCESS_KEY=localstack
+      - AWS_DEFAULT_REGION=us-east-1
+      - LOCALSTACK_HOSTNAME=localstack
+
 networks:
   moto-delivery-manager-network:
     driver: bridge

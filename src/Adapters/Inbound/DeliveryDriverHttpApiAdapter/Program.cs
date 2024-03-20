@@ -1,8 +1,9 @@
 using System.Text.Json.Serialization;
 
 using Adapters.Inbound.DeliveryDriverHttpApiAdapter.Modules.Common.Swagger;
-using Core.Application.UseCases.RegisterDeliveryDriver;
+using Adapters.Outbounds.AwsS3StorageAdapter;
 using Adapters.Outbounds.PostgresDbAdapter;
+using Core.Application.UseCases.RegisterDeliveryDriver;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,6 +23,9 @@ builder.Services.AddCustomSwagger();
 builder.Services
     .AddPostgresDbAdapterDapperTypeHandlers()
     .AddPostgresDbAdapterDeliveryDriverRepository(builder.Configuration.GetConnectionString("DefaultConnection")!);
+
+builder.Services
+    .AddAwsS3StorageAdapter(builder.Configuration);
 
 builder.Services
     .AddRegisterDeliveryDriverUseCase();

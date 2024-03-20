@@ -5,10 +5,13 @@ using Core.Domain.DeliveryDrivers;
 
 namespace Core.Application.UseCases.RegisterDeliveryDriver;
 
-public sealed class RegisterDeliveryDriverUseCase(IRegisterDeliveryDriverRepository repository) : IRegisterDeliveryDriverUseCase
+public sealed class RegisterDeliveryDriverUseCase(
+    IRegisterDeliveryDriverRepository repository,
+    IRegisterDeliveryDriverStorageService storageService) : IRegisterDeliveryDriverUseCase
 {
     private IRegisterDeliveryDriverOutcomeHandler? _outcomeHandler;
     private readonly IRegisterDeliveryDriverRepository _repository = repository;
+    private readonly IRegisterDeliveryDriverStorageService _storageService = storageService;
 
     public async Task ExecuteAsync(RegisterDeliveryDriverInbound inbound, CancellationToken cancellationToken = default)
     {
@@ -16,8 +19,11 @@ public sealed class RegisterDeliveryDriverUseCase(IRegisterDeliveryDriverReposit
             new DriverLicense(inbound.DriverLicenseNumber, inbound.DriverLicenseCategory, null));
 
         await _repository.RegisterDeliveryDriverAsync(deliveryDriver, cancellationToken);
-    
-        _outcomeHandler!.Registered(inbound.DeliveryDriverId);
+
+        var presignedUrl = await _storageService
+            .GeneratePresignedUrlToUploadDeliveryDriverLicensePhotoAsync(inbound.DeliveryDriverId, cancellationToken);
+        
+        _outcomeHandler!.Registered(inbound.DeliveryDriverId, presignedUrl);
     }
 
     public void SetOutcomeHandler(IRegisterDeliveryDriverOutcomeHandler outcomeHandler) => _outcomeHandler = outcomeHandler;
