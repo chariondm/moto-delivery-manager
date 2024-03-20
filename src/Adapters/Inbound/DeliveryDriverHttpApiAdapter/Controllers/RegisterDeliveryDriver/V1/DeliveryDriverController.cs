@@ -37,12 +37,11 @@ public sealed class DeliveryDriverController(ILogger<DeliveryDriverController> l
         _viewModel = Results.BadRequest(response);
     }
 
-    void IRegisterDeliveryDriverOutcomeHandler.Registered(Guid deliveryDriverId)
+    void IRegisterDeliveryDriverOutcomeHandler.Registered(Guid deliveryDriverId, string presignedUrl)
     {
-        _viewModel = Results.CreatedAtRoute(
-            routeName: "GetDeliveryDriverDetailsById",
-            routeValues: new { id = deliveryDriverId }
-        );
+        var message = "The delivery driver was successfully registered.";
+        var response = ApiResponse<DeliveryDriverRegistrationResponse>.CreateSuccess(new DeliveryDriverRegistrationResponse(deliveryDriverId, presignedUrl), message);
+        _viewModel = Results.Created( presignedUrl, response);
     }
 
     /// <summary>
@@ -70,7 +69,7 @@ public sealed class DeliveryDriverController(ILogger<DeliveryDriverController> l
     ///  }
     ///  </example>
     [HttpPost(Name = "RegisterDeliveryDriver")]
-    [ProducesResponseType(StatusCodes.Status201Created)]
+    [ProducesResponseType(typeof(ApiResponse<DeliveryDriverRegistrationResponse>), StatusCodes.Status201Created)]
     [ProducesResponseType(typeof(ApiResponse<ValidationProblemDetails>), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(typeof(ApiResponse<ProblemDetails>), StatusCodes.Status409Conflict)]
     public async Task<IResult> RegisterDeliveryDriverAsync(

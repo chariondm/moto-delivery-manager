@@ -27,5 +27,9 @@ public interface IRegisterDeliveryDriverOutcomeHandler
     /// Handles the scenario where the use case successfully registers a Delivery Driver.
     /// </summary>
     /// <param name="deliveryDriverId">The Delivery Driver's unique identifier.</param>
-    void Registered(Guid deliveryDriverId);
+    /// <param name="presignedUrl">The presigned URL to upload the Delivery Driver's license photo.</param>
+    /// <remarks>
+    /// This method is called when the use case successfully registers a Delivery Driver.
+    /// </remarks>
+    void Registered(Guid deliveryDriverId, string presignedUrl);
 }

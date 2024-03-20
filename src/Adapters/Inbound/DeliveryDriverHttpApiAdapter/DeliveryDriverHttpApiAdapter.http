@@ -1,13 +1,30 @@
 @DeliveryDriverHttpApiAdapter_HostAddress = http://localhost:5236
 
-# Create a delivery driver
-POST /api/v1/delivery-drivers
+### Create a delivery driver
+POST {{DeliveryDriverHttpApiAdapter_HostAddress}}/api/v1/delivery-drivers
 Content-Type: application/json
 
 {
-    "name": "John Doe",
-    "cnpj": "12345678901234",
-    "dateOfBirth": "1990-01-01",
-    "driverLicenseNumber": "1234567890",
-    "driverLicenseCategory": "AB"
+    "name": "[40284130000118] full name",
+    "cnpj": "40284130000118",
+    "dateOfBirth": "{{$localDatetime 'YYYY-MM-DD' -18 y}}",
+    "driverLicenseNumber": "40284130000118",
+    "driverLicenseCategory": "A"
 }
+
+
+### Send a delivery driver license photo
+PUT 
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="text"
+
+title
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="image"; filename="dog_license.png"
+Content-Type: image/png
+
+< .tmp/dog_license.png
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
