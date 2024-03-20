@@ -35,6 +35,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeliveryDriverHttpApiAdapte
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AwsS3StorageAdapter", "src\Adapters\Outbounds\AwsS3StorageAdapter\AwsS3StorageAdapter.csproj", "{CC8E2307-AF36-43DB-9D20-6698A80F5A4E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SQSDriverLicensePhotoProcessorAdapter", "src\Adapters\Inbound\SQSDriverLicensePhotoProcessorAdapter\SQSDriverLicensePhotoProcessorAdapter.csproj", "{99B95C76-8749-404E-B768-85C3F6DCB66A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -76,6 +78,10 @@ Global
 		{CC8E2307-AF36-43DB-9D20-6698A80F5A4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CC8E2307-AF36-43DB-9D20-6698A80F5A4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CC8E2307-AF36-43DB-9D20-6698A80F5A4E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99B95C76-8749-404E-B768-85C3F6DCB66A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99B95C76-8749-404E-B768-85C3F6DCB66A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99B95C76-8749-404E-B768-85C3F6DCB66A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99B95C76-8749-404E-B768-85C3F6DCB66A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{76B78ADA-7B17-408E-BA0F-197149CBBF8D} = {4E2F7D63-D3C8-4ED5-8FC8-96D93A413391}
@@ -92,5 +98,6 @@ Global
 		{7AB78136-C862-44DC-B71F-A398D5C1BD6E} = {BA0C1932-3615-4200-8C45-D0BB1760DA54}
 		{4E7CED8C-A104-4F72-B72B-1CC3AA75FC25} = {E964C640-3EE4-4C20-8778-F5EFFC39B661}
 		{CC8E2307-AF36-43DB-9D20-6698A80F5A4E} = {E85EE701-5FF2-4F11-8161-5656A3D9555D}
+		{99B95C76-8749-404E-B768-85C3F6DCB66A} = {E964C640-3EE4-4C20-8778-F5EFFC39B661}
 	EndGlobalSection
 EndGlobal

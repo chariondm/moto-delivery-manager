@@ -37,7 +37,7 @@ services:
     ports:
       - "4566:4566"
     environment:
-      - SERVICES=s3
+      - SERVICES=s3,sqs
       - DEBUG=1
       - DATA_DIR=/tmp/localstack/data
       - AWS_DEFAULT_REGION=us-east-1
@@ -52,6 +52,7 @@ services:
       - localstack
     volumes:
       - "./init-localstack.sh:/docker-entrypoint-initaws.d/init-localstack.sh"
+      - "./set-queue-attributes.json:/docker-entrypoint-initaws.d/set-queue-attributes.json"
     entrypoint: ["/bin/sh", "-c"]
     command: >
       "chmod +x /docker-entrypoint-initaws.d/init-localstack.sh &&

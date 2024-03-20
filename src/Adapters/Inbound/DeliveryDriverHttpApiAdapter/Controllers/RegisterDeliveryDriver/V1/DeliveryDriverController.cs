@@ -31,7 +31,7 @@ public sealed class DeliveryDriverController(ILogger<DeliveryDriverController> l
     }
 
     void IRegisterDeliveryDriverOutcomeHandler.Invalid(IDictionary<string, string[]> errors)
-    {   
+    {
         var message = "The delivery driver registration could not be completed because the provided data is invalid.";
         var response = ApiResponse<ValidationProblemDetails>.CreateValidationError(errors, HttpContext, message);
         _viewModel = Results.BadRequest(response);
@@ -41,7 +41,7 @@ public sealed class DeliveryDriverController(ILogger<DeliveryDriverController> l
     {
         var message = "The delivery driver was successfully registered.";
         var response = ApiResponse<DeliveryDriverRegistrationResponse>.CreateSuccess(new DeliveryDriverRegistrationResponse(deliveryDriverId, presignedUrl), message);
-        _viewModel = Results.Created( presignedUrl, response);
+        _viewModel = Results.Created(presignedUrl, response);
     }
 
     /// <summary>
