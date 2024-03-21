@@ -4,7 +4,7 @@
 
 ## Summary
 
-This system enables delivery drivers to securely and efficiently upload photos of their driver's licenses directly to an AWS S3 environment, using pre-signed URLs. Designed to maximize security, scalability, and cost-efficiency, this upload process adheres to best practices in software architecture and technical documentation.
+This design outlines a system that enables delivery drivers to securely and efficiently upload photos of their driver's licenses directly to an AWS S3 environment using pre-signed URLs. The system is designed to be secure, scalable, and cost-efficient, adhering to best practices in software architecture and technical documentation. It incorporates file format validation and automated file management to meet specific user requirements.
 
 <details>
    <summary>Table of Contents</summary>
@@ -27,44 +27,58 @@ Source: [Dynamic Diagram](dynamic-diagram.puml)
 ## System Components
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-- **Amazon S3**: Hosts the driver's license photos of delivery drivers. Files are initially uploaded to a temporary directory and, upon successful validation, are moved to the final directory.
-- **AWS Lambda**: Intends to propagate upload events to an SQS queue by processing the bucket name and object key. 
+- **Amazon S3**: Serves as the storage solution for the driver's license photos of delivery drivers, with a process to handle initial uploads into a temporary directory before moving to a final directory upon validation.
+- **AWS Lambda**: Validates the format of uploaded files, ensuring they are in `png` or `bmp` format, and moves validated files to the `/driver-licenses` directory.
   - :warning: **Important Note**: Due to Localstack's limitations, S3 event-based triggers for Lambda functions are not directly supported. For more details on event types supported by Localstack, visit [Localstack Event Support](https://docs.localstack.cloud/user-guide/aws/events/#supported-target-types).
-- **Amazon SQS**: Receives notifications about the processed driver's license photos, serving as a message queue for further actions within the workflow.
-- **Consumer (Worker Services in .NET)**: Responsible for moving the processed photo to the final directory and updating the delivery driver's record with the new photo path information.
-- **Localstack (Community)**: Simulates AWS services locally for the POC, focusing on initial development and testing. Noted limitations include the inability to simulate direct S3 event triggers for Lambda functions.
+- **Amazon SQS**: Acts as a message queue for notifications about successfully processed driver's license photos, facilitating communication within the workflow.
+- **Consumer (Worker Services in .NET)**: Updates the delivery driver's record with the new photo path information in the database.
+- **Localstack (Community)**: Simulates AWS services locally for development and testing purposes.
 
 ## Operation Flow
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 1. **Driver's License Photo Upload**:
-   - Delivery drivers are provided with a pre-signed URL for upload.
-   - Photos are uploaded directly to S3, into a temporary directory (`/temp`), to minimize the load on the platform's infrastructure.
+   - Delivery drivers upload their photos using a pre-signed URL to S3, into a `/temp` directory.
 
-2. **Manual Simulation of Processing**:
-   - Given Localstack’s limitations, S3 event-based triggers for Lambda functions are not supported.
-   - The workflow is tested by manually sending a message (simulating Lambda's intended action) to the SQS queue using AWS CLI. The payload includes `bucketname` and `objectkey`.
+2. **Validation and Processing by AWS Lambda**:
+   - AWS Lambda is triggered to validate the file format. The following pseudocode illustrates the validation process using the `Pillow` library:
+   
+     ```python
+     from PIL import Image
+     
+     def validate_image(file_path):
+         try:
+             with Image.open(file_path) as img:
+                 if img.format not in ['PNG', 'BMP']:
+                     return False
+                 return True
+         except IOError:
+             return False
+     
+     # Usage example
+     file_path = 'path/to/image.file'
+     is_valid = validate_image(file_path)
+     ```
+   
+   - If the file is in a valid format (`png` or `bmp`), AWS Lambda moves the file to the `/driver-licenses` directory.
+   - A notification is sent to the Amazon SQS queue about the successful upload and file location.
 
-3. **Processing by the Consumer**:
-   - The Consumer, implemented as a Worker Service in .NET, listens to the SQS queue for new messages.
-   - Upon receiving a message, it moves the validated driver's license photo from the temporary directory to the final directory (`/driver-licenses`).
-   - It then updates the delivery driver’s record in the database with the new photo path.
+3. **Updating the Driver’s Record**:
+   - The Consumer, a Worker Service in .NET, listens to the SQS queue and updates the driver’s database record with the new photo path upon receiving a message.
 
 ## Architectural Considerations
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-- **Separation of Directories**: Utilizing separate directories for temporary and final storage in S3 adds a layer of security and validation, ensuring only approved content reaches its final destination.
-- **Consumer Implementation**: The choice to implement the Consumer as a Worker Service in .NET aligns with the system's need for reliability and scalability in processing photo uploads and updates.
-- **Manual Simulation in Localstack**: Acknowledging Localstack's limitations, the POC includes manual steps to ensure the system's core functionality can be tested locally, paving the way for a smooth transition to the AWS environment.
-- **SQS for Workflow Integration**: Leveraging SQS for communication ensures a decoupled, scalable architecture that can handle the asynchronous processing of driver's license photos effectively.
+- The separation of directories in S3 ensures a secure and validated storage workflow.
+- Implementing the Consumer as a Worker Service in .NET provides reliability and scalability for processing photo uploads and updates.
+- Utilizing SQS for message queuing enables a decoupled and scalable architecture suitable for handling asynchronous processes.
 
 ## POC with Localstack
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-- This phase focuses on developing and testing the upload process and the manual simulation of the workflow, aiming to validate the proposed architecture and the interactions between components.
-- The manual simulation of Lambda actions via AWS CLI to SQS serves as a workaround for known Localstack limitations regarding S3 event triggers, highlighting a pragmatic approach to testing.
+- The POC phase focuses on developing and testing the upload process and workflow within a simulated AWS environment, validating the proposed architecture and component interactions.
 
 ## Conclusion
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-This design document outlines the implementation of a secure and efficient upload system for delivery drivers to submit their driver's license photos. By incorporating a Consumer (Worker Services in .NET) for post-validation processing and manually simulating certain aspects due to Localstack limitations, the proposed system is well-prepared for production deployment in AWS, ensuring robustness and scalability.
+This design document introduces a secure, efficient system for delivery drivers to upload their driver's license photos, fulfilling the user story requirements. By leveraging AWS services and implementing a dedicated validation and file management process, including the use of `Pillow` for file format validation, this system is prepared for deployment. It ensures that it meets the needs for security, scalability, and user satisfaction.

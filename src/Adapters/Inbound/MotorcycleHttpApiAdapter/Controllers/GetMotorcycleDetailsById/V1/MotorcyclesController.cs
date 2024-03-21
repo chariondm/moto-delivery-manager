@@ -1,6 +1,3 @@
-using Core.Application.Common;
-using Core.Application.UseCases.RegisterMotorcycle.Inbounds;
-
 using Microsoft.AspNetCore.Mvc;
 
 namespace Adapters.Inbound.MotorcycleHttpApiAdapter.Controllers.GetMotorcycleDetailsById.V1;

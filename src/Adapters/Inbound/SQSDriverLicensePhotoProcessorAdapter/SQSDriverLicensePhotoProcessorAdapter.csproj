@@ -12,4 +12,9 @@
     <PackageReference Include="AWSSDK.SQS" Version="3.7.300.59" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
   </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Core\Application\Application.csproj" />
+    <ProjectReference Include="..\..\Outbounds\PostgresDbAdapter\PostgresDbAdapter.csproj" />
+  </ItemGroup>
 </Project>

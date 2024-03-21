@@ -1,5 +1,6 @@
 using Adapters.Outbounds.PostgresDbAdapter.Infrastructure.ConnectionFactory;
 
+using Core.Application.UseCases.ProcessDriverLicensePhotoUpload.Outbounds;
 using Core.Application.UseCases.RegisterDeliveryDriver.Outbounds;
 using Core.Domain.DeliveryDrivers;
 
@@ -11,7 +12,7 @@ namespace Adapters.Outbounds.PostgresDbAdapter.RepositoryImplementations;
 
 public class DeliveryDriverRepository(
     IDbConnectionFactory connectionFactory,
-    ILogger<DeliveryDriverRepository> logger) : IRegisterDeliveryDriverRepository
+    ILogger<DeliveryDriverRepository> logger) : IProcessDriverLicensePhotoUploadRepository, IRegisterDeliveryDriverRepository
 {
     private readonly IDbConnectionFactory _connectionFactory = connectionFactory;
     private readonly ILogger<DeliveryDriverRepository> _logger = logger;
@@ -87,6 +88,44 @@ public class DeliveryDriverRepository(
         catch (Exception ex)
         {
             _logger.LogError(ex, "An error occurred while registering a new delivery driver.");
+            throw;
+        }
+    }
+
+    public async Task<int> UpdateDriverLicensePhotoPathAsync(
+        Guid deliveryDriverId,
+        string photoPath,
+        CancellationToken cancellationToken = default)
+    {
+        try
+        {
+            _logger.LogDebug("Updating the driver's license photo path.");
+
+            var parameters = new
+            {
+                DeliveryDriverId = deliveryDriverId,
+                PhotoPath = photoPath,
+                UpdatedAt = DateTime.UtcNow
+            };
+
+            var sql = @"
+            UPDATE
+                delivery_driver
+            SET
+                driver_license_photo_path = @PhotoPath,
+                updated_at = @UpdatedAt
+            WHERE
+                delivery_driver_id = @DeliveryDriverId";
+
+            var command = new CommandDefinition(sql, parameters, cancellationToken: cancellationToken);
+
+            using var connection = await _connectionFactory.CreateConnectionAsync(cancellationToken);
+
+            return await connection.ExecuteAsync(command);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "An error occurred while updating the driver's license photo path.");
             throw;
         }
     }

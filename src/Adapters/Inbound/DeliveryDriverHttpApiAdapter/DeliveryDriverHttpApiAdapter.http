@@ -5,11 +5,11 @@ POST {{DeliveryDriverHttpApiAdapter_HostAddress}}/api/v1/delivery-drivers
 Content-Type: application/json
 
 {
-    "name": "[40284130000118] full name",
-    "cnpj": "40284130000118",
+    "name": "[88754063000184] full name",
+    "cnpj": "88754063000184",
     "dateOfBirth": "{{$localDatetime 'YYYY-MM-DD' -18 y}}",
-    "driverLicenseNumber": "40284130000118",
-    "driverLicenseCategory": "A"
+    "driverLicenseNumber": "88754063000184",
+    "driverLicenseCategory": "B"
 }
 
 

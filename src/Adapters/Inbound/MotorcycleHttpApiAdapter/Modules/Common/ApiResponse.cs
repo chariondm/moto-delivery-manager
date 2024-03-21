@@ -1,4 +1,3 @@
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Adapters.Inbound.MotorcycleHttpApiAdapter.Modules.Common;

@@ -3,6 +3,7 @@ using Adapters.Outbounds.PostgresDbAdapter.Infrastructure.TypeHandlers;
 using Adapters.Outbounds.PostgresDbAdapter.RepositoryImplementations;
 
 using Core.Application.UseCases.FilterMotorcyclesByLicensePlate.Outbounds;
+using Core.Application.UseCases.ProcessDriverLicensePhotoUpload.Outbounds;
 using Core.Application.UseCases.RegisterDeliveryDriver.Outbounds;
 using Core.Application.UseCases.RegisterMotorcycle.Outbounds;
 using Core.Application.UseCases.UpdateMotorcycleLicensePlate.Outbounds;
@@ -38,7 +39,22 @@ public static class PostgresDbAdapterSetup
     {
         services.AddScoped<IDbConnectionFactory>(provider => new DbConnectionFactory(connectionString));
 
-        services.AddScoped<IRegisterDeliveryDriverRepository, DeliveryDriverRepository>();
+        services
+            .AddScoped<IProcessDriverLicensePhotoUploadRepository, DeliveryDriverRepository>()
+            .AddScoped<IRegisterDeliveryDriverRepository, DeliveryDriverRepository>();
+
+        return services;
+    }
+
+    public static IServiceCollection AddSingletonAddPostgresDbAdapterDeliveryDriverRepository(
+        this IServiceCollection services,
+        string connectionString)
+    {
+        services.AddSingleton<IDbConnectionFactory>(provider => new DbConnectionFactory(connectionString));
+
+        services
+            .AddSingleton<IProcessDriverLicensePhotoUploadRepository, DeliveryDriverRepository>()
+            .AddSingleton<IRegisterDeliveryDriverRepository, DeliveryDriverRepository>();
 
         return services;
     }
