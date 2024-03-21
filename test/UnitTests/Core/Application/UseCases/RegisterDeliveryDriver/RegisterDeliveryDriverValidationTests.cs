@@ -1,5 +1,4 @@
 using AutoFixture;
-using AutoFixture.AutoMoq;
 
 using Core.Application.Common;
 using Core.Application.UseCases.RegisterDeliveryDriver;
