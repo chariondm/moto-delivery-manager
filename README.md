@@ -20,16 +20,16 @@
         <li><a href="#docs">Docs</a></li>
       </ul>
     </li>
-      <li><a href="#getting-started">Getting Started</a>
-         <ul>
-            <li><a href="#prerequisites">Prerequisites</a></li>
-            <li><a href="#running-locally-with-net-8">Running Locally with .NET 8</a></li>
-         </ul>
-      </li>
+    <li><a href="#getting-started">Getting Started</a>
+        <ul>
+          <li><a href="#prerequisites">Prerequisites</a></li>
+          <li><a href="#running-locally-with-net-8">Running Locally with .NET 8</a></li>
+        </ul>
+    </li>
   </ul>
 </details>
 
-# MotoDeliveryManager
+# Moto Delivery Manager
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -108,7 +108,7 @@ The `docker-setup` directory includes Docker Compose files necessary to configur
 
 ### Docs
 
-- **001-DriverLicensePhotoUpload**: Documentation detailing the driver's license photo upload feature, including API specifications, data flow diagrams, and integration details with AWS S3 for photo storage.
+- **[001-DriverLicensePhotoUpload](./docs/001-DriverLicensePhotoUpload/DesignDoc001_DriverLicensePhotoUpload.md)**: Documentation detailing the driver's license photo upload feature, including API specifications, data flow diagrams, and integration details with AWS S3 for photo storage.
 
 This structure provides a solid foundation for the development, maintenance, and expansion of the `MotoDeliveryManager` system, allowing developers to contribute efficiently and the system to evolve in an organized and controlled manner.
 
@@ -174,3 +174,6 @@ For your reference, here are the URLs and descriptions for the different applica
 | **MotorcycleHttpApiAdapter** | [http://localhost:5232](http://localhost:5232/swagger/index.html) | Manages HTTP requests for motorcycle management operations, providing endpoints for registration, updates, and queries. |
 | **SQSDriverLicensePhotoProcessorAdapter** | N/A | Processes driver's license photo uploads using the Amazon SQS messaging service, handling asynchronous receipt and processing of photo upload requests. |
 
+## Use Cases
+
+For a detailed explanation of the system's use cases, see the [Use Cases documentation](./docs/use-cases.md)

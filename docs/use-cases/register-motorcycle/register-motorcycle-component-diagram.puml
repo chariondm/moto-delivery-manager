@@ -1,0 +1,29 @@
+@startuml register-motorcycle-component-diagram
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Dynamic.puml
+
+LAYOUT_TOP_DOWN()
+LAYOUT_WITH_LEGEND()
+
+title Motorcycle Registration Process
+
+Person(admin, "Admin/User", "Initiates the motorcycle registration process.")
+
+Container_Boundary(b, "Moto Delivery Manager System") {
+    Component(webApi, "Motorcycle Registration Controller", "ASP.NET Core Controller", "Receives motorcycle registration requests and orchestrates the registration process.")
+    Component(registrationService, "Registration Service", ".NET Service", "Handles business logic for motorcycle registration, including validation and persistence.")
+}
+
+ContainerDb(database, "Database", "PostgreSQL", "Stores motorcycle data including license plates, models, etc.")
+
+Rel(admin, webApi, "Submits registration data to", "HTTPS/JSON")
+Rel(webApi, registrationService, "Invokes registration process with")
+Rel(registrationService, database, "Checks for duplicate and registers", "JDBC")
+
+note right of registrationService
+  Validation includes checking that the motorcycle's
+  year is within an acceptable range, the model is not empty,
+  and the license plate follows a specified format and is unique.
+end note
+
+SHOW_LEGEND()
+@enduml
