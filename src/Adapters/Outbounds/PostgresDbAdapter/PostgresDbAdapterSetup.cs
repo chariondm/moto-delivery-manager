@@ -27,6 +27,8 @@ public static class PostgresDbAdapterSetup
 
     public static IServiceCollection AddPostgresDbAdapterMotorcycleRepository(this IServiceCollection services, string connectionString)
     {
+        services.AddScoped<IDbConnectionFactory>(provider => new DbConnectionFactory(connectionString));
+
         services
             .AddScoped<IFilterMotorcyclesByLicensePlateRepository, MotorcycleRepository>()
             .AddScoped<IRegisterMotorcycleRepository, MotorcycleRepository>()
@@ -75,5 +77,4 @@ public static class PostgresDbAdapterSetup
 
         return services;
     }
-
 }
