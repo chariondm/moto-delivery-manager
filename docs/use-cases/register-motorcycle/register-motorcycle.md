@@ -4,7 +4,7 @@
   <summary>Table of Contents</summary>
   <ul>
     <li><a href="#overview">Overview</a></li>
-    <li><a href="#specification">Use Case Specification</a></li>
+    <li><a href="#use-case-specification">Use Case Specification</a></li>
     <li><a href="#diagrams">Diagrams</a>
         <ul>
           <li><a href="#component-diagram">Component Diagram</a></li>

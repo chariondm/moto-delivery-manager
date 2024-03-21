@@ -108,7 +108,7 @@ The `docker-setup` directory includes Docker Compose files necessary to configur
 
 ### Docs
 
-- **[001-DriverLicensePhotoUpload](./docs/001-DriverLicensePhotoUpload/DesignDoc001_DriverLicensePhotoUpload.md)**: Documentation detailing the driver's license photo upload feature, including API specifications, data flow diagrams, and integration details with AWS S3 for photo storage.
+- **[001-DriverLicensePhotoUpload](./docs/design-docs/001-DriverLicensePhotoUpload/DesignDoc001_DriverLicensePhotoUpload.md)**: Documentation detailing the driver's license photo upload feature, including API specifications, data flow diagrams, and integration details with AWS S3 for photo storage.
 
 This structure provides a solid foundation for the development, maintenance, and expansion of the `MotoDeliveryManager` system, allowing developers to contribute efficiently and the system to evolve in an organized and controlled manner.
 
@@ -176,4 +176,4 @@ For your reference, here are the URLs and descriptions for the different applica
 
 ## Use Cases
 
-For a detailed explanation of the system's use cases, see the [Use Cases documentation](./docs/use-cases.md)
+For a detailed explanation of the system's use cases, see the [Use Cases documentation](./docs/use-cases/use-cases.md)
