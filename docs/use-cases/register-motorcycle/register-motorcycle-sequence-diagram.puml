@@ -1,0 +1,23 @@
+@startuml register-motorcycle-sequence-diagram
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Sequence.puml
+
+title Motorcycle Registration Sequence Diagram
+
+Person(admin, "Admin/User", "Initiates the motorcycle registration process.")
+
+Container_Boundary(b, "Moto Delivery Manager System")
+    Component(webApi, "MotorcycleRegistrationController", "Inbound Adapter", "Handles motorcycle registration requests.")
+    Component(validation, "MotorcycleDataValidation", "Core Validation Logic", "Validates input data for new motorcycle registration.")
+    Component(usecase, "MotorcycleRegistrationUseCase", "Core Business Logic", "Processes the motorcycle registration including checks for duplicates.")
+Boundary_End()
+
+ContainerDb(database, "Motorcycle Database", "PostgreSQL", "Stores information about motorcycles, including license plates and models.")
+
+Rel(admin, webApi, "Submits registration data", "HTTPS/JSON")
+Rel(webApi, validation, "Forwards data for validation")
+Rel(validation, admin, "Returns validation errors if any", "HTTPS/JSON", $tags="return;error")
+Rel(validation, usecase, "Valid data forwarded", "Direct Call")
+Rel(usecase, database, "Queries for duplicate license plate", "SQL Query")
+Rel(usecase, admin, "Returns registration success or duplicate error", "HTTPS/JSON", $tags="return;success/error")
+
+@enduml
