@@ -8,6 +8,3 @@ namespace Core.Application.UseCases.RegisterMotorcycle.Inbounds;
 /// <param name="Model">Model of the motorcycle.</param>
 /// <param name="LicensePlate">License plate of the motorcycle.</param>
 public record MotorcycleRegistrationInbound(Guid MotorcycleId, int Year, string Model, string LicensePlate);
-
-
-```markdown

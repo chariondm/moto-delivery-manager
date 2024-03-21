@@ -15,7 +15,6 @@
         <li><a href="#core">Core</a></li>
         <li><a href="#adapters">Adapters</a></li>
         <li><a href="#infrastructure">Infrastructure</a></li>
-        <li><a href="#devtool">Devtool</a></li>
         <li><a href="#docker-setup">Docker-setup</a></li>
         <li><a href="#docs">Docs</a></li>
       </ul>
@@ -24,8 +23,10 @@
         <ul>
           <li><a href="#prerequisites">Prerequisites</a></li>
           <li><a href="#running-locally-with-net-8">Running Locally with .NET 8</a></li>
+          <li><a href="#additional-notes">Additional Notes</a></li>
         </ul>
     </li>
+    <li><a href="#use-cases">Use Cases</a></li>
   </ul>
 </details>
 
@@ -173,6 +174,144 @@ For your reference, here are the URLs and descriptions for the different applica
 | **DeliveryDriverHttpApiAdapter** | [http://localhost:5236](http://localhost:5236/swagger/index.html) | Exposes HTTP endpoints for driver registration and motorcycle rental requests. |
 | **MotorcycleHttpApiAdapter** | [http://localhost:5232](http://localhost:5232/swagger/index.html) | Manages HTTP requests for motorcycle management operations, providing endpoints for registration, updates, and queries. |
 | **SQSDriverLicensePhotoProcessorAdapter** | N/A | Processes driver's license photo uploads using the Amazon SQS messaging service, handling asynchronous receipt and processing of photo upload requests. |
+
+### Additional Notes
+
+#### Sending driver's license photo to the S3 bucket
+
+1. **Start the Docker Compose environment**: If you want to use the `SQSDriverLicensePhotoProcessorAdapter` to process driver's license photo uploads, you'll need to start the Docker Compose environment using the following command:
+
+   ```bash
+   docker compose -f docker-setup/docker-compose.services.yml up
+   ```
+   :warning: This command starts the Docker Compose environment, including the Localstack services for simulating AWS services like S3 and SQS.
+
+2. **Run the `DeliveryDriverHttpApiAdapter` project**: Use the `dotnet run --project` command to run the `DeliveryDriverHttpApiAdapter` project, as described in the previous section.
+
+3. **Create a delivery driver**: Use the `DeliveryDriverHttpApiAdapter` to create a delivery driver. You can use the following `curl` command to send a POST request to the `delivery-drivers` endpoint:
+
+   Request:
+   ```bash
+   curl --request POST \
+      --url http://localhost:5236/api/v1/delivery-drivers \
+      --header 'content-type: application/json' \
+      --data '{"name": "full name","cnpj": "valid-cnpj","dateOfBirth": "yyyy-mm-dd","driverLicenseNumber": "11111111","driverLicenseCategory": "B"}'
+   ```
+   :warning: Replace the payload with the appropriate values for the driver you want to create.
+
+   Response:
+   ```json
+   {
+       "success": true,
+       "message": "The delivery driver was successfully registered.",
+       "data": {
+           "id": "0d91b3b0-a19a-48ad-910c-1221cf0b0e36",
+           "presignedUrl": "https://localhost:4566/delivery-driver-licenses-photo/tmp/0d91b3b0-a19a-48ad-910c-1221cf0b0e36.png?AWSAccessKeyId=localstack&Expires=1711053327&Signature=%2FNzsWFtd04J6%2FbdIP2Su8w6c9%2BI%3D"
+       }
+   }
+   ```
+   :warning: The `presignedUrl` returned in the response is used to send the driver's license photo to the S3 bucket.
+
+3. **Send the driver's license photo to the S3 bucket**: Use the `presignedUrl` returned in the response to send a PUT request to the S3 bucket. For example, you can use the following `curl` command to send a PUT request to the `presignedUrl`:
+
+   ```bash
+   curl --request PUT \
+      --url 'http://localhost:4566/delivery-driver-licenses-photo/tmp/0d91b3b0-a19a-48ad-910c-1221cf0b0e36.png?AWSAccessKeyId=localstack&Expires=1711053327&Signature=%2FNzsWFtd04J6%2FbdIP2Su8w6c9%2BI%3D' \
+      -F 'text=title' \
+      -F 'image=@.tmp/dog_license.png;type=image/png' \
+      --fail \
+      -v   
+   ```
+   :warning: Replace the URL and payload with the appropriate values for the driver's license photo you want to send.
+
+   Response:
+   ```plaintext
+   *   Trying 127.0.0.1:4566...
+   * Connected to localhost (127.0.0.1) port 4566 (#0)
+   > PUT /delivery-driver-licenses-photo/tmp/0d91b3b0-a19a-48ad-910c-1221cf0b0e36.png?AWSAccessKeyId=localstack&Expires=1711053327&Signature=%2FNzsWFtd04J6%2FbdIP2Su8w6c9%2BI%3D HTTP/1.1
+   > Host: localhost:4566
+   > User-Agent: curl/7.81.0
+   > Accept: */*
+   > Content-Length: 215797
+   > Content-Type: multipart/form-data; boundary=------------------------7c4fba1f55ed196d
+   > 
+   * We are completely uploaded and fine
+   * Mark bundle as not supporting multiuse
+   < HTTP/1.1 200 ############################## -----> The response code should be 200 <----- ##############################
+   < Content-Type: application/xml
+   < ETag: "b3d33cb07641fa143eec5bae6d6ebfc5"
+   < x-amz-server-side-encryption: AES256
+   < x-amz-request-id: cfe983c6-e43a-405e-b33d-ee63c21ce32b
+   < x-amz-id-2: s9lzHYrFp76ZVxRcpX9+5cjAnEH2ROuNkd2BHfIa6UkFVdtjf5mKR3/eTPFvsiP/XV/VLi31234=
+   < Connection: close
+   < Content-Length: 0
+   < date: Thu, 21 Mar 2024 20:59:14 GMT
+   < server: hypercorn-h11
+   < 
+   * Closing connection 0
+   ```
+   :warning: The response code should be 200, indicating that the driver's license photo was successfully sent to the S3 bucket.
+
+4. **Check the S3 bucket**: You can use the AWS CLI to check the contents of the S3 bucket. For example, you can use the following command to list the contents of the `delivery-driver-licenses-photo` bucket:
+
+   ```bash
+   aws --endpoint-url=http://localhost:4566 s3 ls --recursive --human-readable --summarize delivery-driver-licenses-photo
+   ```
+   :warning: Replace the URL with the appropriate value for the S3 bucket you want to list.
+
+   Response:
+   ```plaintext
+   2024-03-21 17:59:14  210.7 KiB tmp/0d91b3b0-a19a-48ad-910c-1221cf0b0e36.png
+   2024-03-21 18:05:34  342.2 KiB tmp/1a81b3b0-a19a-48ad-910c-1221cf0b0e36.png
+   2024-03-21 18:06:27  342.2 KiB tmp/1a81b3b0-a19a-48ad-910c-1221cf0b0e42.png
+
+   Total Objects: 3
+      Total Size: 895.2 KiB
+   ```
+   :warning: The response should list the contents of the `delivery-driver-licenses-photo` bucket, including the driver's license photo you uploaded.
+
+#### Sending messages to the SQS queue
+
+To send a message to the SQS queue, you can use the AWS CLI to send a message to the `delivery-driver-license-queue` queue. For example, you can use the following command to send a message to the queue:
+
+   ```bash
+   aws --endpoint-url=http://localhost:4566 sqs send-message --queue-url http://localhost:4566/000000000000/delivery-driver-license-queue --message-body '{
+   "deliveryDriverId": "0d91b3b0-a19a-48ad-910c-1221cf0b0e36",
+   "photoPath": "tmp/0d91b3b0-a19a-48ad-910c-1221cf0b0e36.png",
+   "timestamp": "2024-03-21T15:03:00Z"
+   }' | cat
+   ```
+   :warning: Replace the URL and payload with the appropriate values for the message you want to send.
+
+   Response:
+   ```json
+   {
+      "MD5OfMessageBody": "d41d8cd98f00b204e9800998ecf8427e",
+      "MessageId": "d41d8cd98f00b204e9800998ecf8427e"
+   }
+   ```
+
+To check the messages in the queue, you can use the following command:
+   
+   ```bash
+   aws --endpoint-url=http://localhost:4566 sqs receive-message --queue-url http://localhost:4566/000000000000/delivery-driver-license-queue | cat
+   ```
+   :warning: Replace the URL with the appropriate value for the queue you want to check.
+
+   Response:
+   ```json
+   {
+      "Messages": [
+         {
+            "MessageId": "a3750c5f-c817-4fd7-ad62-788f1fc91d49",
+            "ReceiptHandle": "NTdlMDBmMzctYjJhNC00MjY2LTg2OTctZTJlN2Q4ODEyZWM2IGFybjphd3M6c3FzOnVzLWVhc3QtMTowMDAwMDAwMDAwMDA6ZGVsaXZlcnktZHJpdmVyLWxpY2Vuc2UtcXVldWUgYTM3NTBjNWYtYzgxNy00ZmQ3LWFkNjItNzg4ZjFmYzkxZDQ5IDE3MTEwNTU4MDguMTY1MDc3Mg==",
+            "MD5OfBody": "ca3711477c601a8a9b831fbc74fed566",
+            "Body": "{\n  \"deliveryDriverId\": \"0d91b3b0-a19a-48ad-910c-1221cf0b0e36\",\n  \"photoPath\": \"tmp/0d91b3b0-a19a-48ad-910c-1221cf0b0e36.png\",\n  \"timestamp\": \"2024-03-21T15:03:00Z\"\n}"
+         }
+      ]
+   }
+   ```
+   :warning: The response should list the messages in the queue, including the message you sent.
 
 ## Use Cases
 
