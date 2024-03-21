@@ -1,0 +1,3 @@
+{
+    "RedrivePolicy": "{\"maxReceiveCount\": \"3\", \"deadLetterTargetArn\": \"[DLQ_ARN]\"}"
+}
