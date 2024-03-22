@@ -1,0 +1,29 @@
+@startuml rental-module-component-diagram
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Dynamic.puml
+
+LAYOUT_TOP_DOWN()
+
+AddElementTag("microservice", $shape=EightSidedShape(), $bgColor="CornflowerBlue", $fontColor="white", $legendText="Microservice")
+
+Title "Rental Module Architecture"
+
+Person(driver, "Delivery Driver", "A driver looking to rent a motorcycle for delivery tasks.")
+
+System_Boundary(c1, "Rental Module") {
+    Container(mobile_app, "Native Mobile App", "React Native", "Allows drivers to request motorcycle rentals.")
+    Container(rest_api, "Delivery Driver Management API", "ASP.NET Core", "Provides endpoints for managing motorcycle rentals.", $tags = "microservice")
+    Container(consumer, "Rental Agreement Worker", ".NET Worker Service", "Processes queued messages for rental agreement creation.", $tags = "microservice")
+    ContainerQueue(queue, "AWS SQS", "Amazon SQS", "Stores rental requests for processing.")
+    ContainerDb(rental_db, "Moto Delivery Manager Database", "PostgreSQL & Dapper", "Stores information on motorcycles, drivers, and rental agreements.")
+}
+
+Rel_Right(driver, mobile_app, "Submits rental requests using", "HTTPS")
+Rel_Down(mobile_app, rest_api, "Forwards rental requests to", "HTTPS")
+Rel_Down(rest_api, queue, "Queues rental agreements in", "HTTPS")
+Rel_Up(consumer, queue, "Processes rental agreements from", "HTTPS")
+Rel(consumer, rental_db, "Writes rental agreements to", "JDBC")
+Rel_Left(consumer, driver, "Notifies drivers of rental agreement status using", "Push Notifications")
+
+SHOW_LEGEND()
+@enduml
