@@ -1,9 +1,10 @@
 using Adapters.Inbound.SQSDriverLicensePhotoProcessorAdapter;
-using Adapters.Outbounds.PostgresDbAdapter;
 
 using Amazon.SQS;
 
 using Core.Application.UseCases.ProcessDriverLicensePhotoUpload;
+
+using MotoDeliveryManager.Adapters.Outbounds.PostgresDbAdapter.Entities.DeliveryDrivers;
 
 var builder = Host.CreateApplicationBuilder(args);
 

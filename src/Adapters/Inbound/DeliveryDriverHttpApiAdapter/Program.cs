@@ -2,8 +2,10 @@ using System.Text.Json.Serialization;
 
 using Adapters.Inbound.DeliveryDriverHttpApiAdapter.Modules.Common.Swagger;
 using Adapters.Outbounds.AwsS3StorageAdapter;
-using Adapters.Outbounds.PostgresDbAdapter;
+
 using Core.Application.UseCases.RegisterDeliveryDriver;
+
+using MotoDeliveryManager.Adapters.Outbounds.PostgresDbAdapter.Entities.DeliveryDrivers;
 
 var builder = WebApplication.CreateBuilder(args);
 

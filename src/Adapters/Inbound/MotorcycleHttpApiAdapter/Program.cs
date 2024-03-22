@@ -1,8 +1,10 @@
 using Adapters.Inbound.MotorcycleHttpApiAdapter.Modules.Common.Swagger;
-using Adapters.Outbounds.PostgresDbAdapter;
+
 using Core.Application.UseCases.FilterMotorcyclesByLicensePlate;
 using Core.Application.UseCases.RegisterMotorcycle;
 using Core.Application.UseCases.UpdateMotorcycleLicensePlate;
+
+using MotoDeliveryManager.Adapters.Outbounds.PostgresDbAdapter.Entities.Motorcycles;
 
 using System.Text.Json.Serialization;
 
