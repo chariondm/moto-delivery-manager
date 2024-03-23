@@ -1,10 +1,15 @@
 <Project Sdk="Microsoft.NET.Sdk.Worker">
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-    <Nullable>enable</Nullable>
+    <AssemblyName>MotoDeliveryManager.Infrastructure.Database.PostgresDb</AssemblyName>
+    <Description>The PostgresDb project is responsible for the database context and migrations of the application.</Description>
     <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>12</LangVersion>
+    <Nullable>enable</Nullable>
+    <RootNamespace>MotoDeliveryManager.Infrastructure.Database.PostgresDb</RootNamespace>
+    <TargetFramework>net8.0</TargetFramework>
     <UserSecretsId>dotnet-PostgresDb-6c3226ee-d5da-480a-b00e-86b999d13fc5</UserSecretsId>
+    <WarningAsErrors>True</WarningAsErrors>
   </PropertyGroup>
 
   <ItemGroup>
@@ -20,4 +25,15 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\Core\Domain\Domain.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="Microsoft.EntityFrameworkCore" />
+    <Using Include="Microsoft.EntityFrameworkCore.Metadata.Builders" />
+    <Using Include="MotoDeliveryManager.Core.Domain.DeliveryDrivers" />
+    <Using Include="MotoDeliveryManager.Core.Domain.Motorcycles" />
+    <Using Include="MotoDeliveryManager.Core.Domain.Rentals" />
+    <Using Include="MotoDeliveryManager.Infrastructure.Database.PostgresDb.Configurations" />
+    <Using Include="System.Reflection" />
+  </ItemGroup>
+
 </Project>

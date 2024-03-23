@@ -1,9 +1,8 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace PostgresDb.Migrations
+namespace MotoDeliveryManager.Infrastructure.Database.PostgresDb.Migrations
 {
     /// <inheritdoc />
     public partial class CreateRentalPlanTable : Migration

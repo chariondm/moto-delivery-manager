@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace PostgresDb.Migrations
+namespace MotoDeliveryManager.Infrastructure.Database.PostgresDb.Migrations
 {
     /// <inheritdoc />
     public partial class CreateDeliveryDriverTable : Migration

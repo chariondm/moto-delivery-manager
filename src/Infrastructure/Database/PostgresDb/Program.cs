@@ -1,7 +1,3 @@
-using Infrastructure.Database.PostgresDb.Configurations;
-
-using Microsoft.EntityFrameworkCore;
-
 var builder = Host.CreateApplicationBuilder(args);
 
 builder.Configuration
