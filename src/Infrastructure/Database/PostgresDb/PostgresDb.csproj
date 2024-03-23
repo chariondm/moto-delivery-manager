@@ -9,7 +9,7 @@
     <RootNamespace>MotoDeliveryManager.Infrastructure.Database.PostgresDb</RootNamespace>
     <TargetFramework>net8.0</TargetFramework>
     <UserSecretsId>dotnet-PostgresDb-6c3226ee-d5da-480a-b00e-86b999d13fc5</UserSecretsId>
-    <WarningAsErrors>True</WarningAsErrors>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
 
   <ItemGroup>

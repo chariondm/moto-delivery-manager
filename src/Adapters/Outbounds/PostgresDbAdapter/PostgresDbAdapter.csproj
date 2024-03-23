@@ -8,7 +8,7 @@
     <Nullable>enable</Nullable>
     <RootNamespace>MotoDeliveryManager.Adapters.Outbounds.PostgresDbAdapter</RootNamespace>
     <TargetFramework>net8.0</TargetFramework>
-    <WarningAsErrors>True</WarningAsErrors>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
 
   <ItemGroup>
