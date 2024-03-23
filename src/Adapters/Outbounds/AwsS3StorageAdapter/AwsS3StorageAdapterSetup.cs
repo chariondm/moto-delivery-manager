@@ -1,6 +1,6 @@
 ﻿using Amazon.S3;
 
-using Core.Application.UseCases.RegisterDeliveryDriver.Outbounds;
+using MotoDeliveryManager.Core.Application.UseCases.RegisterDeliveryDriver.Outbounds;
 
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;

@@ -1,7 +1,7 @@
-using Core.Application.UseCases.UpdateMotorcycleLicensePlate.Inbounds;
-using Core.Application.UseCases.UpdateMotorcycleLicensePlate.Outbounds;
+using MotoDeliveryManager.Core.Application.UseCases.UpdateMotorcycleLicensePlate.Inbounds;
+using MotoDeliveryManager.Core.Application.UseCases.UpdateMotorcycleLicensePlate.Outbounds;
 
-namespace Core.Application.UseCases.UpdateMotorcycleLicensePlate;
+namespace MotoDeliveryManager.Core.Application.UseCases.UpdateMotorcycleLicensePlate;
 
 public sealed class UpdateMotorcycleLicensePlateUseCase(IUpdateMotorcycleLicensePlateRepository repository)
     : IUpdateMotorcycleLicensePlateUseCase

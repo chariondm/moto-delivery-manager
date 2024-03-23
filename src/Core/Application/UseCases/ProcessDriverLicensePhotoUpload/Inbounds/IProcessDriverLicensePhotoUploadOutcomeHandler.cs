@@ -1,4 +1,4 @@
-namespace Core.Application.UseCases.ProcessDriverLicensePhotoUpload.Inbounds;
+namespace MotoDeliveryManager.Core.Application.UseCases.ProcessDriverLicensePhotoUpload.Inbounds;
 
 /// <summary>
 /// Handles the outcomes of attempting to process a driver's license photo upload.

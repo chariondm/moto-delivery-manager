@@ -1,6 +1,6 @@
 using MotoDeliveryManager.Core.Domain.Rentals;
 
-namespace Core.Application.UseCases.Rentals.ListRentalPlans.Outbounds;
+namespace MotoDeliveryManager.Core.Application.UseCases.Rentals.ListRentalPlans.Outbounds;
 
 public interface IListRentalPlansRepository
 {

@@ -1,6 +1,6 @@
 using FluentValidation;
 
-namespace Core.Application.UseCases.RegisterDeliveryDriver.Inbounds;
+namespace MotoDeliveryManager.Core.Application.UseCases.RegisterDeliveryDriver.Inbounds;
 
 public class RegisterDeliveryDriverInboundValidator : AbstractValidator<RegisterDeliveryDriverInbound>
 {

@@ -1,6 +1,6 @@
 using MotoDeliveryManager.Core.Domain.Rentals;
 
-namespace Core.Application.UseCases.Rentals.ListRentalPlans.Inbounds;
+namespace MotoDeliveryManager.Core.Application.UseCases.Rentals.ListRentalPlans.Inbounds;
 
 /// <summary>
 /// Represents the handler for the outcome of the ListRentalPlans use case.

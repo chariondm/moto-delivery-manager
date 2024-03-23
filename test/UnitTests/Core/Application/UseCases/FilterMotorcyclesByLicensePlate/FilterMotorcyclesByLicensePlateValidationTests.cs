@@ -1,8 +1,8 @@
 using AutoFixture;
 
-using Core.Application.Common;
-using Core.Application.UseCases.FilterMotorcyclesByLicensePlate;
-using Core.Application.UseCases.FilterMotorcyclesByLicensePlate.Inbounds;
+using MotoDeliveryManager.Core.Application.Common;
+using MotoDeliveryManager.Core.Application.UseCases.FilterMotorcyclesByLicensePlate;
+using MotoDeliveryManager.Core.Application.UseCases.FilterMotorcyclesByLicensePlate.Inbounds;
 
 using Microsoft.Extensions.DependencyInjection;
 

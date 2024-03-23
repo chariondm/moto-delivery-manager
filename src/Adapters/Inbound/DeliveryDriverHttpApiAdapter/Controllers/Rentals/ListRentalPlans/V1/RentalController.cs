@@ -1,6 +1,6 @@
 using Adapters.Inbound.DeliveryDriverHttpApiAdapter.Modules.Common;
 
-using Core.Application.UseCases.Rentals.ListRentalPlans.Inbounds;
+using MotoDeliveryManager.Core.Application.UseCases.Rentals.ListRentalPlans.Inbounds;
 using MotoDeliveryManager.Core.Domain.Rentals;
 
 using Microsoft.AspNetCore.Mvc;

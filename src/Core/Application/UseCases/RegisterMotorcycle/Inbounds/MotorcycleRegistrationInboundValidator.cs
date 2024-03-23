@@ -1,8 +1,8 @@
-using Core.Application.Common;
+using MotoDeliveryManager.Core.Application.Common;
 
 using FluentValidation;
 
-namespace Core.Application.UseCases.RegisterMotorcycle.Inbounds;
+namespace MotoDeliveryManager.Core.Application.UseCases.RegisterMotorcycle.Inbounds;
 
 public class MotorcycleRegistrationInboundValidator : AbstractValidator<MotorcycleRegistrationInbound>
 {

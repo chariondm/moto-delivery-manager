@@ -3,8 +3,8 @@ using System.Text.Json.Serialization;
 using Adapters.Inbound.DeliveryDriverHttpApiAdapter.Modules.Common.Swagger;
 using Adapters.Outbounds.AwsS3StorageAdapter;
 
-using Core.Application.UseCases.RegisterDeliveryDriver;
-using Core.Application.UseCases.Rentals.ListRentalPlans;
+using MotoDeliveryManager.Core.Application.UseCases.RegisterDeliveryDriver;
+using MotoDeliveryManager.Core.Application.UseCases.Rentals.ListRentalPlans;
 
 using MotoDeliveryManager.Adapters.Outbounds.PostgresDbAdapter.Entities.DeliveryDrivers;
 using MotoDeliveryManager.Adapters.Outbounds.PostgresDbAdapter.Entities.Rentals;

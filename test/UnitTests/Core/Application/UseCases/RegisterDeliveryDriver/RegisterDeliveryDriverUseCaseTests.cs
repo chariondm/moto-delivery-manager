@@ -1,8 +1,8 @@
 using AutoFixture;
 
-using Core.Application.UseCases.RegisterDeliveryDriver;
-using Core.Application.UseCases.RegisterDeliveryDriver.Inbounds;
-using Core.Application.UseCases.RegisterDeliveryDriver.Outbounds;
+using MotoDeliveryManager.Core.Application.UseCases.RegisterDeliveryDriver;
+using MotoDeliveryManager.Core.Application.UseCases.RegisterDeliveryDriver.Inbounds;
+using MotoDeliveryManager.Core.Application.UseCases.RegisterDeliveryDriver.Outbounds;
 using MotoDeliveryManager.Core.Domain.DeliveryDrivers;
 
 using Moq;

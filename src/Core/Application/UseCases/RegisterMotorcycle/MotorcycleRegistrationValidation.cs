@@ -1,12 +1,12 @@
-using Core.Application.Common;
-using Core.Application.UseCases.RegisterMotorcycle.Inbounds;
-using Core.Application.UseCases.RegisterMotorcycle.Outbounds;
+using MotoDeliveryManager.Core.Application.Common;
+using MotoDeliveryManager.Core.Application.UseCases.RegisterMotorcycle.Inbounds;
+using MotoDeliveryManager.Core.Application.UseCases.RegisterMotorcycle.Outbounds;
 
 using FluentValidation;
 
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Core.Application.UseCases.RegisterMotorcycle;
+namespace MotoDeliveryManager.Core.Application.UseCases.RegisterMotorcycle;
 
 public sealed class MotorcycleRegistrationValidation(IServiceProvider serviceProvider) 
     : IMotorcycleRegistrationUseCase

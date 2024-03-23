@@ -1,7 +1,7 @@
 using Adapters.Inbound.DeliveryDriverHttpApiAdapter.Modules.Common;
 
-using Core.Application.Common;
-using Core.Application.UseCases.RegisterDeliveryDriver.Inbounds;
+using MotoDeliveryManager.Core.Application.Common;
+using MotoDeliveryManager.Core.Application.UseCases.RegisterDeliveryDriver.Inbounds;
 
 using Microsoft.AspNetCore.Mvc;
 

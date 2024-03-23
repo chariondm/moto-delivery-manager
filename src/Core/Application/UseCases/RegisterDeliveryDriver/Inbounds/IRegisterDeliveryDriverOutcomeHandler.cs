@@ -1,4 +1,4 @@
-namespace Core.Application.UseCases.RegisterDeliveryDriver.Inbounds;
+namespace MotoDeliveryManager.Core.Application.UseCases.RegisterDeliveryDriver.Inbounds;
 
 /// <summary>
 /// Defines the contract for handling the outcomes of the Delivery Driver registration use case.

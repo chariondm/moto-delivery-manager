@@ -1,6 +1,6 @@
 using MotoDeliveryManager.Core.Domain.Motorcycles;
 
-namespace Core.Application.UseCases.UpdateMotorcycleLicensePlate.Outbounds;
+namespace MotoDeliveryManager.Core.Application.UseCases.UpdateMotorcycleLicensePlate.Outbounds;
 
 /// <summary>
 /// Defines the repository interface for updating a motorcycle's license plate and checking for license plate uniqueness.

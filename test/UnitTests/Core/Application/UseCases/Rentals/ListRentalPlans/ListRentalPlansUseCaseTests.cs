@@ -1,9 +1,9 @@
 using AutoFixture;
 using AutoFixture.AutoMoq;
 
-using Core.Application.UseCases.Rentals.ListRentalPlans;
-using Core.Application.UseCases.Rentals.ListRentalPlans.Inbounds;
-using Core.Application.UseCases.Rentals.ListRentalPlans.Outbounds;
+using MotoDeliveryManager.Core.Application.UseCases.Rentals.ListRentalPlans;
+using MotoDeliveryManager.Core.Application.UseCases.Rentals.ListRentalPlans.Inbounds;
+using MotoDeliveryManager.Core.Application.UseCases.Rentals.ListRentalPlans.Outbounds;
 using MotoDeliveryManager.Core.Domain.Rentals;
 
 using Moq;

@@ -3,8 +3,8 @@ using System.Text.Json;
 using Amazon.SQS;
 using Amazon.SQS.Model;
 
-using Core.Application.Common;
-using Core.Application.UseCases.ProcessDriverLicensePhotoUpload.Inbounds;
+using MotoDeliveryManager.Core.Application.Common;
+using MotoDeliveryManager.Core.Application.UseCases.ProcessDriverLicensePhotoUpload.Inbounds;
 
 namespace Adapters.Inbound.SQSDriverLicensePhotoProcessorAdapter;
 

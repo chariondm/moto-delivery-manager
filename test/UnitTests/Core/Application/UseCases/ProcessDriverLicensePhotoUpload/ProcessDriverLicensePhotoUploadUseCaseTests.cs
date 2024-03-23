@@ -1,8 +1,8 @@
 using AutoFixture;
 
-using Core.Application.UseCases.ProcessDriverLicensePhotoUpload;
-using Core.Application.UseCases.ProcessDriverLicensePhotoUpload.Inbounds;
-using Core.Application.UseCases.ProcessDriverLicensePhotoUpload.Outbounds;
+using MotoDeliveryManager.Core.Application.UseCases.ProcessDriverLicensePhotoUpload;
+using MotoDeliveryManager.Core.Application.UseCases.ProcessDriverLicensePhotoUpload.Inbounds;
+using MotoDeliveryManager.Core.Application.UseCases.ProcessDriverLicensePhotoUpload.Outbounds;
 
 using Moq;
 

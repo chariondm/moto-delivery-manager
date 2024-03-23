@@ -1,9 +1,9 @@
 using AutoFixture;
 
-using Core.Application.Common;
-using Core.Application.UseCases.RegisterDeliveryDriver;
-using Core.Application.UseCases.RegisterDeliveryDriver.Inbounds;
-using Core.Application.UseCases.RegisterDeliveryDriver.Outbounds;
+using MotoDeliveryManager.Core.Application.Common;
+using MotoDeliveryManager.Core.Application.UseCases.RegisterDeliveryDriver;
+using MotoDeliveryManager.Core.Application.UseCases.RegisterDeliveryDriver.Inbounds;
+using MotoDeliveryManager.Core.Application.UseCases.RegisterDeliveryDriver.Outbounds;
 
 using FluentValidation;
 using FluentValidation.Results;

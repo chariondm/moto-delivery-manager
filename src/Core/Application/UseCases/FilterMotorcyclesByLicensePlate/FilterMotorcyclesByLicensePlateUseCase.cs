@@ -1,7 +1,7 @@
-using Core.Application.UseCases.FilterMotorcyclesByLicensePlate.Inbounds;
-using Core.Application.UseCases.FilterMotorcyclesByLicensePlate.Outbounds;
+using MotoDeliveryManager.Core.Application.UseCases.FilterMotorcyclesByLicensePlate.Inbounds;
+using MotoDeliveryManager.Core.Application.UseCases.FilterMotorcyclesByLicensePlate.Outbounds;
 
-namespace Core.Application.UseCases.FilterMotorcyclesByLicensePlate;
+namespace MotoDeliveryManager.Core.Application.UseCases.FilterMotorcyclesByLicensePlate;
 
 public sealed class FilterMotorcyclesByLicensePlateUseCase(IFilterMotorcyclesByLicensePlateRepository repository) : IFilterMotorcyclesByLicensePlateUseCase
 {

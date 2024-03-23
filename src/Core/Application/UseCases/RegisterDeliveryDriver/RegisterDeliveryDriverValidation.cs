@@ -1,12 +1,12 @@
-using Core.Application.Common;
-using Core.Application.UseCases.RegisterDeliveryDriver.Inbounds;
-using Core.Application.UseCases.RegisterDeliveryDriver.Outbounds;
+using MotoDeliveryManager.Core.Application.Common;
+using MotoDeliveryManager.Core.Application.UseCases.RegisterDeliveryDriver.Inbounds;
+using MotoDeliveryManager.Core.Application.UseCases.RegisterDeliveryDriver.Outbounds;
 
 using FluentValidation;
 
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Core.Application.UseCases.RegisterDeliveryDriver;
+namespace MotoDeliveryManager.Core.Application.UseCases.RegisterDeliveryDriver;
 
 public sealed class RegisterDeliveryDriverValidation(IServiceProvider serviceProvider) 
     : IRegisterDeliveryDriverUseCase

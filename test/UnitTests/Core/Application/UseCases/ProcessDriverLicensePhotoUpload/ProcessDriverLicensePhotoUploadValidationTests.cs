@@ -1,8 +1,8 @@
 using AutoFixture;
 
-using Core.Application.Common;
-using Core.Application.UseCases.ProcessDriverLicensePhotoUpload;
-using Core.Application.UseCases.ProcessDriverLicensePhotoUpload.Inbounds;
+using MotoDeliveryManager.Core.Application.Common;
+using MotoDeliveryManager.Core.Application.UseCases.ProcessDriverLicensePhotoUpload;
+using MotoDeliveryManager.Core.Application.UseCases.ProcessDriverLicensePhotoUpload.Inbounds;
 
 using FluentValidation;
 using FluentValidation.Results;

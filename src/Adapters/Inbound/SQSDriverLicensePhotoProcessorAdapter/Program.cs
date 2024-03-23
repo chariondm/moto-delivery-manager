@@ -2,7 +2,7 @@ using Adapters.Inbound.SQSDriverLicensePhotoProcessorAdapter;
 
 using Amazon.SQS;
 
-using Core.Application.UseCases.ProcessDriverLicensePhotoUpload;
+using MotoDeliveryManager.Core.Application.UseCases.ProcessDriverLicensePhotoUpload;
 
 using MotoDeliveryManager.Adapters.Outbounds.PostgresDbAdapter.Entities.DeliveryDrivers;
 

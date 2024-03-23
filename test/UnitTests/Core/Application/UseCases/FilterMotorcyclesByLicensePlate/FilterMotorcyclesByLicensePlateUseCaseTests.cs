@@ -1,9 +1,9 @@
 using AutoFixture;
 using AutoFixture.AutoMoq;
 
-using Core.Application.UseCases.FilterMotorcyclesByLicensePlate;
-using Core.Application.UseCases.FilterMotorcyclesByLicensePlate.Inbounds;
-using Core.Application.UseCases.FilterMotorcyclesByLicensePlate.Outbounds;
+using MotoDeliveryManager.Core.Application.UseCases.FilterMotorcyclesByLicensePlate;
+using MotoDeliveryManager.Core.Application.UseCases.FilterMotorcyclesByLicensePlate.Inbounds;
+using MotoDeliveryManager.Core.Application.UseCases.FilterMotorcyclesByLicensePlate.Outbounds;
 using MotoDeliveryManager.Core.Domain.Motorcycles;
 
 using Moq;

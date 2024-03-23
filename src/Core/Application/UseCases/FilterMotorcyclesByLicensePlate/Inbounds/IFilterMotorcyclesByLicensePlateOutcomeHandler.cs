@@ -1,6 +1,6 @@
 using MotoDeliveryManager.Core.Domain.Motorcycles;
 
-namespace Core.Application.UseCases.FilterMotorcyclesByLicensePlate.Inbounds;
+namespace MotoDeliveryManager.Core.Application.UseCases.FilterMotorcyclesByLicensePlate.Inbounds;
 
 /// <summary>
 /// Handles the outcomes of attempting to filter motorcycles by license plate.

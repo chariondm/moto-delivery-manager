@@ -21,12 +21,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Using Include="Core.Application.UseCases.FilterMotorcyclesByLicensePlate.Outbounds" />
-    <Using Include="Core.Application.UseCases.ProcessDriverLicensePhotoUpload.Outbounds" />
-    <Using Include="Core.Application.UseCases.RegisterDeliveryDriver.Outbounds" />
-    <Using Include="Core.Application.UseCases.RegisterMotorcycle.Outbounds" />
-    <Using Include="Core.Application.UseCases.UpdateMotorcycleLicensePlate.Outbounds" />
-    <Using Include="Core.Application.UseCases.Rentals.ListRentalPlans.Outbounds" />
     <Using Include="Dapper" />
     <Using Include="Microsoft.Extensions.DependencyInjection" />
     <Using Include="Microsoft.Extensions.Logging" />
@@ -35,6 +29,12 @@
     <Using Include="MotoDeliveryManager.Core.Domain.DeliveryDrivers" />
     <Using Include="MotoDeliveryManager.Core.Domain.Motorcycles" />
     <Using Include="MotoDeliveryManager.Core.Domain.Rentals" />
+    <Using Include="MotoDeliveryManager.Core.Application.UseCases.FilterMotorcyclesByLicensePlate.Outbounds" />
+    <Using Include="MotoDeliveryManager.Core.Application.UseCases.ProcessDriverLicensePhotoUpload.Outbounds" />
+    <Using Include="MotoDeliveryManager.Core.Application.UseCases.RegisterDeliveryDriver.Outbounds" />
+    <Using Include="MotoDeliveryManager.Core.Application.UseCases.RegisterMotorcycle.Outbounds" />
+    <Using Include="MotoDeliveryManager.Core.Application.UseCases.UpdateMotorcycleLicensePlate.Outbounds" />
+    <Using Include="MotoDeliveryManager.Core.Application.UseCases.Rentals.ListRentalPlans.Outbounds" />
     <Using Include="Npgsql" />
     <Using Include="System.Data" />
   </ItemGroup>

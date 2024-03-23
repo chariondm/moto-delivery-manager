@@ -1,9 +1,9 @@
 using AutoFixture;
 
-using Core.Application.Common;
-using Core.Application.UseCases.RegisterMotorcycle;
-using Core.Application.UseCases.RegisterMotorcycle.Inbounds;
-using Core.Application.UseCases.RegisterMotorcycle.Outbounds;
+using MotoDeliveryManager.Core.Application.Common;
+using MotoDeliveryManager.Core.Application.UseCases.RegisterMotorcycle;
+using MotoDeliveryManager.Core.Application.UseCases.RegisterMotorcycle.Inbounds;
+using MotoDeliveryManager.Core.Application.UseCases.RegisterMotorcycle.Outbounds;
 
 using FluentValidation;
 using FluentValidation.Results;

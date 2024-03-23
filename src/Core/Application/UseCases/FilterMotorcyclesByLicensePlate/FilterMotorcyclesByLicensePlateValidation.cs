@@ -1,11 +1,11 @@
-using Core.Application.Common;
-using Core.Application.UseCases.FilterMotorcyclesByLicensePlate.Inbounds;
+using MotoDeliveryManager.Core.Application.Common;
+using MotoDeliveryManager.Core.Application.UseCases.FilterMotorcyclesByLicensePlate.Inbounds;
 
 using FluentValidation;
 
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Core.Application.UseCases.FilterMotorcyclesByLicensePlate;
+namespace MotoDeliveryManager.Core.Application.UseCases.FilterMotorcyclesByLicensePlate;
 
 public sealed class FilterMotorcyclesByLicensePlateValidation(IServiceProvider serviceProvider) 
     : IFilterMotorcyclesByLicensePlateUseCase

@@ -1,10 +1,10 @@
 using AutoFixture;
 using AutoFixture.AutoMoq;
 
-using Core.Application.Common;
-using Core.Application.UseCases.UpdateMotorcycleLicensePlate;
-using Core.Application.UseCases.UpdateMotorcycleLicensePlate.Inbounds;
-using Core.Application.UseCases.UpdateMotorcycleLicensePlate.Outbounds;
+using MotoDeliveryManager.Core.Application.Common;
+using MotoDeliveryManager.Core.Application.UseCases.UpdateMotorcycleLicensePlate;
+using MotoDeliveryManager.Core.Application.UseCases.UpdateMotorcycleLicensePlate.Inbounds;
+using MotoDeliveryManager.Core.Application.UseCases.UpdateMotorcycleLicensePlate.Outbounds;
 
 using FluentValidation;
 using FluentValidation.Results;

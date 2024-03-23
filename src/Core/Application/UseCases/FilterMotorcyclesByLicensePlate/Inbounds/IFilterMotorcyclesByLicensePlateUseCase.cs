@@ -1,4 +1,4 @@
-namespace Core.Application.UseCases.FilterMotorcyclesByLicensePlate.Inbounds;
+namespace MotoDeliveryManager.Core.Application.UseCases.FilterMotorcyclesByLicensePlate.Inbounds;
 
 /// <summary>
 /// Processes the filtering of motorcycles by an optional license plate.
