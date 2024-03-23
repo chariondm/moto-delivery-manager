@@ -1,14 +1,15 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-    <Nullable>enable</Nullable>
+    <AssemblyName>MotoDeliveryManager.Adapters.Inbound.DeliveryDriverHttpApiAdapter</AssemblyName>
+    <Description>The DeliveryDriverHttpApiAdapter project is responsible for the implementation of the inbound ports of the application using the HTTP protocol to manage the delivery driver registrations, motorcycle rentals agreements and delivery operations.</Description>
     <ImplicitUsings>enable</ImplicitUsings>
-  </PropertyGroup>
-
-  <PropertyGroup>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <NoWarn>$(NoWarn);1591</NoWarn>
+    <LangVersion>12</LangVersion>
+    <Nullable>enable</Nullable>
+    <RootNamespace>MotoDeliveryManager.Adapters.Inbound.DeliveryDriverHttpApiAdapter</RootNamespace>
+    <TargetFramework>net8.0</TargetFramework>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
 
   <ItemGroup>
@@ -21,6 +22,26 @@
     <ProjectReference Include="..\..\..\Core\Application\Application.csproj" />
     <ProjectReference Include="..\..\Outbounds\AwsS3StorageAdapter\AwsS3StorageAdapter.csproj" />
     <ProjectReference Include="..\..\Outbounds\PostgresDbAdapter\PostgresDbAdapter.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="Microsoft.AspNetCore.Mvc" />
+    <Using Include="Microsoft.OpenApi.Models" />
+    <Using Include="MotoDeliveryManager.Adapters.Inbound.DeliveryDriverHttpApiAdapter.Modules.Common" />
+    <Using Include="MotoDeliveryManager.Adapters.Inbound.DeliveryDriverHttpApiAdapter.Modules.Common.Swagger" />
+    <Using Include="MotoDeliveryManager.Adapters.Outbounds.AwsS3StorageAdapter" />
+    <Using Include="MotoDeliveryManager.Adapters.Outbounds.PostgresDbAdapter.Entities.DeliveryDrivers" />
+    <Using Include="MotoDeliveryManager.Adapters.Outbounds.PostgresDbAdapter.Entities.Rentals" />
+    <Using Include="MotoDeliveryManager.Core.Application.Common" />
+    <Using Include="MotoDeliveryManager.Core.Application.UseCases.RegisterDeliveryDriver" />
+    <Using Include="MotoDeliveryManager.Core.Application.UseCases.RegisterDeliveryDriver.Inbounds" />
+    <Using Include="MotoDeliveryManager.Core.Application.UseCases.Rentals.ListRentalPlans" />
+    <Using Include="MotoDeliveryManager.Core.Application.UseCases.Rentals.ListRentalPlans.Inbounds" />
+    <Using Include="MotoDeliveryManager.Core.Domain.DeliveryDrivers" />
+    <Using Include="MotoDeliveryManager.Core.Domain.Rentals" />
+    <Using Include="System.ComponentModel.DataAnnotations" />
+    <Using Include="System.Reflection" />
+    <Using Include="System.Text.Json.Serialization" />
   </ItemGroup>
 
 </Project>

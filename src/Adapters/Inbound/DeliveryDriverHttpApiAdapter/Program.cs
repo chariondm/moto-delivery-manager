@@ -1,14 +1,3 @@
-using System.Text.Json.Serialization;
-
-using Adapters.Inbound.DeliveryDriverHttpApiAdapter.Modules.Common.Swagger;
-using MotoDeliveryManager.Adapters.Outbounds.AwsS3StorageAdapter;
-
-using MotoDeliveryManager.Core.Application.UseCases.RegisterDeliveryDriver;
-using MotoDeliveryManager.Core.Application.UseCases.Rentals.ListRentalPlans;
-
-using MotoDeliveryManager.Adapters.Outbounds.PostgresDbAdapter.Entities.DeliveryDrivers;
-using MotoDeliveryManager.Adapters.Outbounds.PostgresDbAdapter.Entities.Rentals;
-
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Configuration

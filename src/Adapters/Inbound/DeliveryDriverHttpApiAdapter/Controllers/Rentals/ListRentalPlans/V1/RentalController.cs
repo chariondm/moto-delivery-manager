@@ -1,11 +1,4 @@
-using Adapters.Inbound.DeliveryDriverHttpApiAdapter.Modules.Common;
-
-using MotoDeliveryManager.Core.Application.UseCases.Rentals.ListRentalPlans.Inbounds;
-using MotoDeliveryManager.Core.Domain.Rentals;
-
-using Microsoft.AspNetCore.Mvc;
-
-namespace Adapters.Inbound.DeliveryDriverHttpApiAdapter.Controllers.Rentals.ListRentalPlans.V1;
+namespace MotoDeliveryManager.Adapters.Inbound.DeliveryDriverHttpApiAdapter.Controllers.Rentals.ListRentalPlans.V1;
 
 /// <summary>
 /// Represents the controller for the rental management endpoints.

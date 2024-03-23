@@ -1,4 +1,4 @@
-namespace Adapters.Inbound.DeliveryDriverHttpApiAdapter.Controllers.RegisterDeliveryDriver.V1;
+namespace MotoDeliveryManager.Adapters.Inbound.DeliveryDriverHttpApiAdapter.Controllers.RegisterDeliveryDriver.V1;
 
 /// <summary>
 /// Represents the response to a successful delivery driver registration.

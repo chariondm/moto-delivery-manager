@@ -1,8 +1,4 @@
-using System.ComponentModel.DataAnnotations;
-
-using MotoDeliveryManager.Core.Domain.DeliveryDrivers;
-
-namespace Adapters.Inbound.DeliveryDriverHttpApiAdapter.Controllers.RegisterDeliveryDriver.V1;
+namespace MotoDeliveryManager.Adapters.Inbound.DeliveryDriverHttpApiAdapter.Controllers.RegisterDeliveryDriver.V1;
 
 /// <summary>
 /// Represents the request to register a delivery driver.
