@@ -26,8 +26,11 @@
   <ItemGroup>
     <Using Include="Amazon.SQS" />
     <Using Include="Amazon.SQS.Model" />
+    <Using Include="MotoDeliveryManager.Adapters.Inbound.SQSDriverLicensePhotoProcessorAdapter" />
+    <Using Include="MotoDeliveryManager.Adapters.Outbounds.PostgresDbAdapter.Entities.DeliveryDrivers" />
     <Using Include="MotoDeliveryManager.Core.Application.Common" />
-    <Using Include="MotoDeliveryManager.Core.Application.UseCases.ProcessDriverLicensePhotoUpload.Inbounds" />
+    <Using Include="MotoDeliveryManager.Core.Application.UseCases.DeliveryDrivers.ProcessDriverLicensePhotoUpload" />
+    <Using Include="MotoDeliveryManager.Core.Application.UseCases.DeliveryDrivers.ProcessDriverLicensePhotoUpload.Inbounds" />
     <Using Include="System.Text.Json" />
   </ItemGroup>
 

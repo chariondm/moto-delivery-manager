@@ -29,11 +29,11 @@
     <Using Include="MotoDeliveryManager.Core.Domain.DeliveryDrivers" />
     <Using Include="MotoDeliveryManager.Core.Domain.Motorcycles" />
     <Using Include="MotoDeliveryManager.Core.Domain.Rentals" />
-    <Using Include="MotoDeliveryManager.Core.Application.UseCases.FilterMotorcyclesByLicensePlate.Outbounds" />
-    <Using Include="MotoDeliveryManager.Core.Application.UseCases.ProcessDriverLicensePhotoUpload.Outbounds" />
-    <Using Include="MotoDeliveryManager.Core.Application.UseCases.RegisterDeliveryDriver.Outbounds" />
-    <Using Include="MotoDeliveryManager.Core.Application.UseCases.RegisterMotorcycle.Outbounds" />
-    <Using Include="MotoDeliveryManager.Core.Application.UseCases.UpdateMotorcycleLicensePlate.Outbounds" />
+    <Using Include="MotoDeliveryManager.Core.Application.UseCases.Motorcycles.FilterMotorcyclesByLicensePlate.Outbounds" />
+    <Using Include="MotoDeliveryManager.Core.Application.UseCases.DeliveryDrivers.ProcessDriverLicensePhotoUpload.Outbounds" />
+    <Using Include="MotoDeliveryManager.Core.Application.UseCases.DeliveryDrivers.RegisterDeliveryDriver.Outbounds" />
+    <Using Include="MotoDeliveryManager.Core.Application.UseCases.Motorcycles.RegisterMotorcycle.Outbounds" />
+    <Using Include="MotoDeliveryManager.Core.Application.UseCases.Motorcycles.UpdateMotorcycleLicensePlate.Outbounds" />
     <Using Include="MotoDeliveryManager.Core.Application.UseCases.Rentals.ListRentalPlans.Outbounds" />
     <Using Include="Npgsql" />
     <Using Include="System.Data" />
