@@ -1,6 +1,4 @@
-using Adapters.Inbound.SQSDriverLicensePhotoProcessorAdapter;
-
-using Amazon.SQS;
+using MotoDeliveryManager.Adapters.Inbound.SQSDriverLicensePhotoProcessorAdapter;
 
 using MotoDeliveryManager.Core.Application.UseCases.ProcessDriverLicensePhotoUpload;
 
