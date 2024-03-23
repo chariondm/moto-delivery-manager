@@ -1,5 +1,3 @@
-using MotoDeliveryManager.Core.Domain.Rentals;
-
 namespace MotoDeliveryManager.Core.Application.UseCases.Rentals.ListRentalPlans.Inbounds;
 
 /// <summary>

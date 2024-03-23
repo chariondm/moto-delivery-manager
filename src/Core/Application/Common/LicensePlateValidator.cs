@@ -1,5 +1,3 @@
-using FluentValidation;
-
 namespace MotoDeliveryManager.Core.Application.Common;
 
 public class LicensePlateValidator : AbstractValidator<string?>

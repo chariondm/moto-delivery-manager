@@ -1,6 +1,3 @@
-using MotoDeliveryManager.Core.Application.UseCases.Rentals.ListRentalPlans.Inbounds;
-using MotoDeliveryManager.Core.Application.UseCases.Rentals.ListRentalPlans.Outbounds;
-
 namespace MotoDeliveryManager.Core.Application.UseCases.Rentals.ListRentalPlans;
 
 public sealed class ListRentalPlansUseCase(IListRentalPlansRepository repository) : IListRentalPlansUseCase

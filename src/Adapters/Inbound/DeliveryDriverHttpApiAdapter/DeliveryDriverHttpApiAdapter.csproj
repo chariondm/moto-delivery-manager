@@ -33,8 +33,8 @@
     <Using Include="MotoDeliveryManager.Adapters.Outbounds.PostgresDbAdapter.Entities.DeliveryDrivers" />
     <Using Include="MotoDeliveryManager.Adapters.Outbounds.PostgresDbAdapter.Entities.Rentals" />
     <Using Include="MotoDeliveryManager.Core.Application.Common" />
-    <Using Include="MotoDeliveryManager.Core.Application.UseCases.RegisterDeliveryDriver" />
-    <Using Include="MotoDeliveryManager.Core.Application.UseCases.RegisterDeliveryDriver.Inbounds" />
+    <Using Include="MotoDeliveryManager.Core.Application.UseCases.DeliveryDrivers.RegisterDeliveryDriver" />
+    <Using Include="MotoDeliveryManager.Core.Application.UseCases.DeliveryDrivers.RegisterDeliveryDriver.Inbounds" />
     <Using Include="MotoDeliveryManager.Core.Application.UseCases.Rentals.ListRentalPlans" />
     <Using Include="MotoDeliveryManager.Core.Application.UseCases.Rentals.ListRentalPlans.Inbounds" />
     <Using Include="MotoDeliveryManager.Core.Domain.DeliveryDrivers" />

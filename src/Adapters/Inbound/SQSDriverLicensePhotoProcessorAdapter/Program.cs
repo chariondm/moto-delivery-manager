@@ -1,9 +1,3 @@
-using MotoDeliveryManager.Adapters.Inbound.SQSDriverLicensePhotoProcessorAdapter;
-
-using MotoDeliveryManager.Core.Application.UseCases.ProcessDriverLicensePhotoUpload;
-
-using MotoDeliveryManager.Adapters.Outbounds.PostgresDbAdapter.Entities.DeliveryDrivers;
-
 var builder = Host.CreateApplicationBuilder(args);
 
 builder.Configuration

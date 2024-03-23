@@ -25,7 +25,7 @@
     <Using Include="Amazon.S3.Model" />
     <Using Include="Microsoft.Extensions.Configuration" />
     <Using Include="Microsoft.Extensions.DependencyInjection" />
-    <Using Include="MotoDeliveryManager.Core.Application.UseCases.RegisterDeliveryDriver.Outbounds" />
+    <Using Include="MotoDeliveryManager.Core.Application.UseCases.DeliveryDrivers.RegisterDeliveryDriver.Outbounds" />
   </ItemGroup>
 
 </Project>
