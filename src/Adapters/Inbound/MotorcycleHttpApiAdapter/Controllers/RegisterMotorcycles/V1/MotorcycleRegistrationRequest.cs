@@ -1,6 +1,4 @@
-using System.ComponentModel.DataAnnotations;
-
-namespace Adapters.Inbound.MotorcycleHttpApiAdapter.Controllers.RegisterMotorcycles.V1;
+namespace MotoDeliveryManager.Adapters.Inbound.MotorcycleHttpApiAdapter.Controllers.RegisterMotorcycles.V1;
 
 /// <summary>
 /// Request DTO for registering a new motorcycle.

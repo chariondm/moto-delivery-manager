@@ -1,8 +1,4 @@
-using System.Reflection;
-
-using Microsoft.OpenApi.Models;
-
-namespace Adapters.Inbound.MotorcycleHttpApiAdapter.Modules.Common.Swagger;
+namespace MotoDeliveryManager.Adapters.Inbound.MotorcycleHttpApiAdapter.Modules.Common.Swagger;
 
 /// <summary>
 /// Provides extension methods for configuring Swagger documentation and UI in an ASP.NET Core application.

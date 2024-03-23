@@ -1,7 +1,4 @@
-using Microsoft.AspNetCore.Mvc;
-
-namespace Adapters.Inbound.MotorcycleHttpApiAdapter.Controllers.GetMotorcycleDetailsById.V1;
-
+namespace MotoDeliveryManager.Adapters.Inbound.MotorcycleHttpApiAdapter.Controllers.GetMotorcycleDetailsById.V1;
 
 /// <summary>
 /// Controller for managing motorcycles.

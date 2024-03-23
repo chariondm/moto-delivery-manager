@@ -1,6 +1,4 @@
-using Microsoft.AspNetCore.Mvc;
-
-namespace Adapters.Inbound.MotorcycleHttpApiAdapter.Modules.Common;
+namespace MotoDeliveryManager.Adapters.Inbound.MotorcycleHttpApiAdapter.Modules.Common;
 
 /// <summary>
 /// Encapsulates a standardized response format for API operations, offering a consistent structure for both successful outcomes and errors.
