@@ -1,15 +1,4 @@
-using AutoFixture;
-
-using MotoDeliveryManager.Core.Application.UseCases.RegisterDeliveryDriver;
-using MotoDeliveryManager.Core.Application.UseCases.RegisterDeliveryDriver.Inbounds;
-using MotoDeliveryManager.Core.Application.UseCases.RegisterDeliveryDriver.Outbounds;
-using MotoDeliveryManager.Core.Domain.DeliveryDrivers;
-
-using Moq;
-
-using UnitTests.Helpers;
-
-namespace UnitTests.Core.Application.UseCases.RegisterDeliveryDriver;
+namespace MotoDeliveryManager.UnitTests.Core.Application.UseCases.RegisterDeliveryDriver;
 
 public class RegisterDeliveryDriverUseCaseTests
 {

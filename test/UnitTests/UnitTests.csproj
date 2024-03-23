@@ -1,12 +1,13 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-
     <IsPackable>false</IsPackable>
     <IsTestProject>true</IsTestProject>
+    <Nullable>enable</Nullable>
+    <RootNamespace>MotoDeliveryManager.UnitTests</RootNamespace>
+    <TargetFramework>net8.0</TargetFramework>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
 
   <ItemGroup>
@@ -26,11 +27,40 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Using Include="Xunit" />
+    <ProjectReference Include="..\..\src\Core\Application\Application.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Core\Application\Application.csproj" />
+    <Using Include="AutoFixture" />
+    <Using Include="AutoFixture.AutoMoq" />
+    <Using Include="FluentValidation" />
+    <Using Include="FluentValidation.Results" />
+    <Using Include="Microsoft.Extensions.DependencyInjection" />
+    <Using Include="MotoDeliveryManager.Core.Application.Common" />
+    <Using Include="MotoDeliveryManager.Core.Application.UseCases.FilterMotorcyclesByLicensePlate" />
+    <Using Include="MotoDeliveryManager.Core.Application.UseCases.FilterMotorcyclesByLicensePlate.Inbounds" />
+    <Using Include="MotoDeliveryManager.Core.Application.UseCases.FilterMotorcyclesByLicensePlate.Outbounds" />
+    <Using Include="MotoDeliveryManager.Core.Application.UseCases.ProcessDriverLicensePhotoUpload" />
+    <Using Include="MotoDeliveryManager.Core.Application.UseCases.ProcessDriverLicensePhotoUpload.Inbounds" />
+    <Using Include="MotoDeliveryManager.Core.Application.UseCases.ProcessDriverLicensePhotoUpload.Outbounds" />
+    <Using Include="MotoDeliveryManager.Core.Application.UseCases.RegisterDeliveryDriver" />
+    <Using Include="MotoDeliveryManager.Core.Application.UseCases.RegisterDeliveryDriver.Inbounds" />
+    <Using Include="MotoDeliveryManager.Core.Application.UseCases.RegisterDeliveryDriver.Outbounds" />
+    <Using Include="MotoDeliveryManager.Core.Application.UseCases.RegisterMotorcycle" />
+    <Using Include="MotoDeliveryManager.Core.Application.UseCases.RegisterMotorcycle.Inbounds" />
+    <Using Include="MotoDeliveryManager.Core.Application.UseCases.RegisterMotorcycle.Outbounds" />
+    <Using Include="MotoDeliveryManager.Core.Application.UseCases.Rentals.ListRentalPlans" />
+    <Using Include="MotoDeliveryManager.Core.Application.UseCases.Rentals.ListRentalPlans.Inbounds" />
+    <Using Include="MotoDeliveryManager.Core.Application.UseCases.Rentals.ListRentalPlans.Outbounds" />
+    <Using Include="MotoDeliveryManager.Core.Application.UseCases.UpdateMotorcycleLicensePlate" />
+    <Using Include="MotoDeliveryManager.Core.Application.UseCases.UpdateMotorcycleLicensePlate.Inbounds" />
+    <Using Include="MotoDeliveryManager.Core.Application.UseCases.UpdateMotorcycleLicensePlate.Outbounds" />
+    <Using Include="MotoDeliveryManager.Core.Domain.DeliveryDrivers" />
+    <Using Include="MotoDeliveryManager.Core.Domain.Motorcycles" />
+    <Using Include="MotoDeliveryManager.Core.Domain.Rentals" />
+    <Using Include="MotoDeliveryManager.UnitTests.Helpers" />
+    <Using Include="Moq" />
+    <Using Include="Xunit" />
   </ItemGroup>
 
 </Project>

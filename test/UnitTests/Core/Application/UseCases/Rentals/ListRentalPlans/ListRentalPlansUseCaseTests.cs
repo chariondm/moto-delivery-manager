@@ -1,14 +1,4 @@
-using AutoFixture;
-using AutoFixture.AutoMoq;
-
-using MotoDeliveryManager.Core.Application.UseCases.Rentals.ListRentalPlans;
-using MotoDeliveryManager.Core.Application.UseCases.Rentals.ListRentalPlans.Inbounds;
-using MotoDeliveryManager.Core.Application.UseCases.Rentals.ListRentalPlans.Outbounds;
-using MotoDeliveryManager.Core.Domain.Rentals;
-
-using Moq;
-
-namespace UnitTests.Core.Application.UseCases.Rentals.ListRentalPlans;
+namespace MotoDeliveryManager.UnitTests.Core.Application.UseCases.Rentals.ListRentalPlans;
 
 public class ListRentalPlansUseCaseTests
 {

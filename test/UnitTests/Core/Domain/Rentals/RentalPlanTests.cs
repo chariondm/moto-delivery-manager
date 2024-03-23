@@ -1,10 +1,4 @@
-using AutoFixture;
-
-using MotoDeliveryManager.Core.Domain.Rentals;
-
-using UnitTests.Helpers;
-
-namespace UnitTests.Core.Domain.Rentals;
+namespace MotoDeliveryManager.UnitTests.Core.Domain.Rentals;
 
 public class RentalPlanTests
 {

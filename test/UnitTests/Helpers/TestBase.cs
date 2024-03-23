@@ -1,8 +1,4 @@
-using AutoFixture;
-using AutoFixture.AutoMoq;
-using Microsoft.Extensions.DependencyInjection;
-
-namespace UnitTests.Helpers;
+namespace MotoDeliveryManager.UnitTests.Helpers;
 
 /// <summary>
 /// Provides a base class for unit test classes, encapsulating common setup for dependency injection and AutoFixture configurations.

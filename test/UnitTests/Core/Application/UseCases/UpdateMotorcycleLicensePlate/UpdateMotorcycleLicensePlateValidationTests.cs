@@ -1,21 +1,4 @@
-using AutoFixture;
-using AutoFixture.AutoMoq;
-
-using MotoDeliveryManager.Core.Application.Common;
-using MotoDeliveryManager.Core.Application.UseCases.UpdateMotorcycleLicensePlate;
-using MotoDeliveryManager.Core.Application.UseCases.UpdateMotorcycleLicensePlate.Inbounds;
-using MotoDeliveryManager.Core.Application.UseCases.UpdateMotorcycleLicensePlate.Outbounds;
-
-using FluentValidation;
-using FluentValidation.Results;
-
-using Microsoft.Extensions.DependencyInjection;
-
-using Moq;
-
-using UnitTests.Helpers;
-
-namespace UnitTests.Core.Application.UseCases.UpdateMotorcycleLicensePlate;
+namespace MotoDeliveryManager.UnitTests.Core.Application.UseCases.UpdateMotorcycleLicensePlate;
 
 public class UpdateMotorcycleLicensePlateValidationTests : TestBase
 {

@@ -1,19 +1,4 @@
-using AutoFixture;
-
-using MotoDeliveryManager.Core.Application.Common;
-using MotoDeliveryManager.Core.Application.UseCases.ProcessDriverLicensePhotoUpload;
-using MotoDeliveryManager.Core.Application.UseCases.ProcessDriverLicensePhotoUpload.Inbounds;
-
-using FluentValidation;
-using FluentValidation.Results;
-
-using Microsoft.Extensions.DependencyInjection;
-
-using Moq;
-
-using UnitTests.Helpers;
-
-namespace UnitTests.Core.Application.UseCases.ProcessDriverLicensePhotoUpload;
+namespace MotoDeliveryManager.UnitTests.Core.Application.UseCases.ProcessDriverLicensePhotoUpload;
 
 public class ProcessDriverLicensePhotoUploadValidationTests : TestBase
 {

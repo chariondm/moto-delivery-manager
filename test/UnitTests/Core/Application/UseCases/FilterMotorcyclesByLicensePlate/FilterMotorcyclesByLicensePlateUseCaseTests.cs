@@ -1,14 +1,4 @@
-using AutoFixture;
-using AutoFixture.AutoMoq;
-
-using MotoDeliveryManager.Core.Application.UseCases.FilterMotorcyclesByLicensePlate;
-using MotoDeliveryManager.Core.Application.UseCases.FilterMotorcyclesByLicensePlate.Inbounds;
-using MotoDeliveryManager.Core.Application.UseCases.FilterMotorcyclesByLicensePlate.Outbounds;
-using MotoDeliveryManager.Core.Domain.Motorcycles;
-
-using Moq;
-
-namespace UnitTests.Core.Application.UseCases.FilterMotorcyclesByLicensePlate;
+namespace MotoDeliveryManager.UnitTests.Core.Application.UseCases.FilterMotorcyclesByLicensePlate;
 
 public class UpdateMotorcycleLicensePlateUseCaseTests
 {
