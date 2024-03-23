@@ -1,4 +1,4 @@
-namespace Core.Application.UseCases.Rentals.ListRentalPlans.Inbounds;
+namespace MotoDeliveryManager.Core.Application.UseCases.Rentals.ListRentalPlans.Inbounds;
 
 /// <summary>
 /// Represents the use case for listing motorcycle rental plans.

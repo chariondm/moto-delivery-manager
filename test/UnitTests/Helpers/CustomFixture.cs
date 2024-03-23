@@ -1,7 +1,4 @@
-using AutoFixture;
-using AutoFixture.AutoMoq;
-
-namespace UnitTests.Helpers;
+namespace MotoDeliveryManager.UnitTests.Helpers;
 
 public class CustomFixture
 {

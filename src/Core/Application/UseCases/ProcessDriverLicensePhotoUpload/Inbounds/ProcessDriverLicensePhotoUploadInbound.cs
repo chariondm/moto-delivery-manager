@@ -1,4 +1,4 @@
-namespace Core.Application.UseCases.ProcessDriverLicensePhotoUpload.Inbounds;
+namespace MotoDeliveryManager.Core.Application.UseCases.ProcessDriverLicensePhotoUpload.Inbounds;
 
 /// <summary>
 /// Inbound port for the ProcessDriverLicensePhotoUpload use case.

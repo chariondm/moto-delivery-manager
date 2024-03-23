@@ -1,4 +1,4 @@
-namespace Adapters.Inbound.SQSDriverLicensePhotoProcessorAdapter;
+namespace MotoDeliveryManager.Adapters.Inbound.SQSDriverLicensePhotoProcessorAdapter;
 
 /// <summary>
 /// Represents a message acknowledgement.

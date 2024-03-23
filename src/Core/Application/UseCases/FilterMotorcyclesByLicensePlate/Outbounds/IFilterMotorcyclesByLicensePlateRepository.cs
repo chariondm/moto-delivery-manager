@@ -1,6 +1,6 @@
-using Core.Domain.Motorcycles;
+using MotoDeliveryManager.Core.Domain.Motorcycles;
 
-namespace Core.Application.UseCases.FilterMotorcyclesByLicensePlate.Outbounds;
+namespace MotoDeliveryManager.Core.Application.UseCases.FilterMotorcyclesByLicensePlate.Outbounds;
 
 /// <summary>
 /// Provides an interface for accessing and manipulating motorcycle records, allowing for optional filtering by license plate.

@@ -1,4 +1,4 @@
-namespace Core.Application.UseCases.ProcessDriverLicensePhotoUpload.Outbounds;
+namespace MotoDeliveryManager.Core.Application.UseCases.ProcessDriverLicensePhotoUpload.Outbounds;
 
 /// <summary>
 /// Repository for updating the driver's license photo path.

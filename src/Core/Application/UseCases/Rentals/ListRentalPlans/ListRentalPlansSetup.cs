@@ -1,8 +1,8 @@
-using Core.Application.UseCases.Rentals.ListRentalPlans.Inbounds;
+using MotoDeliveryManager.Core.Application.UseCases.Rentals.ListRentalPlans.Inbounds;
 
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Core.Application.UseCases.Rentals.ListRentalPlans;
+namespace MotoDeliveryManager.Core.Application.UseCases.Rentals.ListRentalPlans;
 
 public static class ListRentalPlansSetup
 {

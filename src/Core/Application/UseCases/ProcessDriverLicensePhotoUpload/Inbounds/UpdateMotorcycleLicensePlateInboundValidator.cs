@@ -1,6 +1,6 @@
 using FluentValidation;
 
-namespace Core.Application.UseCases.ProcessDriverLicensePhotoUpload.Inbounds;
+namespace MotoDeliveryManager.Core.Application.UseCases.ProcessDriverLicensePhotoUpload.Inbounds;
 
 public class ProcessDriverLicensePhotoUploadInboundValidator : AbstractValidator<ProcessDriverLicensePhotoUploadInbound>
 {

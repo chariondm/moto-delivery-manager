@@ -1,9 +1,4 @@
-using Core.Domain.DeliveryDrivers;
-
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
-
-namespace Infrastructure.Database.PostgresDb.Configurations.EntityConfigurations;
+namespace MotoDeliveryManager.Infrastructure.Database.PostgresDb.Configurations.EntityConfigurations;
 
 public class DeliveryDriverConfiguration : IEntityTypeConfiguration<DeliveryDriver>
 {

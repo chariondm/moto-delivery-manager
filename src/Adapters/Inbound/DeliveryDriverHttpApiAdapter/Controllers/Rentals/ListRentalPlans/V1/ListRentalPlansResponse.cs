@@ -1,6 +1,4 @@
-using Core.Domain.Rentals;
-
-namespace Adapters.Inbound.DeliveryDriverHttpApiAdapter.Controllers.Rentals.ListRentalPlans.V1;
+namespace MotoDeliveryManager.Adapters.Inbound.DeliveryDriverHttpApiAdapter.Controllers.Rentals.ListRentalPlans.V1;
 
 /// <summary>
 /// Represents the response for listing motorcycle rental plans.

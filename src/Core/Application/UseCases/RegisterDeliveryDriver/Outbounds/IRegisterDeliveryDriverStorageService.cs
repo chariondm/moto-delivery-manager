@@ -1,4 +1,4 @@
-namespace Core.Application.UseCases.RegisterDeliveryDriver.Outbounds;
+namespace MotoDeliveryManager.Core.Application.UseCases.RegisterDeliveryDriver.Outbounds;
 
 // I need a interface to represent the storage service that will be used to generate a presigned url to upload the delivery driver license photo such as AWS S3, Azure Blob Storage, Google Cloud Storage, etc.
 /// <summary>

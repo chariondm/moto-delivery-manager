@@ -1,14 +1,4 @@
-using AutoFixture;
-using AutoFixture.AutoMoq;
-
-using Core.Application.UseCases.RegisterMotorcycle;
-using Core.Application.UseCases.RegisterMotorcycle.Inbounds;
-using Core.Application.UseCases.RegisterMotorcycle.Outbounds;
-using Core.Domain.Motorcycles;
-
-using Moq;
-
-namespace UnitTests.Core.Application.UseCases.RegisterMotorcycle;
+namespace MotoDeliveryManager.UnitTests.Core.Application.UseCases.RegisterMotorcycle;
 
 public class MotorcycleRegistrationUseCaseTests
 {

@@ -1,4 +1,4 @@
-namespace Core.Application.UseCases.UpdateMotorcycleLicensePlate.Inbounds;
+namespace MotoDeliveryManager.Core.Application.UseCases.UpdateMotorcycleLicensePlate.Inbounds;
 
 /// <summary>
 /// Defines the contract for the use case responsible for updating the license plate of a motorcycle.

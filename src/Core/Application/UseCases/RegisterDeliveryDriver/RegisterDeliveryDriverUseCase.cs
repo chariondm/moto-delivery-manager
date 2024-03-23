@@ -1,9 +1,9 @@
-using Core.Application.UseCases.RegisterDeliveryDriver.Inbounds;
-using Core.Application.UseCases.RegisterDeliveryDriver.Outbounds;
+using MotoDeliveryManager.Core.Application.UseCases.RegisterDeliveryDriver.Inbounds;
+using MotoDeliveryManager.Core.Application.UseCases.RegisterDeliveryDriver.Outbounds;
 
-using Core.Domain.DeliveryDrivers;
+using MotoDeliveryManager.Core.Domain.DeliveryDrivers;
 
-namespace Core.Application.UseCases.RegisterDeliveryDriver;
+namespace MotoDeliveryManager.Core.Application.UseCases.RegisterDeliveryDriver;
 
 public sealed class RegisterDeliveryDriverUseCase(
     IRegisterDeliveryDriverRepository repository,

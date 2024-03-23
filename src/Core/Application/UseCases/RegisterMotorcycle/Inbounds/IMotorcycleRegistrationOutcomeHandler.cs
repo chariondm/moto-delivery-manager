@@ -1,4 +1,4 @@
-namespace Core.Application.UseCases.RegisterMotorcycle.Inbounds;
+namespace MotoDeliveryManager.Core.Application.UseCases.RegisterMotorcycle.Inbounds;
 
 /// <summary>
 /// Defines the contract for handling the outcomes of the motorcycle registration process.

@@ -1,20 +1,4 @@
-using AutoFixture;
-
-using Core.Application.Common;
-using Core.Application.UseCases.RegisterDeliveryDriver;
-using Core.Application.UseCases.RegisterDeliveryDriver.Inbounds;
-using Core.Application.UseCases.RegisterDeliveryDriver.Outbounds;
-
-using FluentValidation;
-using FluentValidation.Results;
-
-using Microsoft.Extensions.DependencyInjection;
-
-using Moq;
-
-using UnitTests.Helpers;
-
-namespace UnitTests.Core.Application.UseCases.RegisterDeliveryDriver;
+namespace MotoDeliveryManager.UnitTests.Core.Application.UseCases.RegisterDeliveryDriver;
 
 public class RegisterDeliveryDriverValidationTests : TestBase
 {

@@ -1,11 +1,11 @@
-using Core.Application.Common;
-using Core.Application.UseCases.UpdateMotorcycleLicensePlate.Inbounds;
+using MotoDeliveryManager.Core.Application.Common;
+using MotoDeliveryManager.Core.Application.UseCases.UpdateMotorcycleLicensePlate.Inbounds;
 
 using FluentValidation;
 
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Core.Application.UseCases.UpdateMotorcycleLicensePlate;
+namespace MotoDeliveryManager.Core.Application.UseCases.UpdateMotorcycleLicensePlate;
 
 public static class UpdateMotorcycleLicensePlateSetup
 {

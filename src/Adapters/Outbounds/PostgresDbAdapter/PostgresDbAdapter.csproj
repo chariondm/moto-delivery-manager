@@ -8,7 +8,7 @@
     <Nullable>enable</Nullable>
     <RootNamespace>MotoDeliveryManager.Adapters.Outbounds.PostgresDbAdapter</RootNamespace>
     <TargetFramework>net8.0</TargetFramework>
-    <WarningAsErrors>True</WarningAsErrors>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
 
   <ItemGroup>
@@ -21,20 +21,20 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Using Include="Core.Application.UseCases.FilterMotorcyclesByLicensePlate.Outbounds" />
-    <Using Include="Core.Application.UseCases.ProcessDriverLicensePhotoUpload.Outbounds" />
-    <Using Include="Core.Application.UseCases.RegisterDeliveryDriver.Outbounds" />
-    <Using Include="Core.Application.UseCases.RegisterMotorcycle.Outbounds" />
-    <Using Include="Core.Application.UseCases.UpdateMotorcycleLicensePlate.Outbounds" />
-    <Using Include="Core.Application.UseCases.Rentals.ListRentalPlans.Outbounds" />
-    <Using Include="Core.Domain.DeliveryDrivers" />
-    <Using Include="Core.Domain.Motorcycles" />
-    <Using Include="Core.Domain.Rentals" />
     <Using Include="Dapper" />
     <Using Include="Microsoft.Extensions.DependencyInjection" />
     <Using Include="Microsoft.Extensions.Logging" />
     <Using Include="MotoDeliveryManager.Adapters.Outbounds.PostgresDbAdapter.Infrastructure.ConnectionFactory" />
     <Using Include="MotoDeliveryManager.Adapters.Outbounds.PostgresDbAdapter.Infrastructure.TypeHandlers" />
+    <Using Include="MotoDeliveryManager.Core.Domain.DeliveryDrivers" />
+    <Using Include="MotoDeliveryManager.Core.Domain.Motorcycles" />
+    <Using Include="MotoDeliveryManager.Core.Domain.Rentals" />
+    <Using Include="MotoDeliveryManager.Core.Application.UseCases.FilterMotorcyclesByLicensePlate.Outbounds" />
+    <Using Include="MotoDeliveryManager.Core.Application.UseCases.ProcessDriverLicensePhotoUpload.Outbounds" />
+    <Using Include="MotoDeliveryManager.Core.Application.UseCases.RegisterDeliveryDriver.Outbounds" />
+    <Using Include="MotoDeliveryManager.Core.Application.UseCases.RegisterMotorcycle.Outbounds" />
+    <Using Include="MotoDeliveryManager.Core.Application.UseCases.UpdateMotorcycleLicensePlate.Outbounds" />
+    <Using Include="MotoDeliveryManager.Core.Application.UseCases.Rentals.ListRentalPlans.Outbounds" />
     <Using Include="Npgsql" />
     <Using Include="System.Data" />
   </ItemGroup>

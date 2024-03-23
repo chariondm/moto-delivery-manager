@@ -1,6 +1,6 @@
 using FluentValidation;
 
-namespace Core.Application.Common;
+namespace MotoDeliveryManager.Core.Application.Common;
 
 public class LicensePlateValidator : AbstractValidator<string?>
 {

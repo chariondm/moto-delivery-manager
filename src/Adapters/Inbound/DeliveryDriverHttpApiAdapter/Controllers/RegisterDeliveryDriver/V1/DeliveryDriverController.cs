@@ -1,12 +1,4 @@
-using Adapters.Inbound.DeliveryDriverHttpApiAdapter.Modules.Common;
-
-using Core.Application.Common;
-using Core.Application.UseCases.RegisterDeliveryDriver.Inbounds;
-
-using Microsoft.AspNetCore.Mvc;
-
-namespace Adapters.Inbound.DeliveryDriverHttpApiAdapter.Controllers.RegisterDeliveryDriver.V1;
-
+namespace MotoDeliveryManager.Adapters.Inbound.DeliveryDriverHttpApiAdapter.Controllers.RegisterDeliveryDriver.V1;
 
 /// <summary>
 /// Represents the controller for the delivery driver management endpoints.

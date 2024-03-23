@@ -1,4 +1,4 @@
-namespace Core.Application.UseCases.UpdateMotorcycleLicensePlate.Inbounds;
+namespace MotoDeliveryManager.Core.Application.UseCases.UpdateMotorcycleLicensePlate.Inbounds;
 
 /// <summary>
 /// Represents the inbound data required for updating a motorcycle.

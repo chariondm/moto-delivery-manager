@@ -1,12 +1,4 @@
-using Adapters.Inbound.MotorcycleHttpApiAdapter.Modules.Common;
-
-using Core.Application.Common;
-using Core.Application.UseCases.RegisterMotorcycle.Inbounds;
-
-using Microsoft.AspNetCore.Mvc;
-
-namespace Adapters.Inbound.MotorcycleHttpApiAdapter.Controllers.RegisterMotorcycles.V1;
-
+namespace MotoDeliveryManager.Adapters.Inbound.MotorcycleHttpApiAdapter.Controllers.RegisterMotorcycles.V1;
 
 /// <summary>
 /// Controller for managing motorcycles.

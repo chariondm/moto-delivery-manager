@@ -1,12 +1,4 @@
-using System.Text.Json;
-
-using Amazon.SQS;
-using Amazon.SQS.Model;
-
-using Core.Application.Common;
-using Core.Application.UseCases.ProcessDriverLicensePhotoUpload.Inbounds;
-
-namespace Adapters.Inbound.SQSDriverLicensePhotoProcessorAdapter;
+namespace MotoDeliveryManager.Adapters.Inbound.SQSDriverLicensePhotoProcessorAdapter;
 
 public class DriverLicensePhotoProcessorWorker(IServiceProvider serviceProvider, string queueName)
     : BackgroundService, IMessageAcknowledgement, IProcessDriverLicensePhotoUploadOutcomeHandler

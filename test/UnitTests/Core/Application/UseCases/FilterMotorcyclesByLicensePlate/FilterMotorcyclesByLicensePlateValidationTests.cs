@@ -1,16 +1,4 @@
-using AutoFixture;
-
-using Core.Application.Common;
-using Core.Application.UseCases.FilterMotorcyclesByLicensePlate;
-using Core.Application.UseCases.FilterMotorcyclesByLicensePlate.Inbounds;
-
-using Microsoft.Extensions.DependencyInjection;
-
-using Moq;
-
-using UnitTests.Helpers;
-
-namespace UnitTests.Core.Application.UseCases.FilterMotorcyclesByLicensePlate;
+namespace MotoDeliveryManager.UnitTests.Core.Application.UseCases.FilterMotorcyclesByLicensePlate;
 
 public class FilterMotorcyclesByLicensePlateValidationTests : TestBase
 {

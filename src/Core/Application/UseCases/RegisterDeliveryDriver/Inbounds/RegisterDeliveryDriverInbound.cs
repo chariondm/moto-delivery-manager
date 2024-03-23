@@ -1,6 +1,6 @@
-using Core.Domain.DeliveryDrivers;
+using MotoDeliveryManager.Core.Domain.DeliveryDrivers;
 
-namespace Core.Application.UseCases.RegisterDeliveryDriver.Inbounds;
+namespace MotoDeliveryManager.Core.Application.UseCases.RegisterDeliveryDriver.Inbounds;
 
 /// <summary>
 /// Represents the inbound data required for registering a delivery driver.

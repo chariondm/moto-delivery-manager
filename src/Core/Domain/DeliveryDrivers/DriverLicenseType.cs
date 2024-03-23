@@ -1,4 +1,4 @@
-namespace Core.Domain.DeliveryDrivers;
+namespace MotoDeliveryManager.Core.Domain.DeliveryDrivers;
 
 /// <summary>
 /// Represents the type of driver's license.

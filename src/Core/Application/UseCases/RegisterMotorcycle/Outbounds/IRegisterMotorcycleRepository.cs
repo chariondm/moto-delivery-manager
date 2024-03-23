@@ -1,6 +1,6 @@
-using Core.Domain.Motorcycles;
+using MotoDeliveryManager.Core.Domain.Motorcycles;
 
-namespace Core.Application.UseCases.RegisterMotorcycle.Outbounds;
+namespace MotoDeliveryManager.Core.Application.UseCases.RegisterMotorcycle.Outbounds;
 
 /// <summary>
 /// Provides an interface for accessing and manipulating motorcycle records.

@@ -1,4 +1,4 @@
-namespace Core.Application.UseCases.RegisterMotorcycle.Inbounds;
+namespace MotoDeliveryManager.Core.Application.UseCases.RegisterMotorcycle.Inbounds;
 
 /// <summary>
 /// UseCase the registration of motorcycles.

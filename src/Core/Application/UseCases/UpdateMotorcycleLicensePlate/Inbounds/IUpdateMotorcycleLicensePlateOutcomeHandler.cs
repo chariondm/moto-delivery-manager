@@ -1,6 +1,6 @@
-using Core.Domain.Motorcycles;
+using MotoDeliveryManager.Core.Domain.Motorcycles;
 
-namespace Core.Application.UseCases.UpdateMotorcycleLicensePlate.Inbounds;
+namespace MotoDeliveryManager.Core.Application.UseCases.UpdateMotorcycleLicensePlate.Inbounds;
 
 /// <summary>
 /// Handles the outcomes of attempting to update a motorcycle's license plate.

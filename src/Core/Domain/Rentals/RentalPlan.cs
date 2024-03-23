@@ -1,4 +1,4 @@
-namespace Core.Domain.Rentals;
+namespace MotoDeliveryManager.Core.Domain.Rentals;
 
 /// <summary>
 /// Represents a rental plan.

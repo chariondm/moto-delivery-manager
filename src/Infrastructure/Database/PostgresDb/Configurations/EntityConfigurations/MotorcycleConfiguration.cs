@@ -1,9 +1,4 @@
-using Core.Domain.Motorcycles;
-
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
-
-namespace Infrastructure.Database.PostgresDb.Configurations.EntityConfigurations;
+namespace MotoDeliveryManager.Infrastructure.Database.PostgresDb.Configurations.EntityConfigurations;
 
 public class MotorcycleConfiguration : IEntityTypeConfiguration<Motorcycle>
 {

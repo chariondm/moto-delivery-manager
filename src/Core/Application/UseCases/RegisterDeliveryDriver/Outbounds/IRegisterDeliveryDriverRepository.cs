@@ -1,6 +1,6 @@
-using Core.Domain.DeliveryDrivers;
+using MotoDeliveryManager.Core.Domain.DeliveryDrivers;
 
-namespace Core.Application.UseCases.RegisterDeliveryDriver.Outbounds;
+namespace MotoDeliveryManager.Core.Application.UseCases.RegisterDeliveryDriver.Outbounds;
 
 /// <summary>
 /// Defines the contract for the repository that registers a delivery driver.

@@ -1,20 +1,4 @@
-using AutoFixture;
-
-using Core.Application.Common;
-using Core.Application.UseCases.RegisterMotorcycle;
-using Core.Application.UseCases.RegisterMotorcycle.Inbounds;
-using Core.Application.UseCases.RegisterMotorcycle.Outbounds;
-
-using FluentValidation;
-using FluentValidation.Results;
-
-using Microsoft.Extensions.DependencyInjection;
-
-using Moq;
-
-using UnitTests.Helpers;
-
-namespace UnitTests.Core.Application.UseCases.RegisterMotorcycle;
+namespace MotoDeliveryManager.UnitTests.Core.Application.UseCases.RegisterMotorcycle;
 
 public class MotorcycleRegistrationValidationTests : TestBase
 {

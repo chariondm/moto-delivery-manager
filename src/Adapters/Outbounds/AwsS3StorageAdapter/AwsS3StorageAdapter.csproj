@@ -1,9 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <AssemblyName>MotoDeliveryManager.Adapters.Outbounds.AwsS3StorageAdapter</AssemblyName>
+    <Description>The AwsS3StorageAdapter project is responsible for the implementation of the outbound ports of the application using the AWS S3 storage.</Description>
     <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>12</LangVersion>
     <Nullable>enable</Nullable>
+    <RootNamespace>MotoDeliveryManager.Adapters.Outbounds.AwsS3StorageAdapter</RootNamespace>
+    <TargetFramework>net8.0</TargetFramework>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
 
   <ItemGroup>
@@ -13,6 +18,14 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\Core\Application\Application.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="Amazon.S3" />
+    <Using Include="Amazon.S3.Model" />
+    <Using Include="Microsoft.Extensions.Configuration" />
+    <Using Include="Microsoft.Extensions.DependencyInjection" />
+    <Using Include="MotoDeliveryManager.Core.Application.UseCases.RegisterDeliveryDriver.Outbounds" />
   </ItemGroup>
 
 </Project>

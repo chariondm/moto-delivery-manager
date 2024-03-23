@@ -1,12 +1,4 @@
-using System.Reflection;
-
-using Core.Domain.DeliveryDrivers;
-using Core.Domain.Motorcycles;
-using Core.Domain.Rentals;
-
-using Microsoft.EntityFrameworkCore;
-
-namespace Infrastructure.Database.PostgresDb.Configurations;
+namespace MotoDeliveryManager.Infrastructure.Database.PostgresDb.Configurations;
 
 public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(options)
 {

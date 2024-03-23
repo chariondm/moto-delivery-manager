@@ -1,14 +1,4 @@
-using AutoFixture;
-
-using Core.Application.UseCases.ProcessDriverLicensePhotoUpload;
-using Core.Application.UseCases.ProcessDriverLicensePhotoUpload.Inbounds;
-using Core.Application.UseCases.ProcessDriverLicensePhotoUpload.Outbounds;
-
-using Moq;
-
-using UnitTests.Helpers;
-
-namespace UnitTests.Core.Application.UseCases.ProcessDriverLicensePhotoUpload;
+namespace MotoDeliveryManager.UnitTests.Core.Application.UseCases.ProcessDriverLicensePhotoUpload;
 
 public class ProcessDriverLicensePhotoUploadUseCaseTests
 {

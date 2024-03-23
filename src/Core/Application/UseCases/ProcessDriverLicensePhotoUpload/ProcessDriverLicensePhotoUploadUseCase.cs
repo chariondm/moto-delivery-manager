@@ -1,7 +1,7 @@
-using Core.Application.UseCases.ProcessDriverLicensePhotoUpload.Inbounds;
-using Core.Application.UseCases.ProcessDriverLicensePhotoUpload.Outbounds;
+using MotoDeliveryManager.Core.Application.UseCases.ProcessDriverLicensePhotoUpload.Inbounds;
+using MotoDeliveryManager.Core.Application.UseCases.ProcessDriverLicensePhotoUpload.Outbounds;
 
-namespace Core.Application.UseCases.ProcessDriverLicensePhotoUpload;
+namespace MotoDeliveryManager.Core.Application.UseCases.ProcessDriverLicensePhotoUpload;
 
 public sealed class ProcessDriverLicensePhotoUploadUseCase(IProcessDriverLicensePhotoUploadRepository repository)
     : IProcessDriverLicensePhotoUploadUseCase

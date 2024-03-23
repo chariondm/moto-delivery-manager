@@ -1,4 +1,4 @@
-namespace Core.Application.Common;
+namespace MotoDeliveryManager.Core.Application.Common;
 
 public enum UseCaseType
 {
