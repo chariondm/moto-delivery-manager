@@ -1,4 +1,4 @@
-using Core.Domain.Motorcycles;
+using MotoDeliveryManager.Core.Domain.Motorcycles;
 
 namespace Core.Application.UseCases.FilterMotorcyclesByLicensePlate.Outbounds;
 

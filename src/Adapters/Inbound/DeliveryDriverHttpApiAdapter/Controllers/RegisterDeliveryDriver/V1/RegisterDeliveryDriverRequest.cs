@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-using Core.Domain.DeliveryDrivers;
+using MotoDeliveryManager.Core.Domain.DeliveryDrivers;
 
 namespace Adapters.Inbound.DeliveryDriverHttpApiAdapter.Controllers.RegisterDeliveryDriver.V1;
 

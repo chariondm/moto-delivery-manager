@@ -1,4 +1,4 @@
-using Core.Domain.Rentals;
+using MotoDeliveryManager.Core.Domain.Rentals;
 
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;

@@ -27,14 +27,14 @@
     <Using Include="Core.Application.UseCases.RegisterMotorcycle.Outbounds" />
     <Using Include="Core.Application.UseCases.UpdateMotorcycleLicensePlate.Outbounds" />
     <Using Include="Core.Application.UseCases.Rentals.ListRentalPlans.Outbounds" />
-    <Using Include="Core.Domain.DeliveryDrivers" />
-    <Using Include="Core.Domain.Motorcycles" />
-    <Using Include="Core.Domain.Rentals" />
     <Using Include="Dapper" />
     <Using Include="Microsoft.Extensions.DependencyInjection" />
     <Using Include="Microsoft.Extensions.Logging" />
     <Using Include="MotoDeliveryManager.Adapters.Outbounds.PostgresDbAdapter.Infrastructure.ConnectionFactory" />
     <Using Include="MotoDeliveryManager.Adapters.Outbounds.PostgresDbAdapter.Infrastructure.TypeHandlers" />
+    <Using Include="MotoDeliveryManager.Core.Domain.DeliveryDrivers" />
+    <Using Include="MotoDeliveryManager.Core.Domain.Motorcycles" />
+    <Using Include="MotoDeliveryManager.Core.Domain.Rentals" />
     <Using Include="Npgsql" />
     <Using Include="System.Data" />
   </ItemGroup>

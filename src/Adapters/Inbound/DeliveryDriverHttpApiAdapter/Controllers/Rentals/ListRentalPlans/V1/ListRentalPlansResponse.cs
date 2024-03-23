@@ -1,4 +1,4 @@
-using Core.Domain.Rentals;
+using MotoDeliveryManager.Core.Domain.Rentals;
 
 namespace Adapters.Inbound.DeliveryDriverHttpApiAdapter.Controllers.Rentals.ListRentalPlans.V1;
 

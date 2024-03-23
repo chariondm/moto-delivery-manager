@@ -4,7 +4,7 @@ using AutoFixture.AutoMoq;
 using Core.Application.UseCases.Rentals.ListRentalPlans;
 using Core.Application.UseCases.Rentals.ListRentalPlans.Inbounds;
 using Core.Application.UseCases.Rentals.ListRentalPlans.Outbounds;
-using Core.Domain.Rentals;
+using MotoDeliveryManager.Core.Domain.Rentals;
 
 using Moq;
 

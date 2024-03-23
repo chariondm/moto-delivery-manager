@@ -1,6 +1,6 @@
 using AutoFixture;
 
-using Core.Domain.Rentals;
+using MotoDeliveryManager.Core.Domain.Rentals;
 
 using UnitTests.Helpers;
 

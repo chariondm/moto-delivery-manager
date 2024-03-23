@@ -1,6 +1,6 @@
 using Core.Application.UseCases.RegisterMotorcycle.Inbounds;
 using Core.Application.UseCases.RegisterMotorcycle.Outbounds;
-using Core.Domain.Motorcycles;
+using MotoDeliveryManager.Core.Domain.Motorcycles;
 
 namespace Core.Application.UseCases.RegisterMotorcycle;
 

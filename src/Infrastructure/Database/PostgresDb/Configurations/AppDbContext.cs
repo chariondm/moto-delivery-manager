@@ -1,8 +1,8 @@
 using System.Reflection;
 
-using Core.Domain.DeliveryDrivers;
-using Core.Domain.Motorcycles;
-using Core.Domain.Rentals;
+using MotoDeliveryManager.Core.Domain.DeliveryDrivers;
+using MotoDeliveryManager.Core.Domain.Motorcycles;
+using MotoDeliveryManager.Core.Domain.Rentals;
 
 using Microsoft.EntityFrameworkCore;
 

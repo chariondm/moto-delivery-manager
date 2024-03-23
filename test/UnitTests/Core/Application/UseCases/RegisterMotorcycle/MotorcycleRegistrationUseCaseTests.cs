@@ -4,7 +4,7 @@ using AutoFixture.AutoMoq;
 using Core.Application.UseCases.RegisterMotorcycle;
 using Core.Application.UseCases.RegisterMotorcycle.Inbounds;
 using Core.Application.UseCases.RegisterMotorcycle.Outbounds;
-using Core.Domain.Motorcycles;
+using MotoDeliveryManager.Core.Domain.Motorcycles;
 
 using Moq;
 
