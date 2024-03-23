@@ -1,11 +1,4 @@
-﻿using Amazon.S3;
-
-using MotoDeliveryManager.Core.Application.UseCases.RegisterDeliveryDriver.Outbounds;
-
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-
-namespace Adapters.Outbounds.AwsS3StorageAdapter;
+﻿namespace MotoDeliveryManager.Adapters.Outbounds.AwsS3StorageAdapter;
 
 public static class AwsS3StorageAdapterSetup
 {

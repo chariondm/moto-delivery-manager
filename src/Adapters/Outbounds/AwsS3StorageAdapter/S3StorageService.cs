@@ -1,9 +1,4 @@
-﻿using Amazon.S3;
-using Amazon.S3.Model;
-
-using MotoDeliveryManager.Core.Application.UseCases.RegisterDeliveryDriver.Outbounds;
-
-namespace Adapters.Outbounds.AwsS3StorageAdapter;
+﻿namespace MotoDeliveryManager.Adapters.Outbounds.AwsS3StorageAdapter;
 
 public class S3StorageService(IAmazonS3 s3Client, string bucketName) : IRegisterDeliveryDriverStorageService
 {
