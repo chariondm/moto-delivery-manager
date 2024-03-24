@@ -1,15 +1,12 @@
 namespace MotoDeliveryManager.Core.Domain.Motorcycles;
 
-public record Motorcycle(Guid MotorcycleId, int Year, string Model, string LicensePlate)
-{
-    public DateTime CreatedAt { get; init; } = DateTime.UtcNow;
-
-    public DateTime UpdatedAt { get; init; } = DateTime.UtcNow;
-
-    public Motorcycle(Guid motorcycleId, int year, string model, string licensePlate, DateTime createdAt, DateTime updatedAt)
-        : this(motorcycleId, year, model, licensePlate)
-    {
-        CreatedAt = createdAt;
-        UpdatedAt = updatedAt;
-    }
-}
+/// <summary>
+/// Represents a motorcycle.
+/// </summary>
+/// <param name="MotorcycleId">The unique identifier of the motorcycle.</param>
+/// <param name="Year">The year of the motorcycle.</param>
+/// <param name="Model">The model of the motorcycle.</param>
+/// <param name="LicensePlate">The license plate of the motorcycle.</param>
+/// <returns>A motorcycle.</returns>
+/// <remarks>Represents a motorcycle that can be rented.</remarks>
+public record Motorcycle(Guid MotorcycleId, int Year, string Model, string LicensePlate);

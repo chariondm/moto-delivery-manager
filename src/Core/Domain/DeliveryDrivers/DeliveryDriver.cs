@@ -8,8 +8,6 @@ namespace MotoDeliveryManager.Core.Domain.DeliveryDrivers;
 /// <param name="Cnpj">The CNPJ of the delivery driver.</param>
 /// <param name="DateOfBirth">The date of birth of the delivery driver.</param>
 /// <param name="DriverLicense">The driver's license of the delivery driver.</param>
-/// <param name="CreatedAt">The date and time when the delivery driver was created.</param>
-/// <param name="UpdatedAt">The date and time when the delivery driver was last updated.</param>
 /// <remarks>
 /// This record is used to represent a delivery driver.
 /// </remarks>
@@ -22,18 +20,6 @@ public record DeliveryDriver(
     DriverLicense DriverLicense
     )
 {
-    public DateTime CreatedAt { get; init; } = DateTime.UtcNow;
-
-    public DateTime UpdatedAt { get; init; } = DateTime.UtcNow;
-
-    public DeliveryDriver(Guid id, string name, string cnpj, DateOnly dateOfBirth, DriverLicense driverLicense,
-        DateTime createdAt, DateTime updatedAt)
-        : this(id, name, cnpj, dateOfBirth, driverLicense)
-    {
-        CreatedAt = createdAt;
-        UpdatedAt = updatedAt;
-    }
-
     /// <summary>
     /// Initializes a new instance of the <see cref="DeliveryDriver"/> class.
     /// </summary>
@@ -41,7 +27,7 @@ public record DeliveryDriver(
     /// This constructor is used by Entity Framework Core to create an instance of the <see cref="DeliveryDriver"/> class.
     /// </remarks>
     private DeliveryDriver() : this(Guid.Empty, string.Empty, string.Empty, new DateOnly(),
-        new DriverLicense(string.Empty, DriverLicenseCategory.A, string.Empty), DateTime.UtcNow, DateTime.UtcNow)
+        new DriverLicense(string.Empty, DriverLicenseCategory.A, string.Empty))
     {
     }
 };

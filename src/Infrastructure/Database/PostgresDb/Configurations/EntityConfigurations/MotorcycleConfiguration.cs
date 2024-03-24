@@ -30,13 +30,11 @@ public class MotorcycleConfiguration : IEntityTypeConfiguration<Motorcycle>
             .IsRequired();
 
         builder
-            .Property(prop => prop.CreatedAt)
-            .HasColumnName("created_at")
+            .Property<DateTime>("created_at")
             .IsRequired();
 
         builder
-            .Property(prop => prop.UpdatedAt)
-            .HasColumnName("updated_at")
+            .Property<DateTime>("updated_at")
             .IsRequired();
 
         builder
