@@ -23,6 +23,7 @@
 
   <ItemGroup>
     <Using Include="FluentValidation" />
+    <Using Include="FluentValidation.Results" />
     <Using Include="Microsoft.Extensions.DependencyInjection" />
     <Using Include="MotoDeliveryManager.Core.Application.Common" />
     <Using Include="MotoDeliveryManager.Core.Application.UseCases.DeliveryDrivers.ProcessDriverLicensePhotoUpload.Inbounds" />
@@ -37,6 +38,8 @@
     <Using Include="MotoDeliveryManager.Core.Application.UseCases.Motorcycles.UpdateMotorcycleLicensePlate.Outbounds" />
     <Using Include="MotoDeliveryManager.Core.Application.UseCases.Rentals.ListRentalPlans.Inbounds" />
     <Using Include="MotoDeliveryManager.Core.Application.UseCases.Rentals.ListRentalPlans.Outbounds" />
+    <Using Include="MotoDeliveryManager.Core.Application.UseCases.Rentals.QueueRentalAgreementRequest.Inbounds" />
+    <Using Include="MotoDeliveryManager.Core.Application.UseCases.Rentals.QueueRentalAgreementRequest.Outbounds" />
     <Using Include="MotoDeliveryManager.Core.Domain.DeliveryDrivers" />
     <Using Include="MotoDeliveryManager.Core.Domain.Motorcycles" />
     <Using Include="MotoDeliveryManager.Core.Domain.Rentals" />

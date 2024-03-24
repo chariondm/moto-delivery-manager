@@ -19,11 +19,13 @@ builder.Services
     .AddPostgresDbAdapterRentalPlanRepository(builder.Configuration.GetConnectionString("DefaultConnection")!);
 
 builder.Services
-    .AddAwsS3StorageAdapter(builder.Configuration);
+    .AddAwsS3StorageAdapter(builder.Configuration)
+    .AddSqsMessageProducer(builder.Configuration);
 
 builder.Services
     .AddRegisterDeliveryDriverUseCase()
-    .AddListRentalPlansUseCase();
+    .AddListRentalPlansUseCase()
+    .AddQueueRentalAgreementRequestUseCase();
 
 var app = builder.Build();
 

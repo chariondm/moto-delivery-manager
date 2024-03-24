@@ -19,6 +19,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+    <PackageReference Include="FluentAssertions" Version="6.12.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
     <PackageReference Include="Moq" Version="4.20.70" />
@@ -33,6 +34,7 @@
   <ItemGroup>
     <Using Include="AutoFixture" />
     <Using Include="AutoFixture.AutoMoq" />
+    <Using Include="FluentAssertions" />
     <Using Include="FluentValidation" />
     <Using Include="FluentValidation.Results" />
     <Using Include="Microsoft.Extensions.DependencyInjection" />
@@ -55,6 +57,9 @@
     <Using Include="MotoDeliveryManager.Core.Application.UseCases.Rentals.ListRentalPlans" />
     <Using Include="MotoDeliveryManager.Core.Application.UseCases.Rentals.ListRentalPlans.Inbounds" />
     <Using Include="MotoDeliveryManager.Core.Application.UseCases.Rentals.ListRentalPlans.Outbounds" />
+    <Using Include="MotoDeliveryManager.Core.Application.UseCases.Rentals.QueueRentalAgreementRequest" />
+    <Using Include="MotoDeliveryManager.Core.Application.UseCases.Rentals.QueueRentalAgreementRequest.Inbounds" />
+    <Using Include="MotoDeliveryManager.Core.Application.UseCases.Rentals.QueueRentalAgreementRequest.Outbounds" />
     <Using Include="MotoDeliveryManager.Core.Domain.DeliveryDrivers" />
     <Using Include="MotoDeliveryManager.Core.Domain.Motorcycles" />
     <Using Include="MotoDeliveryManager.Core.Domain.Rentals" />

@@ -22,6 +22,7 @@
     <ProjectReference Include="..\..\..\Core\Application\Application.csproj" />
     <ProjectReference Include="..\..\Outbounds\AwsS3StorageAdapter\AwsS3StorageAdapter.csproj" />
     <ProjectReference Include="..\..\Outbounds\PostgresDbAdapter\PostgresDbAdapter.csproj" />
+    <ProjectReference Include="..\..\Outbounds\AwsSQSMessageBroker\AwsSQSMessageBroker.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -30,6 +31,7 @@
     <Using Include="MotoDeliveryManager.Adapters.Inbound.DeliveryDriverHttpApiAdapter.Modules.Common" />
     <Using Include="MotoDeliveryManager.Adapters.Inbound.DeliveryDriverHttpApiAdapter.Modules.Common.Swagger" />
     <Using Include="MotoDeliveryManager.Adapters.Outbounds.AwsS3StorageAdapter" />
+    <Using Include="MotoDeliveryManager.Adapters.Outbounds.AwsSQSMessageBroker" />
     <Using Include="MotoDeliveryManager.Adapters.Outbounds.PostgresDbAdapter.Entities.DeliveryDrivers" />
     <Using Include="MotoDeliveryManager.Adapters.Outbounds.PostgresDbAdapter.Entities.Rentals" />
     <Using Include="MotoDeliveryManager.Core.Application.Common" />
@@ -37,6 +39,8 @@
     <Using Include="MotoDeliveryManager.Core.Application.UseCases.DeliveryDrivers.RegisterDeliveryDriver.Inbounds" />
     <Using Include="MotoDeliveryManager.Core.Application.UseCases.Rentals.ListRentalPlans" />
     <Using Include="MotoDeliveryManager.Core.Application.UseCases.Rentals.ListRentalPlans.Inbounds" />
+    <Using Include="MotoDeliveryManager.Core.Application.UseCases.Rentals.QueueRentalAgreementRequest" />
+    <Using Include="MotoDeliveryManager.Core.Application.UseCases.Rentals.QueueRentalAgreementRequest.Inbounds" />
     <Using Include="MotoDeliveryManager.Core.Domain.DeliveryDrivers" />
     <Using Include="MotoDeliveryManager.Core.Domain.Rentals" />
     <Using Include="System.ComponentModel.DataAnnotations" />

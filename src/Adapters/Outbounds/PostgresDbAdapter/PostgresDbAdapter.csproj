@@ -35,6 +35,7 @@
     <Using Include="MotoDeliveryManager.Core.Application.UseCases.Motorcycles.RegisterMotorcycle.Outbounds" />
     <Using Include="MotoDeliveryManager.Core.Application.UseCases.Motorcycles.UpdateMotorcycleLicensePlate.Outbounds" />
     <Using Include="MotoDeliveryManager.Core.Application.UseCases.Rentals.ListRentalPlans.Outbounds" />
+    <Using Include="MotoDeliveryManager.Core.Application.UseCases.Rentals.QueueRentalAgreementRequest.Outbounds" />
     <Using Include="Npgsql" />
     <Using Include="System.Data" />
   </ItemGroup>
