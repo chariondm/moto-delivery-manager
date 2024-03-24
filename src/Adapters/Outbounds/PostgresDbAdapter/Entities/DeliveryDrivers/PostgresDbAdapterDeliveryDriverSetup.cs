@@ -9,7 +9,8 @@ namespace MotoDeliveryManager.Adapters.Outbounds.PostgresDbAdapter.Entities.Deli
 
             services
                 .AddScoped<IProcessDriverLicensePhotoUploadRepository, DeliveryDriverRepository>()
-                .AddScoped<IRegisterDeliveryDriverRepository, DeliveryDriverRepository>();
+                .AddScoped<IRegisterDeliveryDriverRepository, DeliveryDriverRepository>()
+                .AddScoped<IQueueRentalAgreementRequestDeliveryDriverRepository, DeliveryDriverRepository>();
 
             return services;
         }

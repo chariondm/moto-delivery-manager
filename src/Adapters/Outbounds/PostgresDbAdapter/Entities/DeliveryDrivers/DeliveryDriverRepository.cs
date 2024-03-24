@@ -1,7 +1,7 @@
 namespace MotoDeliveryManager.Adapters.Outbounds.PostgresDbAdapter.Entities.DeliveryDrivers
 {
     public class DeliveryDriverRepository(IDbConnectionFactory connectionFactory, ILogger<DeliveryDriverRepository> logger)
-        : IProcessDriverLicensePhotoUploadRepository, IRegisterDeliveryDriverRepository
+        : IProcessDriverLicensePhotoUploadRepository, IQueueRentalAgreementRequestDeliveryDriverRepository, IRegisterDeliveryDriverRepository
     {
         private readonly IDbConnectionFactory _connectionFactory = connectionFactory;
         private readonly ILogger<DeliveryDriverRepository> _logger = logger;
@@ -18,7 +18,7 @@ namespace MotoDeliveryManager.Adapters.Outbounds.PostgresDbAdapter.Entities.Deli
                 var parameters = new { Cnpj = cnpj, DriverLicenseNumber = driverLicenseNumber };
 
                 var sql = @"
-            SELECT EXISTS
+                SELECT EXISTS
                 (
                     SELECT
                         1 
@@ -63,10 +63,10 @@ namespace MotoDeliveryManager.Adapters.Outbounds.PostgresDbAdapter.Entities.Deli
                 };
 
                 var sql = @"
-            INSERT INTO delivery_driver
-                (delivery_driver_id, name, cnpj, date_of_birth, driver_license_number, driver_license_category, created_at, updated_at)
-            VALUES
-                (@Id, @Name, @Cnpj, @DateOfBirth, @DriverLicenseNumber, @DriverLicenseCategory, @CreatedAt, @UpdatedAt)";
+                INSERT INTO delivery_driver
+                    (delivery_driver_id, name, cnpj, date_of_birth, driver_license_number, driver_license_category, created_at, updated_at)
+                VALUES
+                    (@Id, @Name, @Cnpj, @DateOfBirth, @DriverLicenseNumber, @DriverLicenseCategory, @CreatedAt, @UpdatedAt)";
 
                 var command = new CommandDefinition(sql, parameters, cancellationToken: cancellationToken);
 
@@ -98,13 +98,13 @@ namespace MotoDeliveryManager.Adapters.Outbounds.PostgresDbAdapter.Entities.Deli
                 };
 
                 var sql = @"
-            UPDATE
-                delivery_driver
-            SET
-                driver_license_photo_path = @PhotoPath,
-                updated_at = @UpdatedAt
-            WHERE
-                delivery_driver_id = @DeliveryDriverId";
+                UPDATE
+                    delivery_driver
+                SET
+                    driver_license_photo_path = @PhotoPath,
+                    updated_at = @UpdatedAt
+                WHERE
+                    delivery_driver_id = @DeliveryDriverId";
 
                 var command = new CommandDefinition(sql, parameters, cancellationToken: cancellationToken);
 
@@ -118,5 +118,47 @@ namespace MotoDeliveryManager.Adapters.Outbounds.PostgresDbAdapter.Entities.Deli
                 throw;
             }
         }
+
+        public async Task<bool> VerifyDeliveryDriverExistsAsync(
+            Guid deliveryDriverId,
+            DriverLicenseCategory driverLicenseCategory,
+            CancellationToken cancellationToken)
+        {
+            try
+            {
+                _logger.LogDebug("Verifying if the delivery driver exists.");
+
+                var parameters = new
+                {
+                    DeliveryDriverId = deliveryDriverId,
+                    DriverLicenseCategory = driverLicenseCategory.ToString()
+                };
+
+                var sql = @"
+                    SELECT EXISTS
+                    (
+                        SELECT
+                            1
+                        FROM
+                            delivery_driver
+                        WHERE
+                            delivery_driver_id = @DeliveryDriverId
+                        AND
+                            driver_license_category = @DriverLicenseCategory
+                    )";
+
+                var command = new CommandDefinition(sql, parameters, cancellationToken: cancellationToken);
+
+                using var connection = await _connectionFactory.CreateConnectionAsync(cancellationToken);
+
+                return await connection.QueryFirstOrDefaultAsync<bool>(command);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An error occurred while verifying if the delivery driver exists.");
+                throw;
+            }
+        }
     }
 }
+
