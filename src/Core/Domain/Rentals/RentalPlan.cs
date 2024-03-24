@@ -17,11 +17,6 @@ public record RentalPlan(
     decimal PenaltyPercentage,
     decimal AdditionalDailyCost)
 {
-    // Calculate the total cost of the rental plan.
-    //  7 days at a cost of R$30.00 per day
-    //  15 days at a cost of R$28.00 per day
-    //  30 days at a cost of R$22.00 per day
-
     /// <summary>
     /// Calculates the total cost of the rental plan.                                                                       
     /// </summary>

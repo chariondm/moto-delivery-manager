@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MotoDeliveryManager.Infrastructure.Database.PostgresDb.Configurations;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MotoDeliveryManager.Infrastructure.Database.PostgresDb.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240324002100_CreateDeliveryDriverTable")]
+    partial class CreateDeliveryDriverTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -95,71 +98,6 @@ namespace MotoDeliveryManager.Infrastructure.Database.PostgresDb.Migrations
                         .HasDatabaseName("motorcycle_uk_licenseplate");
 
                     b.ToTable("motorcycle", (string)null);
-                });
-
-            modelBuilder.Entity("MotoDeliveryManager.Core.Domain.Rentals.RentalPlan", b =>
-                {
-                    b.Property<Guid>("RentalPlanId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid")
-                        .HasColumnName("rental_plan_id");
-
-                    b.Property<decimal>("AdditionalDailyCost")
-                        .HasColumnType("numeric")
-                        .HasColumnName("additional_daily_cost");
-
-                    b.Property<decimal>("DailyCost")
-                        .HasColumnType("numeric")
-                        .HasColumnName("daily_cost");
-
-                    b.Property<int>("DurationDays")
-                        .HasColumnType("integer")
-                        .HasColumnName("duration_days");
-
-                    b.Property<decimal>("PenaltyPercentage")
-                        .HasColumnType("numeric")
-                        .HasColumnName("penalty_percentage");
-
-                    b.Property<DateTime>("created_at")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("timestamp with time zone")
-                        .HasDefaultValue(new DateTime(2024, 3, 24, 0, 34, 21, 524, DateTimeKind.Utc).AddTicks(6807));
-
-                    b.Property<DateTime>("updated_at")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("timestamp with time zone")
-                        .HasDefaultValue(new DateTime(2024, 3, 24, 0, 34, 21, 524, DateTimeKind.Utc).AddTicks(7150));
-
-                    b.HasKey("RentalPlanId")
-                        .HasName("rental_plan_pk");
-
-                    b.ToTable("rental_plan", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            RentalPlanId = new Guid("fc4ac394-4f6f-4405-9a3e-64aa8ca6f0d2"),
-                            AdditionalDailyCost = 50m,
-                            DailyCost = 30m,
-                            DurationDays = 7,
-                            PenaltyPercentage = 0.2m
-                        },
-                        new
-                        {
-                            RentalPlanId = new Guid("6b354ecb-d9c9-4c6b-847f-ca92d06125d5"),
-                            AdditionalDailyCost = 50m,
-                            DailyCost = 28m,
-                            DurationDays = 15,
-                            PenaltyPercentage = 0.4m
-                        },
-                        new
-                        {
-                            RentalPlanId = new Guid("b07cb1de-3c4d-43fb-9e68-0caaa42dda41"),
-                            AdditionalDailyCost = 50m,
-                            DailyCost = 22m,
-                            DurationDays = 30,
-                            PenaltyPercentage = 0.6m
-                        });
                 });
 
             modelBuilder.Entity("MotoDeliveryManager.Core.Domain.DeliveryDrivers.DeliveryDriver", b =>
